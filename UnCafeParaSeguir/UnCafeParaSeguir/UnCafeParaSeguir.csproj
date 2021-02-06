@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\gpayments-dotnet\gpayments-dotnet.csproj" />
+    <ProjectReference Include="..\..\gpayments-dotnet2\gpayments-dotnet2.csproj" />
   </ItemGroup>
 
 </Project>
