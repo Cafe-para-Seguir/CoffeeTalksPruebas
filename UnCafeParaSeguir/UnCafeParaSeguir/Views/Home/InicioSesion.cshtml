@@ -1,0 +1,157 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+
+    <link rel="shortcut icon" type="image/ico" href="/favicon.png" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap" rel="stylesheet">
+
+    <!-- Perfect Scrollbar -->
+    <link type="text/css" href="~/vendor/perfect-scrollbar.css" rel="stylesheet">
+
+    <!-- Fix Footer CSS -->
+    <link type="text/css" href="~/vendor/fix-footer.css" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="~/css/material-icons.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link type="text/css" href="~/css/fontawesome.css" rel="stylesheet">
+
+    <!-- Preloader -->
+    <link type="text/css" href="~/css/preloader.css" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css" href="~/css/app.css" rel="stylesheet">
+
+    <!-- Toastr -->
+    <link type="text/css" href="~/vendor/toastr.min.css" rel="stylesheet" runat="server">
+
+    <link type="text/css" href="~/css/toastr.css" rel="stylesheet" runat="server">
+
+</head>
+
+<body class="layout-default layout-login-image">
+
+    <button id="creedencialesIncorrectos" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Creedenciales Incorrectos">
+        <!--Este boton confirma modificaciones-->
+    </button>
+    <button id="noValidado" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Su correo no ha sido validado">
+        <!--Este boton confirma modificaciones-->
+    </button>
+    <button id="correoInvalido" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Por favor ingrese una direccion de Correo Valida">
+        <!--Este boton avisa que la direccion de correo no es valida-->
+    </button>
+    <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="cuentaNoActivada" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Su cuenta no esta activada, para resolverlo, contacte con un administrador">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+
+    <div class="layout-login-image__overlay">
+    </div>
+
+    <div class="layout-login-image__form bg-white" data-perfect-scrollbar>
+
+        <div class="d-flex justify-content-center mt-2 mb-5 navbar-light">
+            <a href="/Home/Index" class="navbar-brand flex-column mb-2 align-items-center mr-0" style="min-width: 0">
+
+                <span class="avatar avatar-sm navbar-brand-icon mr-0">
+
+                    <span><img src="~/images/recursos/logo.png" alt="" class="img-fluid" /></span>
+
+                </span>
+
+                Coffee Talks
+            </a>
+        </div>
+
+        <h4 class="m-0">Bienvenido!</h4>
+        <p class="mb-5">Para continuar primero debes iniciar sesión. </p>
+
+        <form action="fixed-index.html" novalidate>
+
+            <div class="form-group">
+                <label class="text-label" for="email_2">Correo:</label>
+                <div class="input-group input-group-merge">
+                    <input id="txtCorreoUsuario" type="email" required="" class="form-control form-control-prepended" placeholder="ejemplo@ejemplo.com" onkeyup="ValidarCorreo(this)">
+                    <a id='resultado'></a>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="far fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="text-label" for="password_2">Contraseña:</label>
+                <div class="input-group input-group-merge">
+                    <input id="txtClaveUsuario" type="password" required="" class="form-control form-control-prepended" placeholder="Ingrese su constraseña">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fa fa-key"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="button" class="btn btn-primary" id="btn_iniciar" onclick="jsIniciarSesion();">Iniciar Sesión</button><br />
+                <br>
+                <br>
+                <a class="text-body text-underline" href="/Admin/OlvidoContraseña">Olvidaste tu contraseña?</a>
+                <br>
+                <br>
+                No tienes una cuenta? <a class="text-body text-underline" href="/Home/Registro">Registrarse!</a>
+                <br /> <br />
+                <a class="text-body text-underline" href="/Home/VerificarCorreo">Necesitas Verificación?, Haz click aqui</a>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/vendor/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/vendor/popper.min.js"></script>
+    <script src="~/vendor/bootstrap.min.js"></script>
+
+    <!-- Perfect Scrollbar -->
+    <script src="~/vendor/perfect-scrollbar.min.js"></script>
+
+    <!-- DOM Factory -->
+    <script src="~/vendor/dom-factory.js"></script>
+
+    <!-- MDK -->
+    <script src="~/vendor/material-design-kit.js"></script>
+
+    <!-- Fix Footer -->
+    <script src="~/vendor/fix-footer.js"></script>
+
+    <!-- Toastr -->
+    <script src="~/vendor/toastr.min.js" runat="server"></script>
+    <script src="~/js/toastr.js" runat="server"></script>
+
+    <!-- App JS -->
+    <script src="~/js/app.js"></script>
+    <script src="~/js/jsUsuarios.js"></script>
+
+
+</body>
+
+</html>

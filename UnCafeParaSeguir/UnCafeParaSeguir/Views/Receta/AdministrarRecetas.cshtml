@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewData["Title"] = "AdministrarCategorias";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<body onload=" DinamicMenu(); validaAdminRecetas();">
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section bg-primary border-bottom-white">
+            <div class="containerRead d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+                <div class="flex mb-32pt mb-md-0">
+                    <h2 class="text-white mb-0">Administrar Recetas</h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Notificaciones-->
+
+        <button id="confirmarModificarReceta" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La Receta ha sido Modificada">
+            <!--Este boton confirma modificaciones-->
+        </button>
+        <button id="confirmarCreacion" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La Receta ha sido Creada">
+            <!--Este boton confirma creaciones -->
+        </button>
+        <button id="confirmarEliminar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La Receta ha sido Eliminada">
+            <!--Este boton confirma Eliminaciones-->
+        </button>
+        <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+            <!--Este boton alerta Espacios Vacios-->
+        </button>
+        <button id="usuarioInexistente" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Este Usuario no Existe">
+            <!--Este boton alerta que el usuario no existe-->
+        </button>
+        <button id="errorRecetaExiste" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Esta Receta ya Existe">
+            <!--Este boton alerta de una receta duplicada-->
+        </button>
+        <button id="errorRecetaLimite" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="El maximo de Recetas por Usuario es de 3">
+            <!--Este boton alerta del limite de recetas-->
+        </button>
+        <button id="errorEliminarReceta" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Error al intentar borrar la receta">
+            <!--Este boton alerta del limite de recetas-->
+        </button>
+
+        <!--Final Notificaciones-->
+        <!--Modal Info-->
+
+        <div class="page-section">
+            <div class="containerRead">
+                <div class="card">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="MostrarCampoRecetas();">Nueva Receta</button>
+                        <div class="page-section border-bottom-2 table-responsive">
+                            <table id="tbl_Recetas" class="table mb-0 thead-border-top-0 table-nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+
+                                        <th>ID Categoria</th>
+                                        <th>Nombre Receta</th>
+                                        <th>Fecha Creación</th>
+                                        <th>Usuario Creación</th>
+                                        <th>Fecha Modificación</th>
+                                        <th>Usuario Modificación</th>
+                                        <th>Modificar</th>
+                                        <th>Eliminar</th>
+
+                                    </tr>
+                                </thead>
+                            </table>
+
+                            <!--Modal Agregar/Modificar-->
+
+                            <div class="modal fade mt-5" id="ModalReceta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Receta</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+
+                                                        <input class="form-control" hidden id="txtIdReceta">
+
+                                                        <label for="message-text" class="col-form-label">Nombre:</label>
+                                                        <input class="form-control" id="txtNombreReceta">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Descripcion:</label>
+                                                        <textarea class="form-control" id="txtDescripcionReceta"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Correo del Usuario:</label>
+                                                        <input class="form-control" id="txtCorreoUsuario">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <button type="button" class="btn btn-primary" id="btn_agregar" onclick="jsMantRecetas('AGREGAR',0)">Agregar</button>
+                                                <button type="button" class="btn btn-primary" id="btn_modificar" onclick="jsMantRecetas('MODIFICAR',0)">Modificar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Modal Confirmar Eliminar-->
+
+                            <div class="modal fade mt-5" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header badge-primary-red">
+                                                <h5 class="modal-title font-size-20pt text-danger text-white-100" id="exampleModalLabel">Eliminar Receta</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <p class="text-black-100 font-size-16pt text-info">Advertencia!, la receta, su informacion y toda relacion con su respectivo usuario sera eliminada.</p>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" onclick="jsMantRecetas('ELIMINAR',0)">Confirmar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/jsRecetas.js"></script>

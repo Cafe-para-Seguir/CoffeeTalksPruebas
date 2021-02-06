@@ -1,0 +1,196 @@
+﻿
+@{
+    ViewData["Title"] = "AdministrarCharla";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+<body onload=" DinamicMenu(); validaAdminCharlas();">
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section bg-primary border-bottom-white">
+            <div class="containerRead d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+                <div class="flex mb-32pt mb-md-0">
+                    <h2 class="text-white mb-0">Administrar Charlas</h2>
+                </div>
+            </div>
+        </div>
+        <!--Notificaciones-->
+        <button id="confirmarModificar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La Charla ha sido Modificada">
+            <!--Este boton confirma modificaciones-->
+        </button>
+        <button id="confirmarCreacion" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La Charla ha sido Creada">
+            <!--Este boton confirma creaciones -->
+        </button>
+        <button id="confirmarEliminar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La Charla ha sido Eliminada">
+            <!--Este boton confirma Eliminaciones-->
+        </button>
+        <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+            <!--Este boton alerta Espacios Vacios-->
+        </button>
+        <button id="usuarioInexistente" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Este Usuario no Existe">
+            <!--Este boton alerta que el usuario no existe-->
+        </button>
+        <button id="noCharlista" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Este Usuario no es Charlista">
+            <!--Este boton alerta que el usuario seleccionado no es charlista-->
+        </button>
+        <button id="errorAgregarCharla" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ha sucedido un Error al Agregar la Charla ">
+            <!--Este boton alerta de un error interno-->
+        </button>
+        <button id="errorEliminarCharla" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ha sucedido un Error al Eliminar la Charla ">
+            <!--Este boton alerta de un error interno-->
+        </button>
+        <button id="errorCharlaCategoria" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ha sucedido un Error al Vincular la Charla con la Categoria ">
+            <!--Este boton alerta de un error interno-->
+        </button>
+        <button id="errorCharlaCharlista" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ha sucedido un Error al Vincular la Charla con el Charlista ">
+            <!--Este boton alerta de un error interno-->
+        </button>
+        <button id="errorVideoOrden" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ya existe un video en el orden de la charla  ">
+            <!--Este boton alerta de un error interno-->
+        </button>
+        <!--Final Notificaciones-->
+
+        <div class="page-section">
+            <div class="containerRead">
+                <div class="card">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="MostrarCampoCharla();">Nueva Charla</button>
+                        <div class="page-section border-bottom-2 table-responsive">
+                            <table id="tbl_Charlas" class="table mb-0 thead-border-top-0 table-nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID Charla</th>
+                                        <th>Nombre Charla</th>
+                                        <th>Charlista</th>
+                                        <th>Categoria</th>
+                                        <th>Fecha Creación</th>
+                                        <th>Usuario Creación</th>
+                                        <th>Fecha Modificación</th>
+                                        <th>Usuario Modificación</th>
+                                        <th>Ir a</th>
+                                        <th>Modificar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                            </table>
+
+                            <div class="modal fade" id="ModalCharla" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Charla</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form id="form_charla" method="post" enctype="multipart/form-data">
+                                                <div class="modal-body">
+
+                                                    <div class="form-group">
+
+                                                        <input class="form-control" hidden id="txtIdCharla">
+                                                        <label for="message-text" class="col-form-label">Nombre:</label>
+                                                        <input class="form-control" id="txtNombreCharla" name="txtNombreCharla">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Descripcion:</label>
+                                                        <textarea class="form-control" id="txtDescripcionCharla" name="txtDescripcionCharla"></textarea>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Nivel:</label>
+                                                        <select class="form-control" id="cbNivelCharla" name="cbNivelCharla">
+                                                            <option value="Principiante">Principiante</option>
+                                                            <option value="Intermedio">Intermedio</option>
+                                                            <option value="Avanzado">Avanzado</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div id="NoMostar">
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Valoracion:</label>
+                                                            <label for="form-control" id="txtValoracionCharla" name="txtValoracionCharla"></label>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Imagen Nueva:</label>
+                                                            <div class="col-md-10">
+                                                                <input type="file" id="imagenid" name="files" single accept="image/x-png,image/gif,image/jpeg" />
+                                                            </div>
+                                                            <br />
+                                                            <label for="message-text" class="col-form-label">Imagen Actual:</label>
+                                                            <input class="form-control" id="txtImagenCharla" name="txtImagenCharla" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="text-label">Precio:</label>
+                                                        <div class="input-group input-group-merge">
+                                                            <input type="number" id="txtPrecioCharla" name="txtPrecioCharla" class="form-control form-control-prepended">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">
+                                                                    <span>₡</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Correo del Charlista:</label>
+                                                        <input class="form-control" id="txtCorreoUsuario" name="txtCorreoUsuario" onkeyup="CargarNombreCharlista()">
+                                                        <br />
+                                                        <label for="message-text" class="col-form-label">Nombre del Charlista:</label>
+                                                        <a for="message-text" class="col-form-label" id="nombreCharlista"></a>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Categoria:</label>
+                                                        <select class="form-control" id="cbCategoria" name="cbCategoria">
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" id="btn_agregar" onclick="jsMantCharla('AGREGAR',0)">Agregar</button>
+                                                <button type="button" class="btn btn-primary" id="btn_modificar" onclick="ModificarCharla()">Modificar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal Confirmar Eliminar-->
+
+        <div class="modal fade mt-5" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header badge-primary-red">
+                            <h5 class="modal-title font-size-20pt text-danger text-white-100" id="exampleModalLabel">Eliminar Charla</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <p class="text-black-100 font-size-16pt text-info">Advertencia!, la charla, su información y cualquier relación con sus videos sera eliminada</p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="jsMantCharla('ELIMINAR',0)">Confirmar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/jsCharlas.js"></script>
+<script src="~/js/jsCorreo.js"></script>

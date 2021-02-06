@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "Verificacion";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<!-- Header Layout Content -->
+<body onload="DinamicMenu();">
+
+    <button id="datosIncorrectos" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Notificación" data-toastr-message="El correo o codigo ingresados son incorrectos">
+        <!--Este boton confirma la existencia del correo -->
+    </button>
+    <button id="correoReenviado" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Un nuevo codigo de verificacion ha sido enviado a tu correo">
+        <!--Este boton confirma el envio de un nuevo Correo -->
+    </button>
+
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section pb-0">
+            <div class="container page__container d-flex flex-column flex-sm-row align-items-sm-center">
+                <div class="flex">
+                    <h1 class="h2 mb-0">Verificación</h1>
+                </div>
+                <p class="d-sm-none"></p>
+                <a href="" class="btn btn-outline-secondary flex-column">
+                    Necesitas Ayuda?
+                    <span class="btn__secondary-text">Contactanos</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="page-section">
+            <div class="container page__container">
+                <div class="page-separator">
+                    <div class="page-separator__text">Verificación De Correo</div>
+                </div>
+                <div class="col-sm-6 p-0">
+                    <div class="alert alert-soft-warning">
+                        <div class="d-flex flex-wrap">
+                            <div class="flex" style="min-width: 180px">
+                                <small class="text-black-100">
+                                    Ingresa el correo con el cual te registrarte y tu codigo de activacion,
+                                    <br />
+                                    si ocupas uno nuevo presiona "Enviar de Nuevo" y recibiras otro codigo de activacion al correo ingresado.
+                                    <br />
+                                    <br />
+                                    <strong>
+                                        Advertencia: Todos los codigos y cuentas sin activar vencen despues de una hora, despues de la cual deberas registrarte de nuevo.
+                                    </strong>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email:</label>
+                        <input type="text" class="form-control" id="correoVerificacion" placeholder="Ingresa tu Correo ...">
+                        <br />
+                        <label class="form-label">Codigo:</label>
+                        <input type="text" class="form-control" id="codigoVerificacion" placeholder="Ingresa tu Codigo ...">
+                        <small class="form-text text-muted"></small>
+                    </div>
+                    <button class="btn btn-primary" onclick="verificaCodigoCorreo();">Verificar</button>
+                    <button class="btn btn-primary ml-5" onclick="reenviarCodigoCorreo();">Reenviar Codigo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Verificar Cuenta -->
+
+        <div class="modal fade mt-5" id="modalCuentaVerificada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Cuenta Verificada!</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <p style="font-size:14px; text-align: justify;" id="Verificacion">
+                                    Felicidades, ya eres parte de la comunidad de Coffe Talks,
+                                    <br />
+                                    puedes iniciar sesión, comprar charlas y compartir tus propias recetas como un miembro de nuestra comunidad!
+                                </p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a type="button" class="btn btn-primary" href="/Home/InicioSesion">De Acuerdo</a>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Verificar Cuenta -->
+
+    </div>
+</body>
+<!-- // END Header Layout Content -->
+
+<script src="~/js/jsCorreo.js"></script>

@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewData["Title"] = "AdministrarVideo";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+<body onload="DinamicMenu(); validaAdminVideo();">
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section bg-primary border-bottom-white">
+            <div class="containerRead d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+                <div class="flex mb-32pt mb-md-0">
+                    <h2 class="text-white mb-0">Administrar Videos</h2>
+                </div>
+            </div>
+        </div>
+        <!--Notificaciones-->
+        <button id="confirmarModificar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="El Video ha sido Modificado">
+            <!--Este boton confirma modificaciones-->
+        </button>
+        <button id="confirmarCreacion" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="El Video ha sido Creado">
+            <!--Este boton confirma creaciones -->
+        </button>
+        <button id="confirmarEliminar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="El Video ha sido Eliminado">
+            <!--Este boton confirma Eliminaciones-->
+        </button>
+        <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+            <!--Este boton alerta Espacios Vacios-->
+        </button>
+        <button id="errorAgregarVideo" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ha sucedido un error al agregar el video ">
+            <!--Este boton alerta de un error interno-->
+        </button>
+        <button id="errorEliminarVideo" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ha sucedido un error al eliminar el video ">
+            <!--Este boton alerta de un error interno-->
+        </button>
+        <button id="errorVideoCharla" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ha sucedido un error al vincular el video con la Charla ">
+            <!--Este boton alerta de un error interno-->
+        </button>
+        <button id="errorVideoOrden" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ya existe un video en este orden de la charla">
+            <!--Este boton alerta de un error interno-->
+        </button>
+        <button id="errorSegundosOrden" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="El maximo de segundos del video es 60">
+            <!--Este boton alerta de un error interno-->
+        </button>
+        <!--Final Notificaciones-->
+
+        <div class="page-section">
+            <div class="containerRead">
+                <div class="card">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="MostrarCampoVideo();">Nuevo Video</button>
+                        <div class="page-section border-bottom-2 table-responsive">
+                            <table id="tbl_Videos" class="table mb-0 thead-border-top-0 table-nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID Video</th>
+                                        <th>Link</th>
+                                        <th>Fecha Creación</th>
+                                        <th>Usuario Creación</th>
+                                        <th>Fecha Modificación</th>
+                                        <th>Usuario Modificación</th>
+                                        <th>Modificar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                            </table>
+
+                            <div class="modal fade" id="ModalVideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Video</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+
+                                                        <input class="form-control" hidden id="txtIdVideo">
+                                                        <label for="message-text" class="col-form-label">Link Video:</label>
+                                                        <input class="form-control" id="txtLinkVideo">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Nombre Video:</label>
+                                                        <input class="form-control" id="txtNombreVideo">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Duración:</label>
+                                                        <div class="col-md-9">
+                                                            <div class="form-row">
+                                                                <div class="col-auto">
+                                                                    Minutos<input id="txtMinutosVideo" type="number" class="form-control" style="width: 100px;">
+                                                                </div>
+                                                                <div class="col-auto">
+                                                                    Segundos<input id="txtSegundosVideo" type="number" max="60" class="form-control" style="width: 100px;" onKeyUp="verifSegundosDuracion()">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Orden:</label>
+                                                        <input type="number" class="form-control" id="txtOrdenVideo">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Charla:</label>
+                                                        <select class="form-control" id="cbCharla" onchange="MostrarCharlistaCharla()">
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Charlista:</label>
+                                                        <a class="charlista"></a>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" id="btn_agregar" onclick="jsMantVideo('AGREGAR',0)">Agregar</button>
+                                                <button type="button" class="btn btn-primary" id="btn_modificar" onclick="jsMantVideo('MODIFICAR',0)">Modificar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal Confirmar Eliminar-->
+
+        <div class="modal fade mt-5" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header badge-primary-red">
+                            <h5 class="modal-title font-size-20pt text-danger text-white-100" id="exampleModalLabel">Eliminar Video</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <p class="text-black-100 font-size-16pt text-info">Advertencia!, la charla, su información y cualquier relación con sus videos sera eliminada</p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="jsMantVideo('ELIMINAR',0)">Confirmar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="~/js/jsCharlas.js"></script>

@@ -1,0 +1,232 @@
+﻿
+@{
+    ViewData["Title"] = "FAQ";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap" rel="stylesheet">
+
+    <!-- Perfect Scrollbar -->
+    <link type="text/css" href="~/vendor/perfect-scrollbar.css" rel="stylesheet">
+
+    <!-- Fix Footer CSS -->
+    <link type="text/css" href="~/vendor/fix-footer.css" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="~/css/material-icons.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link type="text/css" href="~/css/fontawesome.css" rel="stylesheet">
+
+    <!-- Preloader -->
+    <link type="text/css" href="~/css/preloader.css" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css" href="~/css/app.css" rel="stylesheet">
+
+</head>
+
+<body class="layout-sticky-subnav layout-default" onload="DinamicMenu();">
+
+    <div class="mdk-box bg-primary mdk-box--bg-gradient-primary2 js-mdk-box mb-0" data-effects="blend-background">
+        <div class="mdk-box__content">
+            <div class="hero py-64pt text-center text-sm-left">
+                <div class="container page__container">
+                    <br /><br />
+                    <h1 class="text-white">Preguntas Frecuentes</h1>
+                    <br />
+                    <a href="/Home/Contacto" class="btn btn-outline-white mb-16pt mb-sm-0 mr-sm-16pt">Contacto<i class="material-icons icon--right fas fa-envelope-square fa-xs"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section">
+            <div class="container page__container">
+
+                <div class="row card-group-row">
+                    <div class="col-md-6 card-group-row__col">
+
+                        <div class="card card--elevated card-group-row__card">
+                            <div class="card-body d-flex">
+                                <span class="icon-holder icon-holder--outline-muted rounded-circle d-inline-flex mr-16pt">
+                                    <i class="material-icons" style="color: #f6b10a;">question_answer</i>
+                                </span>
+                                <div class="flex">
+                                    <a class="card-title mb-4pt">Do you offer a free trial?</a>
+                                    <p class="text-70 mb-0">We offer everyone a 7 day free trial! You can take advantage of it by visiting our sign-up page! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, ab!</p>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex lh-1 px-16pt py-8pt">
+                                <div href="/Home/Index" class="flex text-muted"><small>Coffee Talks</small></div>
+                                <a href="/Home/Index" class="text-20"><i class="material-icons icon-16pt fas fa-mug-hot fa-xs" style="color: #f6b10a;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 card-group-row__col">
+
+                        <div class="card card--elevated card-group-row__card">
+                            <div class="card-body d-flex">
+                                <span class="icon-holder icon-holder--outline-muted rounded-circle d-inline-flex mr-16pt">
+                                    <i class="material-icons" style="color: #f6b10a;">question_answer</i>
+                                </span>
+                                <div class="flex">
+                                    <a class="card-title mb-4pt">Can I gift a subscription to someone?</a>
+                                    <p class="text-70 mb-0">Yes! We do offer certificates. Please email us for more information. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, ad!</p>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex lh-1 px-16pt py-8pt">
+                                <div href="/Home/Index" class="flex text-muted"><small>Coffee Talks</small></div>
+                                <a href="/Home/Index" class="text-20"><i class="material-icons icon-16pt fas fa-mug-hot fa-xs" style="color: #f6b10a;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 card-group-row__col">
+
+                        <div class="card card--elevated card-group-row__card">
+                            <div class="card-body d-flex">
+                                <span class="icon-holder icon-holder--outline-muted rounded-circle d-inline-flex mr-16pt">
+                                    <i class="material-icons" style="color: #f6b10a;">question_answer</i>
+                                </span>
+                                <div class="flex">
+                                    <a class="card-title mb-4pt">I have a great idea for an application or website, but need help on where to begin. Can you guys help me?</a>
+                                    <p class="text-70 mb-0">We advise posting personal requests in our Community Forum Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex lh-1 px-16pt py-8pt">
+                                <div href="/Home/Index" class="flex text-muted"><small>Coffee Talks</small></div>
+                                <a href="/Home/Index" class="text-20"><i class="material-icons icon-16pt fas fa-mug-hot fa-xs" style="color: #f6b10a;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 card-group-row__col">
+
+                        <div class="card card--elevated card-group-row__card">
+                            <div class="card-body d-flex">
+                                <span class="icon-holder icon-holder--outline-muted rounded-circle d-inline-flex mr-16pt">
+                                    <i class="material-icons" style="color: #f6b10a;">question_answer</i>
+                                </span>
+                                <div class="flex">
+                                    <a class="card-title mb-4pt">I found a bug. Where can I report that?</a>
+                                    <p class="text-70 mb-0">In the unlikely situation you stumble across a bug, go ahead and shoot us an email. Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex lh-1 px-16pt py-8pt">
+                                <div href="/Home/Index" class="flex text-muted"><small>Coffee Talks</small></div>
+                                <a href="/Home/Index" class="text-20"><i class="material-icons icon-16pt fas fa-mug-hot fa-xs" style="color: #f6b10a;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 card-group-row__col">
+
+                        <div class="card card--elevated card-group-row__card">
+                            <div class="card-body d-flex">
+                                <span class="icon-holder icon-holder--outline-muted rounded-circle d-inline-flex mr-16pt">
+                                    <i class="material-icons" style="color: #f6b10a;">question_answer</i>
+                                </span>
+                                <div class="flex">
+                                    <a class="card-title mb-4pt">Do you offer a free trial?</a>
+                                    <p class="text-70 mb-0">We offer everyone a 7 day free trial! You can take advantage of it by visiting our sign-up page! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, ab!</p>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex lh-1 px-16pt py-8pt">
+                                <div href="/Home/Index" class="flex text-muted"><small>Coffee Talks</small></div>
+                                <a href="/Home/Index" class="text-20"><i class="material-icons icon-16pt fas fa-mug-hot fa-xs" style="color: #f6b10a;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 card-group-row__col">
+
+                        <div class="card card--elevated card-group-row__card">
+                            <div class="card-body d-flex">
+                                <span class="icon-holder icon-holder--outline-muted rounded-circle d-inline-flex mr-16pt">
+                                    <i class="material-icons" style="color: #f6b10a;">question_answer</i>
+                                </span>
+                                <div class="flex">
+                                    <a class="card-title mb-4pt">Can I gift a subscription to someone?</a>
+                                    <p class="text-70 mb-0">Yes! We do offer certificates. Please email us for more information. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, ad!</p>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex lh-1 px-16pt py-8pt">
+                                <div href="/Home/Index" class="flex text-muted"><small>Coffee Talks</small></div>
+                                <a href="/Home/Index" class="text-20"><i class="material-icons icon-16pt fas fa-mug-hot fa-xs" style="color: #f6b10a;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 card-group-row__col">
+
+                        <div class="card card--elevated card-group-row__card">
+                            <div class="card-body d-flex">
+                                <span class="icon-holder icon-holder--outline-muted rounded-circle d-inline-flex mr-16pt">
+                                    <i class="material-icons" style="color: #f6b10a;">question_answer</i>
+                                </span>
+                                <div class="flex">
+                                    <a class="card-title mb-4pt">I have a great idea for an application or website, but need help on where to begin. Can you guys help me?</a>
+                                    <p class="text-70 mb-0">We advise posting personal requests in our Community Forum Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex lh-1 px-16pt py-8pt">
+                                <div href="/Home/Index" class="flex text-muted"><small>Coffee Talks</small></div>
+                                <a href="/Home/Index" class="text-20"><i class="material-icons icon-16pt fas fa-mug-hot fa-xs" style="color: #f6b10a;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 card-group-row__col">
+
+                        <div class="card card--elevated card-group-row__card">
+                            <div class="card-body d-flex">
+                                <span class="icon-holder icon-holder--outline-muted rounded-circle d-inline-flex mr-16pt">
+                                    <i class="material-icons" style="color: #f6b10a;">question_answer</i>
+                                </span>
+                                <div class="flex">
+                                    <a class="card-title mb-4pt">I found a bug. Where can I report that?</a>
+                                    <p class="text-70 mb-0">In the unlikely situation you stumble across a bug, go ahead and shoot us an email. Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex lh-1 px-16pt py-8pt">
+                                <div href="/Home/Index" class="flex text-muted"><small>Coffee Talks</small></div>
+                                <a href="/Home/Index" class="text-20"><i class="material-icons icon-16pt fas fa-mug-hot fa-xs" style="color: #f6b10a;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/vendor/jquery.min.js"></script>
+
+    <script src="~/vendor/popper.min.js"></script>
+    <script src="~/vendor/bootstrap.min.js"></script>
+
+    <script src="~/vendor/perfect-scrollbar.min.js"></script>
+
+    <script src="~/vendor/dom-factory.js"></script>
+
+    <script src="~/vendor/material-design-kit.js"></script>
+
+    <script src="~/vendor/fix-footer.js"></script>
+
+    <script src="~/vendor/toastr.min.js" runat="server"></script>
+    <script src="~/js/toastr.js" runat="server"></script>
+
+    <script src="~/js/jsMask.js" runat="server"></script>
+
+</body>

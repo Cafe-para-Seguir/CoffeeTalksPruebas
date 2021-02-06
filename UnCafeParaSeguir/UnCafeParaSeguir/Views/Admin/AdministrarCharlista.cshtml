@@ -1,0 +1,315 @@
+﻿
+@{
+    ViewData["Title"] = "AdministrarBaristas";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<body onload=" DinamicMenu(); validaAdminCharlista();">
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section bg-primary border-bottom-white">
+            <div class="containerRead d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+                <div class="flex mb-32pt mb-md-0">
+                    <h2 class="text-white mb-0">Administrar Charlista</h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Notificaciones-->
+        <button id="confirmarModificar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="El Charlista ha sido Modificado">
+            <!--Este boton confirma modificaciones-->
+        </button>
+        <button id="confirmarCreacion" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="El Charlista ha sido Creado">
+            <!--Este boton confirma creaciones -->
+        </button>
+        <button id="confirmarEliminar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="El Charlista ha sido Eliminado">
+            <!--Este boton confirma Eliminaciones-->
+        </button>
+        <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+            <!--Este boton alerta Espacios Vacios-->
+        </button>
+        <button id="alertaContra" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Las contraseñas no Coinciden">
+            <!--Este boton alerta Contraseñas Incorrectas-->
+        </button>
+        <button id="alertaContraIncorrecta" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Las contraseña actual es incorrecta">
+            <!--Este boton alerta Contraseñas Incorrectas-->
+        </button>
+        <button id="modificarContra" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Las contraseña fue Modificada">
+            <!--Este boton alerta Contraseñas correcta-->
+        </button>
+        <button id="noHayRecetas" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Este charlista no posee recetas">
+            <!--Este boton avisa que el usuario seleccionado no tiene recetas-->
+        </button>
+        <button id="correoExiste" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ya hay un charlista registrado con este correo">
+            <!--Este boton avisa que ya existe una cuenta con el correo ingresado-->
+        </button>
+        <button id="alertaContraCorta" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Notificación" data-toastr-message="La contraseña es muy corta">
+            <!--Este boton avisa que la contraseña es demasiado corta-->
+        </button>
+        <button id="correoInvalido" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Por favor ingrese una direccion de Correo Valida">
+            <!--Este boton avisa que la direccion de correo no es valida-->
+        </button>
+        <button id="errorEliminar" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Notificación" data-toastr-message="El charlista tiene charlas vinculadas, eliminelas o cambielas de charlista antes de continuar">
+            <!--Este boton avisa que la contraseña es demasiado corta-->
+        </button>
+        <button id="tieneCharlas" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Notificación" data-toastr-message="El charlista tiene charlas vinculadas">
+            <!--Este boton avisa que la contraseña es demasiado corta-->
+        </button>
+        <button id="cambioRolconCharlas" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Notificación" data-toastr-message="El charlista tiene charlas vinculadas, y no se puede pasar a cliente, desvincule las charlas para continuar">
+            <!--Este boton avisa que la contraseña es demasiado corta-->
+        </button>
+
+        <!--Final Notificaciones-->
+
+        <div class="page-section">
+            <div class="containerRead">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-black-70 lead measure-hero-lead mx-auto mx-md-0">Para los nuevos Charlista se debe asignar el rol de charlista desde la administración de usuarios</p>
+                        <div class="page-section border-bottom-2 table-responsive">
+                            <table id="tbl_Usuarios" class="table mb-0 thead-border-top-0 table-nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Estado</th>
+                                        <th>Fecha Creación</th>
+                                        <th>Usuario Creación</th>
+                                        <th>Fecha Modificación</th>
+                                        <th>Usuario Modificación</th>
+                                        <th>Ver Perfil</th>
+                                        <th>Ver Recetas</th>
+                                        <th>Modificar</th>
+                                        <th>Contraseña</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                            </table>
+
+                            <div class="modal fade mt-3" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="form_enviar_imagen" method="post" enctype="multipart/form-data">
+                                                    <div class="form-group">
+
+                                                        <label hidden id="txtIdUsuario"></label>
+
+                                                        <label for="message-text" class="col-form-label">Nombre:</label>
+                                                        <input type="text" class="form-control" id="txtNombreUsuario" name="txtNombreUsuario">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Apellidos:</label>
+                                                        <input class="form-control" id="txtApellidosUsuario" name="txtApellidosUsuario">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Descripción:</label>
+                                                        <textarea cols="10" class="form-control" id="txtDescripcionUsuario" name="txtDescripcionUsuario"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Correo:</label>
+                                                        <input class="form-control" id="txtCorreoUsuario" name="txtCorreoUsuario" onkeyup="ValidarCorreo(this)">
+                                                        <a id='resultado'></a>
+                                                    </div>
+
+
+                                                    <div id="dClaves">
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Contraseña:</label>
+                                                            <input class="form-control" id="txtClaveUsuario" name="txtClaveUsuario" type="password" onKeyUp="verifClave()">
+                                                            <label class="passReg"></label>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Confirmar Contraseña:</label>
+                                                            <input class="form-control" id="txtConfirmClaveUsuario" type="password">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="NoMostar">
+
+
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Valoración:</label>
+                                                            <input class="form-control" id="txtValoracionCharlista" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Imagen:</label>
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-10">
+                                                                    <input type="file" id="imagenid" name="files" single accept="image/x-png,image/gif,image/jpeg" />
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Imagen:</label>
+                                                            <input class="form-control" id="txtImagenUsuario" name="txtImagenUsuario" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Notificación:</label>
+                                                            <select class="form-control" id="cbOpcionNotificacion" name="cbOpcionNotificacion">
+                                                                <option value="Activado">Activado</option>
+                                                                <option value="Desactivado">Desactivado</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Rol:</label>
+                                                            <select class="form-control" id="cbIdRol" name="cbIdRol">
+                                                                <option value="3">Cliente</option>
+                                                                <option value="2">Charlista</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Estado:</label>
+                                                            <select class="form-control" id="cbEstadoUsuario" name="cbEstadoUsuario">
+                                                                <option value="Activado">Activado</option>
+                                                                <option value="Desactivado">Desactivado</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" id="btn_agregar" onclick="jsMantUsuario('AGREGAR',0)">Agregar</button>
+                                                <button type="button" class="btn btn-primary" id="btn_modificar" onclick="jsMantUsuarioModificar('MODIFICAR',0)">Modificar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Modal Cambiar Contraseña-->
+
+                        <div class="modal fade mt-3" id="ClaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Cambio Contraseña</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+
+                                                <div class="form-group">
+                                                    <label hidden id="txtIdUsuarioCClave"></label>
+
+                                                    <label class="text-label" for="password_2">Contraseña Actual:</label>
+                                                    <div class="input-group input-group-merge">
+                                                        <input id="txtClaveActualUsuario" type="password" class="form-control form-control-prepended">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <span onclick="togglePassword()" class="far fa-eye"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Nueva Contraseña:</label>
+                                                    <input class="form-control" id="txtNuevaClaveUsuario" type="password" onKeyUp="verifClaveCambio()">
+                                                    <label class="passRegPass"></label>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Confirmar Nueva Contraseña:</label>
+                                                    <input class="form-control" id="txtConfirmNuevaClaveUsuario" type="password">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" id="btn_agregar" onclick="jsMantClave()">Aceptar</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Modal Confirmar Eliminar-->
+
+                        <div class="modal fade mt-3" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header badge-primary-red">
+                                            <h5 class="modal-title font-size-20pt text-danger text-white-100" id="exampleModalLabel">Eliminar Charlista</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <input class="form-control" hidden id="txtIdEliminar">
+                                                <p class="text-black-100 font-size-16pt text-info">Advertencia!, el usuario, su informacion y toda relacion con sus videos o comentarios sera eliminada.</p>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="jsMantUsuario('ELIMINAR',0)">Confirmar</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Modal Mostrar Recetas-->
+
+                        <div class="modal fade mt-3" id="modalRecetas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Recetas</h5>
+                                            <button type="button" onclick="jsManejoRecetas(3);" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="flex" style="max-width: 100%">
+                                                    <div class="card p-relative o-hidden mb-0">
+                                                        <div class="card-header card-header-tabs-basic nav px-0" role="tablist">
+                                                            <a href="#" onclick="jsManejoRecetas(0);" style="display: none" id="nomReceta0" data-toggle="tab" role="tab" aria-selected="true" class="active"></a>
+                                                            <a href="#" onclick="jsManejoRecetas(1);" style="display: none" id="nomReceta1" data-toggle="tab" role="tab" aria-selected="false"></a>
+                                                            <a href="#" onclick="jsManejoRecetas(2);" style="display: none" id="nomReceta2" data-toggle="tab" role="tab" aria-selected="false"></a>
+                                                        </div>
+                                                        <div id="divRecetas" class="card-body text-70">
+                                                            <p id="recetasDisplay0" class="text-black-75" style="display: none"></p>
+                                                            <p id="recetasDisplay1" class="text-black-75" style="display: none"></p>
+                                                            <p id="recetasDisplay2" class="text-black-75" style="display: none"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/jsUsuarios.js"></script>

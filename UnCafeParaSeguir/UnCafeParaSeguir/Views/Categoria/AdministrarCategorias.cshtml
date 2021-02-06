@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewData["Title"] = "AdministrarCategorias";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<body onload=" DinamicMenu(); validaAdminCategoria();">
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section bg-primary border-bottom-white">
+            <div class="containerRead d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+                <div class="flex mb-32pt mb-md-0">
+                    <h2 class="text-white mb-0">Administrar Categorias</h2>
+                </div>
+            </div>
+        </div>
+        <!--Notificaciones-->
+        <button id="confirmarModificar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La Categoria ha sido Modificada">
+            <!--Este boton confirma modificaciones-->
+        </button>
+        <button id="confirmarCreacion" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La Categoria ha sido Creada">
+            <!--Este boton confirma creaciones -->
+        </button>
+        <button id="confirmarEliminar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La Categoria ha sido Eliminada">
+            <!--Este boton confirma Eliminaciones-->
+        </button>
+        <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+            <!--Este boton alerta Espacios Vacios-->
+        </button>
+        <button id="errorEliminar" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No se puede eliminar la categoria ya que tiene charlas vinculadas">
+            <!--Este boton alerta Espacios Vacios-->
+        </button>
+        <button id="errorGeneral" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Error al ejecutar la acción">
+            <!--Este boton alerta Espacios Vacios-->
+        </button>
+        <!--Final Notificaciones-->
+
+        <div class="page-section">
+            <div class="containerRead">
+                <div class="card">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="MostrarCampoCategoria();">Categoria</button>
+                        <div class="page-section border-bottom-2 table-responsive">
+                            <table id="tbl_Categorias" class="table mb-0 thead-border-top-0 table-nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID Categoria</th>
+                                        <th>Nombre Categoria</th>
+                                        <th>Fecha Creación</th>
+                                        <th>Usuario Creación</th>
+                                        <th>Fecha Modificación</th>
+                                        <th>Usuario Modificación</th>
+                                        <th>Modificar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                            </table>
+
+                            <div class="modal fade" id="ModalCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Categoria</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="form_categoria" method="post" enctype="multipart/form-data">
+                                                    <div class="form-group">
+
+                                                        <input class="form-control" hidden id="txtIdCategoria">
+
+                                                        <label for="message-text" class="col-form-label">Nombre:</label>
+                                                        <input class="form-control" id="txtNombreCategoria" name="pNombreCategoria">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message-text" class="col-form-label">Descripcion:</label>
+                                                        <textarea class="form-control" id="txtDescripcionCategoria" name="pDescripcionCategoria"></textarea>
+                                                    </div>
+                                                    <div id="NoMostar">
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Imagen Nueva:</label>
+                                                            <div class="col-md-10">
+                                                                <input type="file" id="imagenid" name="files" single accept="image/x-png,image/gif,image/jpeg" />
+                                                            </div>
+                                                            <br />
+                                                            <label for="message-text" class="col-form-label">Imagen Actual:</label>
+                                                            <input class="form-control" id="txtImagenCategoria" name="txtImagenCategoria" readonly>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <button type="button" class="btn btn-primary" id="btn_agregar" onclick="jsMantCategoria('AGREGAR',0)">Agregar</button>
+                                                <button type="button" class="btn btn-primary" id="btn_modificar" onclick="ModificarCategoria()">Modificar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal Confirmar Eliminar-->
+
+        <div class="modal fade mt-5" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header badge-primary-red">
+                            <h5 class="modal-title font-size-20pt text-danger text-white-100" id="exampleModalLabel">Eliminar Categoria</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <p class="text-black-100 font-size-16pt text-info">Advertencia!, la Categoria, su información y cualquier relación con sus videos sera eliminada</p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="jsMantCategoria('ELIMINAR',0)">Confirmar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/jsCategorias.js"></script>

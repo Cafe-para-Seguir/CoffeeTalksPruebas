@@ -1,0 +1,303 @@
+﻿
+@{
+    ViewData["Title"] = "VerCharlistas";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<body onload=" DinamicMenu(); CargarVerCharlistas('Charlistas(');">
+    <div class="mdk-header-layout__content page-content ">
+        <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+            <div class="mdk-drawer-layout__content">
+                <div class="page-section">
+                    <div class="container page__container">
+
+                        <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-24pt" style="white-space: nowrap;">
+                            <a href="#" data-target="#library-drawer" data-toggle="sidebar" class="btn btn-sm btn-white ml-sm-16pt">
+                                <i class="material-icons icon--left">tune</i> Filtros
+                            </a>
+                        </div>
+
+                        <div class="page-separator">
+                            <div class="page-separator__text">Charlistas</div>
+                        </div>
+
+                        <div class="row card-group-row">
+                            <div id="divCharlistas0" class="col-md-6 col-xl-4 card-group-row__col" style="display: none">
+                                <div class="card card-group-row__card" style="height: 95%">
+                                    <div class="card-header d-flex align-items-center">
+                                        <a id="aNombreCharlista0" href="#" class="card-title flex mr-12pt"></a>
+                                    </div>
+                                    <div class="card-body flex text-center d-flex flex-column align-items-center justify-content-center">
+                                        <a id="aCharlistaIMG0" href="#" class="avatar avatar-xl overlay js-overlay overlay--primary rounded-circle p-relative o-hidden mb-16pt">
+                                            <img id="imagenCharlista0" alt="" class="avatar-img">
+                                            <span class="overlay__content"><i class="overlay__action material-icons icon-40pt"></i></span>
+                                        </a>
+                                        <div class="flex">
+                                            <div class="d-inline-flex align-items-center mb-8pt">
+                                                <div class="rating mr-8pt">
+                                                    <div class="rating__item"><i id="VTA1" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTB1" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTC1" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTD1" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTE1" class="material-icons">star_border</i></div>
+                                                </div>
+                                            </div>
+
+                                            <p id="pDescCharlista0" class="text-70 measure-paragraph"></p>
+                                        </div>
+                                    </div>
+                                    <div id="divCharla0" class="card-body flex-0">
+                                        <div class="d-flex align-items-center">
+                                            <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                                <img id="imagenCharla0" alt="" class="avatar-img rounded">
+                                                <span class="overlay__content"></span>
+                                            </a>
+                                            <div class="flex">
+                                                <a id="aNombreCharla0" href="#" class="card-title"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divCharlistas1" class="col-md-6 col-xl-4 card-group-row__col" style="display: none">
+                                <div class="card card-group-row__card" style="height: 95%">
+                                    <div class="card-header d-flex align-items-center">
+                                        <a id="aNombreCharlista1" href="#" class="card-title flex mr-12pt"></a>
+                                    </div>
+                                    <div class="card-body flex text-center d-flex flex-column align-items-center justify-content-center">
+                                        <a id="aCharlistaIMG1" href="#" class="avatar avatar-xl overlay js-overlay overlay--primary rounded-circle p-relative o-hidden mb-16pt">
+                                            <img id="imagenCharlista1" alt="" class="avatar-img">
+                                            <span class="overlay__content"><i class="overlay__action material-icons icon-40pt"></i></span>
+                                        </a>
+                                        <div class="flex">
+                                            <div class="d-inline-flex align-items-center mb-8pt">
+                                                <div class="rating mr-8pt">
+                                                    <div class="rating__item"><i id="VTA2" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTB2" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTC2" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTD2" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTE2" class="material-icons">star_border</i></div>
+                                                </div>
+                                            </div>
+
+                                            <p id="pDescCharlista1" class="text-70 measure-paragraph"></p>
+                                        </div>
+                                    </div>
+                                    <div id="divCharla1" class="card-body flex-0">
+                                        <div class="d-flex align-items-center">
+                                            <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                                <img id="imagenCharla1" alt="" class="avatar-img rounded">
+                                                <span class="overlay__content"></span>
+                                            </a>
+                                            <div class="flex">
+                                                <a id="aNombreCharla1" href="#" class="card-title"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div id="divCharlistas2" class="col-md-6 col-xl-4 card-group-row__col" style="display: none">
+                                <div class="card card-group-row__card" style="height: 95%">
+                                    <div class="card-header d-flex align-items-center">
+                                        <a id="aNombreCharlista2" href="#" class="card-title flex mr-12pt"></a>
+                                    </div>
+                                    <div class="card-body flex text-center d-flex flex-column align-items-center justify-content-center">
+                                        <a id="aCharlistaIMG2" href="#" class="avatar avatar-xl overlay js-overlay overlay--primary rounded-circle p-relative o-hidden mb-16pt">
+                                            <img id="imagenCharlista2" alt="" class="avatar-img">
+                                            <span class="overlay__content"><i class="overlay__action material-icons icon-40pt"></i></span>
+                                        </a>
+                                        <div class="flex">
+                                            <div class="d-inline-flex align-items-center mb-8pt">
+                                                <div class="rating mr-8pt">
+                                                    <div class="rating__item"><i id="VTA3" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTB3" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTC3" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTD3" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTE3" class="material-icons">star_border</i></div>
+                                                </div>
+                                            </div>
+                                            <p id="pDescCharlista2" class="text-70 measure-paragraph"></p>
+                                        </div>
+                                    </div>
+                                    <div id="divCharla2" class="card-body flex-0">
+                                        <div class="d-flex align-items-center">
+                                            <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                                <img id="imagenCharla2" alt="" class="avatar-img rounded">
+                                                <span class="overlay__content"></span>
+                                            </a>
+                                            <div class="flex">
+                                                <a id="aNombreCharla2" href="#" class="card-title"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row card-group-row">
+
+
+                            <div id="divCharlistas3" class="col-md-6 col-xl-4 card-group-row__col" style="display: none">
+                                <div class="card card-group-row__card" style="height: 95%">
+                                    <div class="card-header d-flex align-items-center">
+                                        <a id="aNombreCharlista3" href="#" class="card-title flex mr-12pt"></a>
+                                    </div>
+                                    <div class="card-body flex text-center d-flex flex-column align-items-center justify-content-center">
+                                        <a id="aCharlistaIMG3" href="#" class="avatar avatar-xl overlay js-overlay overlay--primary rounded-circle p-relative o-hidden mb-16pt">
+                                            <img id="imagenCharlista3" alt="" class="avatar-img">
+                                            <span class="overlay__content"><i class="overlay__action material-icons icon-40pt"></i></span>
+                                        </a>
+                                        <div class="flex">
+                                            <div class="d-inline-flex align-items-center mb-8pt">
+                                                <div class="rating mr-8pt">
+                                                    <div class="rating__item"><i id="VTA4" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTB4" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTC4" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTD4" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTE4" class="material-icons">star_border</i></div>
+                                                </div>
+                                            </div>
+
+                                            <p id="pDescCharlista3" class="text-70 measure-paragraph"></p>
+                                        </div>
+                                    </div>
+                                    <div id="divCharla3" class="card-body flex-0">
+                                        <div class="d-flex align-items-center">
+                                            <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                                <img id="imagenCharla3" alt="" class="avatar-img rounded">
+                                                <span class="overlay__content"></span>
+                                            </a>
+                                            <div class="flex">
+                                                <a id="aNombreCharla3" href="#" class="card-title"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div id="divCharlistas4" class="col-md-6 col-xl-4 card-group-row__col" style="display: none">
+                                <div class="card card-group-row__card" style="height: 95%">
+                                    <div class="card-header d-flex align-items-center">
+                                        <a id="aNombreCharlista4" href="#" class="card-title flex mr-12pt"></a>
+                                    </div>
+                                    <div class="card-body flex text-center d-flex flex-column align-items-center justify-content-center">
+                                        <a id="aCharlistaIMG4" href="#" class="avatar avatar-xl overlay js-overlay overlay--primary rounded-circle p-relative o-hidden mb-16pt">
+                                            <img id="imagenCharlista4" alt="" class="avatar-img">
+                                            <span class="overlay__content"><i class="overlay__action material-icons icon-40pt"></i></span>
+                                        </a>
+                                        <div class="flex">
+                                            <div class="d-inline-flex align-items-center mb-8pt">
+                                                <div class="rating mr-8pt">
+                                                    <div class="rating__item"><i id="VTA5" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTB5" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTC5" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTD5" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTE5" class="material-icons">star_border</i></div>
+                                                </div>
+                                            </div>
+
+                                            <p id="pDescCharlista4" class="text-70 measure-paragraph"></p>
+                                        </div>
+                                    </div>
+                                    <div id="divCharla4" class="card-body flex-0">
+                                        <div class="d-flex align-items-center">
+                                            <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                                <img id="imagenCharla4" alt="" class="avatar-img rounded">
+                                                <span class="overlay__content"></span>
+                                            </a>
+                                            <div class="flex">
+                                                <a id="aNombreCharla4" href="#" class="card-title"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div id="divCharlistas5" class="col-md-6 col-xl-4 card-group-row__col" style="display: none">
+                                <div class="card card-group-row__card" style="height: 95%">
+                                    <div class="card-header d-flex align-items-center">
+                                        <a id="aNombreCharlista5" href="#" class="card-title flex mr-12pt"></a>
+                                    </div>
+                                    <div class="card-body flex text-center d-flex flex-column align-items-center justify-content-center">
+                                        <a id="aCharlistaIMG5" href="#" class="avatar avatar-xl overlay js-overlay overlay--primary rounded-circle p-relative o-hidden mb-16pt">
+                                            <img id="imagenCharlista5" alt="" class="avatar-img">
+                                            <span class="overlay__content"><i class="overlay__action material-icons icon-40pt"></i></span>
+                                        </a>
+                                        <div class="flex">
+                                            <div class="d-inline-flex align-items-center mb-8pt">
+                                                <div class="rating mr-8pt">
+                                                    <div class="rating__item"><i id="VTA6" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTB6" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTC6" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTD6" class="material-icons">star_border</i></div>
+                                                    <div class="rating__item"><i id="VTE6" class="material-icons">star_border</i></div>
+                                                </div>
+                                            </div>
+                                            <p id="pDescCharlista5" class="text-70 measure-paragraph"></p>
+                                        </div>
+                                    </div>
+                                    <div id="divCharla5" class="card-body flex-0">
+                                        <div class="d-flex align-items-center">
+                                            <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                                <img id="imagenCharla5" alt="" class="avatar-img rounded">
+                                                <span class="overlay__content"></span>
+                                            </a>
+                                            <div class="flex">
+                                                <a id="aNombreCharla5" href="#" class="card-title"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @****************************************** Paginacion ******************************************@
+
+                        <div class="container page__container page-section w-auto">
+                            <div class="flex">
+                                <nav id="navPaginacion" aria-label="Page navigation">
+                                    <ul id="ulPaginacion" class="pagination pagination-sm ">
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        @****************************************** Paginacion ******************************************@
+                    </div>
+                </div>
+            </div>
+
+            <div class="mdk-drawer js-mdk-drawer " id="library-drawer" data-align="end">
+                <div class="mdk-drawer__content top-navbar">
+                    <div class="sidebar sidebar-light sidebar-right py-16pt" data-perfect-scrollbar data-perfect-scrollbar-wheel-propagation="true">
+
+                        <div class="sidebar-heading">Filtros</div>
+                        <ul class="sidebar-menu">
+                            <li id="liFiltro1" style = "cursor:pointer" class="sidebar-menu-item active">
+                                <a  class="sidebar-menu-button">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left"></span>
+                                    <span id="filtro1" class="sidebar-menu-text"  onclick="CargarVerCharlistas('Charlistas(')">Sin Filtros</span>
+                                </a>
+                            </li>
+                            <li id="liFiltro2" style = "cursor:pointer" class="sidebar-menu-item">
+                                <a class="sidebar-menu-button">
+                                    <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left"></span>
+                                    <span id="filtro2" class="sidebar-menu-text" onclick="CargarVerCharlistas('CharlistasCalificados(')" >Mejor Calificados</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="~/js/jsCharlas.js"></script>

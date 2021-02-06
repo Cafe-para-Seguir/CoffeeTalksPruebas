@@ -1,0 +1,446 @@
+﻿
+@{
+    ViewData["Title"] = "Perfil";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<body onload=" DinamicMenu(); CallInfoUsuario()">
+
+    <!--Notificaciones-->
+    <button id="confirmarModificar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="El Usuario ha sido Modificado">
+        <!--Este boton confirma modificaciones-->
+    </button>
+    <button id="confirmarModificarReceta" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La Receta ha sido Modificada">
+        <!--Este boton confirma modificaciones-->
+    </button>
+    <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="alertaContra" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Las contraseñas no Coinciden">
+        <!--Este boton alerta Contraseñas Incorrectas-->
+    </button>
+    <button id="alertaContraIncorrecta" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Las contraseña actual es incorrecta">
+        <!--Este boton alerta Contraseñas Incorrectas-->
+    </button>
+    <button id="modificarContra" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Las contraseña fue Modificada">
+        <!--Este boton alerta Contraseñas correcta-->
+    </button>
+    <button id="correoExiste" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ya hay un usuario registrado con este correo">
+        <!--Este boton avisa que ya existe una cuenta con el correo ingresado-->
+    </button>
+    <button id="alertaContraCorta" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Notificación" data-toastr-message="La contraseña es muy corta">
+        <!--Este boton avisa que la contraseña es demasiado corta-->
+    </button>
+    <button id="correoInvalido" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Por favor ingrese una direccion de Correo Valida">
+        <!--Este boton avisa que la direccion de correo no es valida-->
+    </button>
+    <button id="errorEliminar" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No se puede eliminar el charlista ya que tiene charlas vinculadas">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="confirmarEliminar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="El usuario ha sido Desactivado">
+        <!--Este boton confirma Eliminaciones-->
+    </button>
+    <button id="errorRecetaExiste" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Esta Receta ya Existe">
+        <!--Este boton alerta de una receta duplicada-->
+    </button>
+    <button id="errorRecetaLimite" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="El maximo de Recetas por Usuario es de 3">
+        <!--Este boton alerta del limite de recetas-->
+    </button>
+
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section bg-primary">
+            <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+                <img id="imagenPerfil" width="104" class="mr-md-32pt mb-32pt mb-md-0" alt="">
+                <div class="flex mb-32pt mb-md-0">
+                    <h2 id="txtNombreUsuario" class="text-white mb-0"></h2>
+                    <button type="button" class="btn btn-primary" id="btn_modificarPerfil" onclick="ModificarModalPerfil()">Editar Perfil</button>
+                    <button type="button" class="btn btn-primary" id="btn_modificarClave" onclick="ModificarClavePerfil()">Cambiar Contraseña</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section bg-alt border-bottom-2">
+            <div class="container page__container">
+                <div class="lead text-black-50 measure-hero-lead mb-24pt">
+                    <div class="row">
+                        <div class="col-md-6-2">
+                            <h4>Acerca de mi</h4>
+                            <p id="txtDescUsuario"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Ver Recetas-->
+        <div class="container page__container">
+            <div class="border-left-2 page-section pl-32pt">
+                <div class="card mb-0">
+                    <ul class="accordion accordion--boxed js-accordion mb-0" id="toc-2">
+                        <li class="accordion__item">
+                            <a class="accordion__toggle" data-toggle="collapse" data-parent="#toc-2" href="#toc-content-2">
+                                <span class="flex">Mis Recetas</span>
+                                <span class="text-muted">Puedes tener máximo 3 recetas</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu">
+                                <ul class="list-unstyled collapse" id="toc-content-2"></ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--Ver Recetas-->
+        <!--Modal Agregar/Modificar Recetas-->
+        <div class="modal fade mt-3" id="ModalReceta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Mis Recetas</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+
+                                    <input class="form-control" hidden id="txtIdReceta">
+
+                                    <label for="message-text" class="col-form-label">Nombre:</label>
+                                    <input class="form-control" id="txtNombreReceta">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Descripcion:</label>
+                                    <textarea class="form-control" id="txtDescripcionReceta"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label" style="display: none;">Correo del Usuario:</label>
+                                    <input class="form-control" id="txtCorreoUsuario" style="display: none;">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btn_agregar" onclick="jsMantRectasPerfil('AGREGAR',0)">Agregar</button>
+                            <button type="button" class="btn btn-primary" id="btn_modificar" onclick="jsMantRectasPerfil('MODIFICAR',0)">Modificar</button>
+                            <button type="button" class="btn btn-primary" id="btn_eliminar" onclick="EliminarRecetasPerfil()">Eliminar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal Agregar/Modificar Recetas-->
+        <!--Modal Confirmar Eliminar Receta-->
+        <div class="modal fade mt-3" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header badge-primary-red">
+                            <h5 class="modal-title font-size-20pt text-danger text-white-100" id="exampleModalLabel">Eliminar Receta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <p class="text-black-100 font-size-16pt text-info">Advertencia!, la receta, será eliminada.</p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="jsMantRectasPerfil('ELIMINAR',0)">Eliminar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal Confirmar Eliminar Receta-->
+        <!--Modal Agregar/Modificar Perfil-->
+        <div class="modal fade mt-3" id="exampleModalPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Mi Perfil</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="form_enviar_imagen" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+
+                                    <input class="form-control" hidden id="IdUsuario">
+
+                                    <label for="message-text" class="col-form-label">Nombre:</label>
+                                    <input type="text" class="form-control" id="NombreUsuario" name="txtNombreUsuario">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Apellidos:</label>
+                                    <input class="form-control" id="ApellidosUsuario" name="txtApellidosUsuario">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Descripción:</label>
+                                    <textarea cols="10" class="form-control" id="DescripcionUsuario" name="txtDescripcionUsuario"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Correo:</label>
+                                    <input class="form-control" id="CorreoUsuario" name="txtCorreoUsuario" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label data-toggle="tooltip" data-placement="top" for="message-text" class="col-form-label">Imagen actual:</label>
+                                    <input class="form-control" id="txtImagenUsuario" name="txtImagenUsuario" type="text" readonly>
+                                </div>
+
+                                <div id="dClaves">
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Contraseña:</label>
+                                        <input class="form-control" id="ClaveUsuario" type="password" onKeyUp="verifClave()">
+                                        <label class="passReg"></label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Confirmar Contraseña:</label>
+                                        <input class="form-control" id="ConfirmClaveUsuario" type="password">
+                                    </div>
+                                </div>
+
+                                <div id="NoMostar">
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Imagen:</label>
+                                        @*<form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="CargarImagen">*@
+                                        <div class="form-group">
+                                            <div class="col-md-10">
+                                                <input type="file" name="files" single accept="image/x-png,image/gif,image/jpeg" />
+                                            </div>
+                                        </div>
+                                        @*</form>*@
+                                    </div>
+
+                                    <div class="form-group" style="display:none">
+                                        <label id="txtImagenUsuario" name="txtImagenUsuario" type="text" hidden></label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Notificaciones por correo:</label>
+                                        <select class="form-control" id="OpcionNotificacion" name="cbOpcionNotificacion" data-toggle="tooltip" data-placement="top" title="Recibir notificaciones por correo de las nuevas charlas de la plataforma">
+                                            <option value="Activado">Activado</option>
+                                            <option value="Desactivado">Desactivado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btn_desactivar" onclick="ConfirmarEliminarPerfil()">Desactivar Cuenta</button>
+                            <button type="button" class="btn btn-primary" id="btn_modificar" onclick="jsMantPerfil(1)">Modificar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal Agregar/Modificar Perfil-->
+        <!--Modal Confirmar Eliminar Perfil-->
+        <div class="modal fade mt-3" id="modalEliminarPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header badge-primary-red">
+                            <h5 class="modal-title font-size-20pt text-danger text-white-100" id="exampleModalLabel">Desactivar Cuenta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <p class="text-black-100 font-size-16pt text-info">Advertencia! si desactiva su cuenta deberá contactarse con los adminstradores si desea recuperarla.</p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="jsMantPerfil(0)">Confirmar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal Confirmar Eliminar Perfil-->
+        <!--Modal Cambiar Contraseña-->
+        <div class="modal fade mt-3" id="ClaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Cambio Contraseña</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+
+                                    <input class="form-control" hidden id="txtIdUsuarioCClave">
+
+                                    <label for="message-text" class="col-form-label">Contraseña Actual:</label>
+                                    <input class="form-control" id="txtClaveActualUsuario" type="password">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Nueva Contraseña:</label>
+                                    <input class="form-control" id="txtNuevaClaveUsuario" type="password" onKeyUp="verifClaveCambio()">
+                                    <label class="passRegPass"></label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Confirmar Nueva Contraseña:</label>
+                                    <input class="form-control" id="txtConfirmNuevaClaveUsuario" type="password">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btn_agregar" onclick="jsMantClave()">Aceptar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal Cambiar Contraseña-->
+
+        <div class="container page__container page-section">
+
+            <div class="page-headline text-center">
+                <h2 id="txtCharlas"></h2>
+            </div>
+
+            <div class="row card-group-row mb-8pt">
+
+                <div id="divCurso0" class="col-sm-6 card-group-row__col" style="display: none">
+                    <div class="card card-sm card-group-row__card">
+                        <div class="card-body d-flex align-items-center">
+                            <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                <img id="imagenCharla0" alt="" class="avatar-img rounded">
+                                <span class="overlay__content"></span>
+                            </a>
+                            <div class="flex">
+                                <a id="txtCurso0" class="card-title mb-4pt" href="#"></a>
+                                <div class="d-flex align-items-center">
+                                    <div class="rating mr-8pt">
+
+                                        <span class="rating__item"><span id="VTA0" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTB0" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTC0" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTD0" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTE0" class="material-icons">star_border</span></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="divCurso1" class="col-sm-6 card-group-row__col" style="display: none">
+                    <div class="card card-sm card-group-row__card">
+                        <div class="card-body d-flex align-items-center">
+                            <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                <img id="imagenCharla1" alt="" class="avatar-img rounded">
+                                <span class="overlay__content"></span>
+                            </a>
+                            <div class="flex">
+                                <a id="txtCurso1" class="card-title mb-4pt" href="#"></a>
+                                <div class="d-flex align-items-center">
+                                    <div class="rating mr-8pt">
+
+                                        <span class="rating__item"><span id="VTA1" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTB1" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTC1" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTD1" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTE1" class="material-icons">star_border</span></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="divCurso2" class="col-sm-6 card-group-row__col" style="display: none">
+                    <div class="card card-sm card-group-row__card">
+                        <div class="card-body d-flex align-items-center">
+                            <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                <img id="imagenCharla2" alt="" class="avatar-img rounded">
+                                <span class="overlay__content"></span>
+                            </a>
+                            <div class="flex">
+                                <a id="txtCurso2" class="card-title mb-4pt" href="#"></a>
+                                <div class="d-flex align-items-center">
+                                    <div class="rating mr-8pt">
+
+                                        <span class="rating__item"><span id="VTA2" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTB2" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTC2" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTD2" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTE2" class="material-icons">star_border</span></span>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="divCurso3" class="col-sm-6 card-group-row__col" style="display: none">
+                    <div class="card card-sm card-group-row__card">
+                        <div class="card-body d-flex align-items-center">
+                            <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                <img id="imagenCharla3" alt="" class="avatar-img rounded">
+                                <span class="overlay__content"></span>
+                            </a>
+                            <div class="flex">
+                                <a id="txtCurso3" class="card-title mb-4pt" href="#"></a>
+                                <div class="d-flex align-items-center">
+                                    <div class="rating mr-8pt">
+                                        <span class="rating__item"><span id="VTA3" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTB3" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTC3" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTD3" class="material-icons">star_border</span></span>
+                                        <span class="rating__item"><span id="VTE3" class="material-icons">star_border</span></span>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container page__container page-section">
+                <div id="divBotonAlternar" class="flex">
+                    <nav aria-label="Page navigation" id="navPaginacion">
+                        <ul id="ulPaginacion" class="pagination pagination-sm ">
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/jsHome.js"></script>
+<script src="~/js/jsRecetas.js"></script>
+<script src="~/js/jsUsuarios.js"></script>
+<script src="~/js/jsAdmin.js"></script>
+<script src="~/js/jsCharlas.js"></script>

@@ -1,0 +1,176 @@
+﻿
+@{
+    ViewData["Title"] = "AdministrarCharlasUsuarios";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<body onload=" DinamicMenu(); validaAdminCharlaUsuario();">
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section bg-primary border-bottom-white">
+            <div class="containerRead d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+                <div class="flex mb-32pt mb-md-0">
+                    <h2 class="text-white mb-0">Administrar Charlas de los usuarios</h2>
+                </div>
+            </div>
+        </div>
+
+
+        <button id="confirmarVinculacion" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Vinculación Exitosa">
+            <!--Este boton confirma creaciones -->
+        </button>
+        <button id="confirmarEliminar" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="La vinculación de la charla con el usuario ha sido eliminada">
+            <!--Este boton confirma Eliminaciones-->
+        </button>
+        <button id="errorEliminar" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No se ha podido desvincular la charla del usuario">
+            <!--Este boton confirma Eliminaciones-->
+        </button>
+        <button id="errorVinculacion" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Error en la vinculación">
+            <!--Este boton confirma Eliminaciones-->
+        </button>
+        <button id="charlaYaVinculada" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Esta Charla ya esta vinculada a este usuario">
+            <!--Este boton confirma Eliminaciones-->
+        </button>
+
+        <!--Final Notificaciones-->
+
+        <div class="page-section">
+            <div class="containerRead">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="page-section border-bottom-2 table-responsive">
+                            <table id="tbl_Usuarios" class="table mb-0 thead-border-top-0 table-nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Correo</th>
+                                        <th>Perfil</th>
+                                        <th>Charlas</th>
+                                        <th>Asignar Charlas</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="modal fade mt-3" id="AsignarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Administrador</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+
+                                                    <label hidden id="txtIdUsuario"></label>
+                                                    <label hidden id="txtIdCharlaUsuario"></label>
+
+                                                    <label for="message-text" class="col-form-label">Nombre:</label>
+                                                    <label type="text" class="form-control" id="txtNombreUsuario" name="txtNombreUsuario"></label>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Correo:</label>
+                                                    <label for="type=" text"" class="col-form-label" id="txtCorreoUsuario" name="txtCorreoUsuario"></label>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Charlas:</label>
+                                                    <select class="form-control" id="cbTodasCharlas" name="cbTodasCharlas">
+                                                    </select>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" id="btn_aceptar" onclick="jsAgregarCharlaUsuario()">Aceptar</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade mt-3" id="EliminarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Administrador</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="form_Eliminar" method="post" enctype="multipart/form-data">
+                                                <div class="form-group">
+
+                                                    <label hidden id="txtIdUsuario"></label>
+                                                    <label hidden id="txtIdCharlaUsuario"></label>
+
+                                                    <label for="message-text" class="col-form-label">Nombre:</label>
+                                                    <label type="text" class="form-control" id="txtNombreUsuarioEliminar" name="txtNombreUsuarioEliminar"></label>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Correo:</label>
+                                                    <label type="text" class="col-form-label" id="txtCorreoUsuarioEliminar" name="txtCorreoUsuarioEliminar"></label>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Charlas Vinculadas:</label>
+                                                    <select class="form-control" id="cbCharlasUsuario" name="cbCharlasUsuario">
+                                                    </select>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" id="btn_aceptar" onclick="ConfirmarEliminarVinculacion()">Eliminar</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="modal fade mt-3" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header badge-primary-red">
+                                            <h5 class="modal-title font-size-20pt text-danger text-white-100" id="exampleModalLabel">Eliminar Relacion</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <p class="text-black-100 font-size-16pt text-info">Advertencia!, el usuario y su relacion con esta charla sera borrada para siempre</p>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="jsEliminarCharlaUsuario()">Confirmar</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/jsAdmin.js"></script>

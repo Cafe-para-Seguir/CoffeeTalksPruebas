@@ -1,0 +1,1051 @@
+﻿@{ ViewData["Title"] = "Home Page"; }
+
+<!-- Header Layout Content -->
+<body onload="llamaContenido(); DinamicMenu();">
+
+    <div class="mdk-header-layout__content page-content ">
+        <div class="bg-white border-bottom-2 py-16pt ">
+            <div class="container page__container">
+                <div class="row align-items-center">
+                    <div class="d-flex col-md align-items-center border-bottom border-md-0 mb-16pt mb-md-0 pb-16pt pb-md-0">
+                        <div class="rounded-circle bg-tertiary w-64 h-64 d-inline-flex align-items-center justify-content-center mr-16pt">
+                            <i class="material-icons text-white">subscriptions</i>
+                        </div>
+                        <div class="flex">
+                            <div class="card-title mb-4pt">Conocimiento a tu alcance</div>
+                            <p class="card-subtitle text-black-70">Una forma sensilla de conocer el bello arte del cafe.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex col-md align-items-center border-bottom border-md-0 mb-16pt mb-md-0 pb-16pt pb-md-0">
+                        <div class="rounded-circle bg-tertiary w-64 h-64 d-inline-flex align-items-center justify-content-center mr-16pt">
+                            <i class="material-icons text-white">verified_user</i>
+                        </div>
+                        <div class="flex">
+                            <div class="card-title mb-4pt">Por Expertos</div>
+                            <p class="card-subtitle text-black-70">Charlistas con gran experiencia en el campo.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex col-md align-items-center">
+                        <div class="rounded-circle bg-tertiary w-64 h-64 d-inline-flex align-items-center justify-content-center mr-16pt">
+                            <i class="material-icons text-white">update</i>
+                        </div>
+                        <div class="flex">
+                            <div class="card-title mb-4pt">Lorem Ipsum</div>
+                            <p class="card-subtitle text-black-70">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section border-bottom-2">
+            <div class="container page__container">
+
+                <div class="page-separator">
+                    <div class="page-separator__text">Charlas Nuevas</div>
+                </div>
+
+                <div class="row card-group-row">
+
+                    <div id="CharlaReciente1" class="col-md-6 col-lg-4 card-group-row__col">
+
+                        <div class="card card--elevated posts-card-popular overlay card-group-row__card">
+                            <img id="imagenCN1"  alt="" class="card-img">
+                            <div class="fullbleed bg-primary" style="opacity: .5"></div>
+                            <div class="posts-card-popular__content">
+                                <div class="card-body d-flex align-items-center">
+                                    <div class="avatar-group flex">
+                                        <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+                                          
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="posts-card-popular__title card-body">
+                                    <small id="categoriaCN1" class="text-muted text-uppercase"></small>
+                                    <a id="nombreCN1" class="card-title" href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="CharlaReciente2" class="col-md-6 col-lg-4 card-group-row__col">
+
+                        <div class="card card--elevated posts-card-popular overlay card-group-row__card">
+                            <img id="imagenCN2"  alt="" class="card-img">
+                            <div class="fullbleed bg-primary" style="opacity: .5"></div>
+                            <div class="posts-card-popular__content">
+                                <div class="card-body d-flex align-items-center">
+                                    <div class="avatar-group flex">
+                                        <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+                                          
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                                <div class="posts-card-popular__title card-body">
+                                    <small id="categoriaCN2" class="text-muted text-uppercase"></small>
+                                    <a id="nombreCN2" class="card-title" href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="CharlaReciente3" class="col-md-6 col-lg-4 card-group-row__col">
+
+                        <div class="card card--elevated posts-card-popular overlay card-group-row__card">
+                            <img id="imagenCN3"  alt="" class="card-img">
+                            <div class="fullbleed bg-primary" style="opacity: .5"></div>
+                            <div class="posts-card-popular__content">
+                                <div class="card-body d-flex align-items-center">
+                                    <div class="avatar-group flex">
+                                        <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+                                           
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="posts-card-popular__title card-body">
+                                    <small id="categoriaCN3" class="text-muted text-uppercase"></small>
+                                    <a id="nombreCN3" class="card-title" href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section border-bottom-2">
+            <div class="container page__container">
+                <div class="page-separator">
+                    <div class="page-separator__text">Categorias</div>
+                </div>
+
+                <div class="row card-group-row">
+
+                    <div id="categorias1" class="col-sm-4 card-group-row__col">
+
+                        <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                            <div class="card-body d-flex flex-column" style="cursor:pointer;">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex">
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded mr-12pt z-0 o-hidden">
+                                                <div class="overlay">
+                                                    <img id="imagen1" width="40" height="40" alt="" class="rounded">
+                                                    <span class="overlay__content overlay__content-transparent">
+                                                       
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex">
+                                                <div id="nombreCat1" class="card-title"></div>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="imagenInterC1" width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCate1" class="card-title"></div>
+
+                                </div>
+                            </div>
+
+                            <p id="descripCate1" class="mt-16pt text-black-70"></p>
+
+                            <div class="d-flex align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="categorias2" class="col-sm-4 card-group-row__col" style="cursor:pointer;">
+                        <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card" data-toggle="popover" data-trigger="click">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex">
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded mr-12pt z-0 o-hidden">
+                                                <div class="overlay">
+                                                    <img id="imagen2" width="40" height="40" alt="" class="rounded">
+                                                    <span class="overlay__content overlay__content-transparent">
+                                                        <span class="overlay__action d-flex flex-column text-center lh-1">
+
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex">
+                                                <div id="nombreCat2" class="card-title"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="imagenInterC2" width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCate2" class="card-title"></div>
+                                  
+                                </div>
+                            </div>
+
+                            <p id="descripCate2" class="mt-16pt text-black-70"></p>
+
+                            <div class="d-flex align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="categorias3" class="col-sm-4 card-group-row__col" style="cursor:pointer;">
+
+                        <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex">
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded mr-12pt z-0 o-hidden">
+                                                <div class="overlay">
+                                                    <img id="imagen3" width="40" height="40" alt="" class="rounded">
+                                                    <span class="overlay__content overlay__content-transparent">
+                                                        <span class="overlay__action d-flex flex-column text-center lh-1">
+                                                     
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex">
+                                                <div id="nombreCat3" class="card-title"></div>
+        
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="imagenInterC3" width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCate3" class="card-title"></div>
+                                  
+                                </div>
+                            </div>
+
+                            <p id="descripCate3" class="mt-16pt text-black-70"></p>
+
+                            <div class="d-flex align-items-center">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row card-group-row">
+
+                    <div id="categorias4" class="col-sm-4 card-group-row__col" style="cursor:pointer;">
+
+                        <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex">
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded mr-12pt z-0 o-hidden">
+                                                <div class="overlay">
+                                                    <img id="imagen4" width="40" height="40" alt="" class="rounded">
+                                                    <span class="overlay__content overlay__content-transparent">
+                                                        <span class="overlay__action d-flex flex-column text-center lh-1">
+                                                         
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex">
+                                                <div id="nombreCat4" class="card-title"></div>
+                                  
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="imagenInterC4" width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCate4" class="card-title"></div>
+                                   
+                                </div>
+                            </div>
+
+                            <p id="descripCate4" class="mt-16pt text-black-70"></p>
+
+                            <div class="d-flex align-items-center">
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="categorias5" class="col-sm-4 card-group-row__col" style="cursor:pointer;">
+                        <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card" data-toggle="popover" data-trigger="click">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex">
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded mr-12pt z-0 o-hidden">
+                                                <div class="overlay">
+                                                    <img id="imagen5" width="40" height="40" alt="" class="rounded">
+                                                    <span class="overlay__content overlay__content-transparent">
+                                                        <span class="overlay__action d-flex flex-column text-center lh-1">
+                                                         
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex">
+                                                <div id="nombreCat5" class="card-title"></div>
+                                       
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="imagenInterC5" width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCate5" class="card-title"></div>
+   
+                                </div>
+                            </div>
+
+                            <p id="descripCate5" class="mt-16pt text-black-70"></p>
+
+                            <div class="d-flex align-items-center">
+                              
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="categorias6" class="col-sm-4 card-group-row__col" style="cursor:pointer;">
+
+                        <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex">
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded mr-12pt z-0 o-hidden">
+                                                <div class="overlay">
+                                                    <img id="imagen6" width="40" height="40" alt="" class="rounded">
+                                                    <span class="overlay__content overlay__content-transparent">
+                                                        <span class="overlay__action d-flex flex-column text-center lh-1">
+                                                 
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex">
+                                                <div id="nombreCat6" class="card-title"></div>
+                                             
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="imagenInterC6" width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCate6" class="card-title"></div>
+                                   
+                                </div>
+                            </div>
+
+                            <p id="descripCate6" class="mt-16pt text-black-70"></p>
+
+                            <div class="d-flex align-items-center">
+                             
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row card-group-row mb-lg-8pt">
+
+                    <div id="categorias7" class="col-sm-4 card-group-row__col" style="cursor:pointer;">
+                        <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card mb-lg-0" data-toggle="popover" data-trigger="click">
+
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex">
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded mr-12pt z-0 o-hidden">
+                                                <div class="overlay">
+                                                    <img id="imagen7" width="40" height="40" alt="" class="rounded">
+                                                    <span class="overlay__content overlay__content-transparent">
+                                                        <span class="overlay__action d-flex flex-column text-center lh-1">
+                                                         
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex">
+                                                <div id="nombreCat7" class="card-title"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="imagenInterC7" width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCate7" class="card-title"></div>
+                                  
+                                </div>
+                            </div>
+
+                            <p id="descripCate7" class="mt-16pt text-black-70"></p>
+
+                            <div class="d-flex align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="categorias8" class="col-sm-4 card-group-row__col" style="cursor:pointer;">
+
+                        <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card mb-lg-0" data-toggle="popover" data-trigger="click">
+
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex">
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded mr-12pt z-0 o-hidden">
+                                                <div class="overlay">
+                                                    <img id="imagen8" width="40" height="40" alt="" class="rounded">
+                                                    <span class="overlay__content overlay__content-transparent">
+                                                        <span class="overlay__action d-flex flex-column text-center lh-1">
+                                                        
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex">
+                                                <div id="nombreCat8" class="card-title"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="imagenInterC8" width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCate8" class="card-title"></div>
+
+                                </div>
+                            </div>
+
+                            <p id="descripCate8" class="mt-16pt text-black-70"></p>
+
+                            <div class="d-flex align-items-center">
+                            
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="categorias9" class="col-sm-4 card-group-row__col" style="cursor:pointer;">
+
+                        <div class="card js-overlay card-sm overlay--primary-dodger-blue stack stack--1 card-group-row__card mb-lg-0" data-toggle="popover" data-trigger="click">
+
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex">
+                                        <div class="d-flex align-items-center">
+                                            <div class="rounded mr-12pt z-0 o-hidden">
+                                                <div class="overlay">
+                                                    <img id="imagen9" width="40" height="40" alt="" class="rounded">
+                                                    <span class="overlay__content overlay__content-transparent">
+                                                        <span class="overlay__action d-flex flex-column text-center lh-1">
+
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex">
+                                                <div id="nombreCat9" class="card-title"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="imagenInterC9" width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCate9" class="card-title"></div>
+
+                                </div>
+                            </div>
+
+                            <p id="descripCate9" class="mt-16pt text-black-70"></p>
+
+                            <div class="d-flex align-items-center">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="page-section border-bottom-2">
+            <div class="container page__container">
+                <div class="page-separator">
+                    <div class="page-separator__text">Charlas mejor valoradas</div>
+                </div>
+
+                <div class="row card-group-row">
+
+                    <div id="CharlasMV1" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
+
+                        <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                            <a id="A1" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                <img id="fotoCharlaMV1" > 
+                                <span class="overlay__content">
+                                    <span class="overlay__action d-flex flex-column text-center">
+                                    </span>
+                                </span>
+                            </a>
+
+                            <div class="card-body flex">
+                                <div class="d-flex">
+                                    <div class="flex">
+                                        <a id="nombreCharlaMV1" class="card-title" href="#"></a>
+                                        <small id="nombreCharlistaMV1" class="text-50 font-weight-bold mb-4pt"></small>  
+                                    </div>
+                                   </div>
+                                <div class="d-flex">
+                                    <div class="rating flex">
+
+                                        <div class="rating__item"><i id="VTA1" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTB1" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTC1" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTD1" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTE1" class="material-icons">star_border</i></div>
+
+                                    </div>
+                        
+                                </div>
+                                <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle0">Detalles</button>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row justify-content-between">
+                                    <div class="col-auto d-flex align-items-center">
+                                        <span class="material-icons icon-16pt fas fa-poll-h text-black-50 mr-4pt"></span>
+                                        <p id="nivel1" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                    </div>
+                                    <div class="col-auto d-flex align-items-center">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="fotoCharlaMVInter1" width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCharlaMVInter1" class="card-title mb-0"></div>
+                                    <p class="lh-1 mb-0">
+                                        <span class="text-black-50 small">con</span>
+                                        <span id="charlistaMVinter1" class="text-black-50 small font-weight-bold"></span>
+                                </div>
+                            </div>
+
+                            <p id="descripCharlaMV1" class="my-16pt text-black-70"></p>
+
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center mb-4pt">
+
+                                    </div>
+                                    <div class="d-flex align-items-center mb-4pt">
+
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                        <p id="nivelDifi1" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="CharlasMV2" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
+
+                        <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                            <a id="A2" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                <img id="fotoCharlaMV2"  alt="course">
+                                <span class="overlay__content">
+                                    <span class="overlay__action d-flex flex-column text-center">
+                                    </span>
+                                </span>
+                            </a>
+
+                            <div class="card-body flex">
+                                <div class="d-flex">
+                                    <div class="flex">
+                                        <a id="nombreCharlaMV2" class="card-title" href="#"></a>
+                                        <small id="nombreCharlistaMV2" class="text-50 font-weight-bold mb-4pt"></small>  
+                                    </div>
+
+                                </div>
+                                <div class="d-flex">
+                                    <div class="rating flex">
+
+                                        <div class="rating__item"><i id="VTA2" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTB2" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTC2" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTD2" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTE2" class="material-icons">star_border</i></div>
+
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle1">Detalles</button>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row justify-content-between">
+                                    <div class="col-auto d-flex align-items-center">
+                                        <span class="material-icons icon-16pt fas fa-poll-h text-black-50 mr-4pt"></span>
+                                        <p id="nivel2" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                    </div>
+                                    <div class="col-auto d-flex align-items-center">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="fotoCharlaMVInter2"  width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCharlaMVInter2" class="card-title mb-0"></div>
+                                    <p class="lh-1 mb-0">
+                                        <span class="text-black-50 small">con</span>
+                                        <span id="charlistaMVinter2" class="text-black-50 small font-weight-bold"></span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <p id="descripCharlaMV2" class="my-16pt text-black-70"></p>
+
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center mb-4pt">
+
+                                    </div>
+                                    <div class="d-flex align-items-center mb-4pt">
+
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                        <p id="nivelDifi2" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="CharlasMV3" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
+
+                        <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                            <a id="A3" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                <img id="fotoCharlaMV3" alt="course">
+                                <span class="overlay__content">
+                                    <span class="overlay__action d-flex flex-column text-center">
+                                    </span>
+                                </span>
+                            </a>
+
+                            <div class="card-body flex">
+                                <div class="d-flex">
+                                    <div class="flex">
+                                        <a id="nombreCharlaMV3" class="card-title" href="#"></a> 
+                                        <small id="nombreCharlistaMV3" class="text-50 font-weight-bold mb-4pt"></small>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="rating flex">
+
+                                        <div class="rating__item"><i id="VTA3" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTB3" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTC3" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTD3" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTE3" class="material-icons">star_border</i></div>
+
+                                    </div>
+                                  
+                                </div>
+                                <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle2">Detalles</button>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row justify-content-between">
+                                    <div class="col-auto d-flex align-items-center">
+                                        <span class="material-icons icon-16pt fas fa-poll-h text-black-50 mr-4pt"></span>
+                                        <p id="nivel3" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                    </div>
+                                    <div class="col-auto d-flex align-items-center">
+                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="fotoCharlaMVInter3"  width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCharlaMVInter3" class="card-title mb-0"></div>
+                                    <p class="lh-1 mb-0">
+                                        <span class="text-black-50 small">con</span>
+                                        <span id="charlistaMVinter3" class="text-black-50 small font-weight-bold"></span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <p id="descripCharlaMV3" class="my-16pt text-black-70"></p>
+
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center mb-4pt">
+                                      
+                                    </div>
+                                    <div class="d-flex align-items-center mb-4pt">
+                                      
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                        <p id="nivelDifi3" class="flex text-black-50 lh-1 mb-0"><small></small></p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="CharlasMV4" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
+
+                        <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                            <a id="A4" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                <img id="fotoCharlaMV4"  alt="course">
+                                <span class="overlay__content">
+                                    <span class="overlay__action d-flex flex-column text-center">
+                                    </span>
+                                </span>
+                            </a>
+
+                            <div class="card-body flex">
+                                <div class="d-flex">
+                                    <div class="flex">
+                                        <a id="nombreCharlaMV4" class="card-title" href="#"></a> 
+                                        <small id="nombreCharlistaMV4" class="text-50 font-weight-bold mb-4pt"></small> 
+                                    </div>
+                                   
+                                </div>
+                                <div class="d-flex">
+                                    <div class="rating flex">
+
+                                        <div class="rating__item"><i id="VTA4" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTB4" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTC4" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTD4" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="VTE4" class="material-icons">star_border</i></div>
+
+                                    </div>
+                                   
+                                </div>
+                                <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle3">Detalles</button>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row justify-content-between">
+                                    <div class="col-auto d-flex align-items-center">
+                                        <span class="material-icons icon-16pt fas fa-poll-h text-black-50 mr-4pt"></span>
+                                        <p id="nivel4" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                    </div>
+                                    <div class="col-auto d-flex align-items-center">
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popoverContainer d-none">
+                            <div class="media">
+                                <div class="media-left mr-12pt">
+                                    <img id="fotoCharlaMVInter4"  width="40" height="40" alt="" class="rounded">
+                                </div>
+                                <div class="media-body">
+                                    <div id="nombreCharlaMVInter4" class="card-title mb-0"></div>
+                                    <p class="lh-1 mb-0">
+                                        <span class="text-black-50 small">con</span>
+                                        <span id="charlistaMVinter4" class="text-black-50 small font-weight-bold"></span> 
+                                    </p>
+                                </div>
+                            </div>
+
+                            <p id="descripCharlaMV4" class="my-16pt text-black-70"></p>
+
+                         
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <div class="d-flex align-items-center mb-4pt">
+                                       
+                                    </div>
+                                    <div class="d-flex align-items-center mb-4pt">
+                  
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                        <p id="nivelDifi4" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section">
+            <div class="container page__container">
+                <div class="page-headline text-center">
+                    <h2>Charlistas</h2>
+                    <p class="lead measure-lead mx-auto text-black-70">Conoce mas sobre nuestro equipo.</p>
+                </div>
+
+                <div class="position-relative carousel-card col-lg-8 p-0 mx-auto">
+                    <div class="row d-block js-mdk-carousel" id="carousel-feedback">
+                        <a class="carousel-control-next js-mdk-carousel-control mt-n24pt" href="#carousel-feedback" role="button" data-slide="next">
+                            <span id="flechaderecha" class="carousel-control-icon material-icons" aria-hidden="true">keyboard_arrow_right</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <div class="mdk-carousel__content">
+
+                            <div id="Charlas1" class="col-12 col-md-6">
+
+                                <div class="card card-feedback card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p id="descripCharlista1" class="text-70 small mb-0">
+
+                                        </p>
+                                    </blockquote>
+                                </div>
+                                <div class="media ml-12pt">
+                                    <div class="media-left mr-12pt">
+                                        <a href="#" class="avatar avatar-sm">
+                                           
+                                            <span id="iniciales1" class="avatar-title rounded-circle"></span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <a id="nombreCharlista1" href="#" class="card-title"></a>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Charlas2" class="col-12 col-md-6">
+
+                                <div class="card card-feedback card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p id="descripCharlista2" class="text-70 small mb-0">
+
+                                        </p>
+                                    </blockquote>
+                                </div>
+                                <div class="media ml-12pt">
+                                    <div class="media-left mr-12pt">
+                                        <a href="#" class="avatar avatar-sm">
+                                           
+                                            <span id="iniciales2" class="avatar-title rounded-circle"></span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <a id="nombreCharlista2" href="#" class="card-title"></a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Charlas3" class="col-12 col-md-6">
+
+                                <div class="card card-feedback card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p id="descripCharlista3" class="text-70 small mb-0">
+
+                                        </p>
+                                    </blockquote>
+                                </div>
+                                <div class="media ml-12pt">
+                                    <div class="media-left mr-12pt">
+                                        <a href="#" class="avatar avatar-sm">
+                                           
+                                            <span id="iniciales3" class="avatar-title rounded-circle"></span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <a id="nombreCharlista3" href="#" class="card-title"></a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Charlas4" class="col-12 col-md-6">
+
+                                <div class="card card-feedback card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p id="descripCharlista4" class="text-70 small mb-0">
+
+                                        </p>
+                                    </blockquote>
+                                </div>
+                                <div class="media ml-12pt">
+                                    <div class="media-left mr-12pt">
+                                        <a href="#" class="avatar avatar-sm">
+
+                                            <span id="iniciales4" class="avatar-title rounded-circle"></span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <a id="nombreCharlista4" href="#" class="card-title"></a>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Charlas5" class="col-12 col-md-6">
+
+                                <div class="card card-feedback card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p id="descripCharlista5" class="text-70 small mb-0">
+
+                                        </p>
+                                    </blockquote>
+                                </div>
+                                <div class="media ml-12pt">
+                                    <div class="media-left mr-12pt">
+                                        <a href="#" class="avatar avatar-sm">
+                                       
+                                            <span id="iniciales5" class="avatar-title rounded-circle"></span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <a id="nombreCharlista5" href="#" class="card-title"></a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="Charlas6" class="col-12 col-md-6">
+
+                                <div class="card card-feedback card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p id="descripCharlista6" class="text-70 small mb-0">
+
+                                        </p>
+                                    </blockquote>
+                                </div>
+                                <div class="media ml-12pt">
+                                    <div class="media-left mr-12pt">
+                                        <a href="#" class="avatar avatar-sm">
+
+                                            <span id="iniciales6" class="avatar-title rounded-circle"></span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <a id="nombreCharlista6" href="#" class="card-title"></a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<!-- // END Header Layout Content -->
+<script src="~/js/jsUsuarios.js"></script>
+<script src="~/js/jsHome.js"></script>
+<script src="~/js/jsCharlas.js"></script>

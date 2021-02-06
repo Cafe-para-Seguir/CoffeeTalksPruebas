@@ -1,0 +1,55 @@
+﻿@{ ViewData["Title"] = "VerVideo";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml"; }
+
+<body class="layout-sticky-subnav layout-default " onload=" DinamicMenu(); validaInicioSesionVideo();">
+    <button id="VideoCompletado" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Video completado con exito">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <div class="mdk-header-layout__content page-content ">
+        <div class="bg-primary pb-lg-64pt py-32pt">
+            <div class="container page__container">
+
+                <div id="divTituloCharlaVideo" class="mb-5 " style="cursor: pointer;">
+                    <h1 id="tituloCharlaVideo" class="text-white mb-0"></h1>
+                </div>
+
+
+                <div class="js-player bg-primary embed-responsive embed-responsive-16by9 mb-32pt" onclick="vimeo();">
+                    <div class="player embed-responsive-item">
+                        <div class="player__content">
+                            <div class="player__image"></div>
+                            <a href="" class="player__play bg-primary">
+                                <span class="material-icons">play_arrow</span>
+                            </a>
+                        </div>
+                        <div class="player__embed d-none">
+                            <iframe id="linkVideo" class="embed-responsive-item" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-wrap align-items-end mb-16pt">
+                    <h1 id="nombreVideo" class="text-white flex m-0"></h1>
+                    <p id="duracionVideo" class="h1 text-white-50 font-weight-light m-0"></p>
+                </div>
+                <div class="card mb-32pt mb-lg-64pt">
+                    <ul class="accordion accordion--boxed js-accordion mb-0" id="toc-1">
+                        <li class="accordion__item open">
+                            <a class="accordion__toggle" data-toggle="collapse" data-parent="#toc-1" href="#toc-content-1">
+                                <span class="flex">Lista de Videos</span>
+                                <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                            </a>
+                            <div class="accordion__menu">
+                                <ul class="list-unstyled collapse" id="toc-content-1">
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="~/js/jsCharlas.js"></script>
+<script src="https://player.vimeo.com/api/player.js"></script>

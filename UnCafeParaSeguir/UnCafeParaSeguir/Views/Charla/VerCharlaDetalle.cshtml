@@ -1,0 +1,304 @@
+﻿@{
+    ViewData["Title"] = "VerCharlaDetalle";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<body onload=" validaInicioSesion(); DinamicMenu(); validaBoton();">
+
+    <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="comentarioAgregado" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Alerta" data-toastr-message="Comentario agregado con exito">
+        <!--Este boton confirma comentario agregado-->
+    </button>
+    <button id="comentarioEliminado" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Alerta" data-toastr-message="Comentario eliminado con exito">
+        <!--Este boton confirma comentario eliminado-->
+    </button>
+    <button id="errorAgregar" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ha ocurrido un error al realizar la acción, vuelva a intentarlo o contacte con un administrador">
+        <!--Este boton alerta error-->
+    </button>
+
+    <div class="mdk-header-layout__content page-content ">
+        <div class="mdk-box bg-primary mdk-box--bg-gradient-primary2 js-mdk-box mb-0" data-effects="blend-background">
+            <div class="mdk-box__content">
+                <div class="hero py-64pt text-center text-sm-left">
+                    <div class="container page__container">
+                        <h1 id="hNombreCharla" class="text-white"></h1>
+                        <p id="pDescCharla" class="lead text-white-50 measure-hero-lead mb-24pt"></p>
+                        <a id="bEmpezar" class="btn btn-lg btn-yellow btn--raised mb-16pt btn-tertiary">Empezar</a>
+                        <a id="bCompartir" href="/Admin/facebook" class="btn btn-lg btn-yellow btn--raised mb-16pt ml-3 btn-tertiary">Compartir</a>
+                    </div>
+                </div>
+                <div class="navbar navbar-expand-sm navbar-light bg-white border-bottom-2 navbar-list p-0 m-0 align-items-center">
+                    <div class="container page__container">
+                        <ul class="nav navbar-nav flex align-items-sm-center">
+
+                            <li id="liNivel" class="nav-item navbar-list__item">
+                                <i class="material-icons text-muted icon--left">assessment</i>
+                            </li>
+
+                            <li class="nav-item ml-sm-auto text-sm-center flex-column navbar-list__item">
+                                <div id="divValoracion">
+                                    <div class="rating rating-24">
+                                        <div style="cursor:pointer;" onclick="ValorarCharla(1);" class="rating__item"><i id="Valor1" class="material-icons">star_border</i></div>
+                                        <div style="cursor:pointer;" onclick="ValorarCharla(2);" class="rating__item"><i id="Valor2" class="material-icons">star_border</i></div>
+                                        <div style="cursor:pointer;" onclick="ValorarCharla(3);" class="rating__item"><i id="Valor3" class="material-icons">star_border</i></div>
+                                        <div style="cursor:pointer;" onclick="ValorarCharla(4);" class="rating__item"><i id="Valor4" class="material-icons">star_border</i></div>
+                                        <div style="cursor:pointer;" onclick="ValorarCharla(5);" class="rating__item"><i id="Valor5" class="material-icons">star_border</i></div>
+                                    </div>
+                                    <a class="lh-1 mb-0"><small class="text-muted">Tu Valoración</small></a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item ml-sm-auto text-sm-center flex-column navbar-list__item">
+                                <a id="totalValorNum" class="lh-1 mb-0 text-muted"></a>
+                                <div class="rating rating-24">
+                                    <div class="rating__item"><i id="ValorTotal1" class="material-icons">star_border</i></div>
+                                    <div class="rating__item"><i id="ValorTotal2" class="material-icons">star_border</i></div>
+                                    <div class="rating__item"><i id="ValorTotal3" class="material-icons">star_border</i></div>
+                                    <div class="rating__item"><i id="ValorTotal4" class="material-icons">star_border</i></div>
+                                    <div class="rating__item"><i id="ValorTotal5" class="material-icons">star_border</i></div>
+                                </div>
+                                <a class="lh-1 mb-0"><small class="text-muted">Valoración Total</small></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container page__container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="border-left-2 page-section pl-32pt">
+
+                        <div class="d-flex align-items-center page-num-container">
+                            <div class="page-num"></div>
+                            <h4>Videos</h4>
+                        </div>
+                        <div class="card mb-32pt mb-lg-64pt">
+                            <ul class="accordion accordion--boxed js-accordion mb-0" id="toc-1">
+                                <li class="accordion__item open">
+                                    <a class="accordion__toggle" data-toggle="collapse" data-parent="#toc-1" href="#toc-content-1">
+                                        <span class="flex">Lista de Videos</span>
+                                        <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                    </a>
+                                    <div class="accordion__menu">
+                                        <ul class="list-unstyled collapse" id="toc-content-1">
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-section bg-alt border-bottom-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 mb-24pt mb-md-0">
+                        <h4>Acerca del Chalista</h4>
+                        <p id="pDescCharlista" class="text-70 mb-24pt"></p>
+
+                        <div class="page-separator">
+                            <div class="page-separator__text bg-white">Otras charlas por este Charlista</div>
+                        </div>
+                        <div id="divNombreCharla0" style="display: none " class="card card-sm mb-8pt">
+                            <div class="card-body d-flex align-items-center">
+                                <a href="#" class="avatar avatar-4by3 mr-12pt">
+                                    <img id="imagenCharla0" alt="" class="avatar-img rounded">
+                                </a>
+                                <div class="flex">
+                                    <a id="aNombreCharla0" class="card-title mb-4pt" href="#"></a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rating mr-8pt">
+
+                                            <span class="rating__item"><span id="VTA0" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTB0" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTC0" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTD0" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTE0" class="material-icons">star_border</span></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divNombreCharla1" style="display: none " class="card card-sm mb-16pt">
+                            <div class="card-body d-flex align-items-center">
+                                <a href="#" class="avatar avatar-4by3 mr-12pt">
+                                    <img id="imagenCharla1" alt="" class="avatar-img rounded">
+                                </a>
+                                <div class="flex">
+                                    <a id="aNombreCharla1" class="card-title mb-4pt" href="#"></a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rating mr-8pt">
+
+                                            <span class="rating__item"><span id="VTA1" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTB1" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTC1" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTD1" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTE1" class="material-icons">star_border</span></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divNombreCharla2" style="display: none " class="card card-sm mb-16pt">
+                            <div class="card-body d-flex align-items-center">
+                                <a href="#" class="avatar avatar-4by3 mr-12pt">
+                                    <img id="imagenCharla2" alt="" class="avatar-img rounded">
+                                </a>
+                                <div class="flex">
+                                    <a id="aNombreCharla2" class="card-title mb-4pt" href="#"></a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="rating mr-8pt">
+
+                                            <span class="rating__item"><span id="VTA2" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTB2" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTC2" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTD2" class="material-icons">star_border</span></span>
+                                            <span class="rating__item"><span id="VTE2" class="material-icons">star_border</span></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 pt-sm-32pt pt-md-0 d-flex flex-column align-items-center justify-content-start">
+                        <div class="text-center">
+                            <p class="mb-16pt">
+                                <img id="perfilCharlista" alt="" class="rounded-circle" width="64">
+                            </p>
+                            <ul class="nav navbar-nav flex align-items-sm-center">
+                                <li class="nav-item ml-sm-auto text-sm-center flex-column navbar-list__item">
+                                    <a id="totalValorNumCharlista" class="lh-1 mb-0 text-muted"></a>
+                                    <div class="rating rating-24">
+                                        <div class="rating__item"><i id="ValorTotalCharlista1" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="ValorTotalCharlista2" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="ValorTotalCharlista3" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="ValorTotalCharlista4" class="material-icons">star_border</i></div>
+                                        <div class="rating__item"><i id="ValorTotalCharlista5" class="material-icons">star_border</i></div>
+                                    </div>
+                                    <a class="lh-1 mb-0"><small class="text-muted">Valoración Total</small></a>
+                                </li>
+                            </ul>
+                            <h4 id="show" class="m-0"></h4>
+                            <p id="hNombreCharlista" class="lh-1">
+                            </p>
+                            <div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
+                                <a id="bnVerPerfil" class="btn btn-outline-secondary">Ver Perfil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container page__container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="border-left-2 page-section pl-32pt">
+
+                        <div class="d-flex align-items-center page-num-container">
+                            <div class="page-num"></div>
+                            <h4>Comentarios</h4>
+                        </div>
+                        <div class="ml-sm-32pt mt-3 card p-3 w-auto">
+                            <div class="d-flex mb-4">
+                                <div class="flex">
+                                    <div class="form-group">
+                                        <label for="comment" class="form-label">Tu comentario</label>
+                                        <textarea class="form-control" name="comment" id="txtComentario" rows="3" placeholder="Escribe tu comentario aqui ..."></textarea>
+                                    </div>
+                                    <button onclick="jsMantForo('AGREGAR');" class="btn btn-yellow btn-tertiary text-white-100">Comentar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 id="cantComentarios"></h4>
+
+                        <div id="divForoPadre">
+                            <div id="divForo">
+
+                            </div>
+                        </div>
+                        <div id="botonesComentarios" class="w-auto mt-5">
+                            <button id="bnCargarComentarios" class="btn btn-outline-secondary w-auto ml-5" onclick="CargarComentarios(2);">Cargar mas Comentarios</button>
+                            <button id="bnCerrarComentarios" class="btn btn-outline-secondary w-auto ml-5" onclick="CargarComentarios(1);">Cerrar Comentarios</button>
+                        </div>
+
+                        <!-- Modal Modificar/Agregar Respuesta -->
+
+                        <div class="modal fade mt-5" id="ModalRespuesta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Comentar</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="comment" class="form-label">Tu Respuesta</label>
+                                                    <textarea class="form-control" name="comment" id="txtRespuesta" rows="3" placeholder="Escribe tu comentario aqui ..."></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button onclick="" id="bnAgregarRespuesta" class="btn btn-primary">Comentar</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Modificar/Agregar Respuesta -->
+                        <!-- Modal Confirmar Eliminar Comentario -->
+
+                        <div class="modal fade mt-5" id="modalEliminarComentario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header badge-primary-red">
+                                            <h5 class="modal-title font-size-20pt text-danger text-white-100" id="exampleModalLabel">Eliminar Comentario</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <input class="form-control" hidden id="txtIdUsuario">
+                                                <input class="form-control" hidden id="txtIdForo">
+                                                <p class="text-black-100 font-size-16pt text-info">Advertencia!, El Comentario sera eliminado de manera permanente, Desea Contiuar?.</p>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="jsMantForo('ELIMINAR')">Confirmar</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Confirmar Eliminar Comentario -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/jsCharlas.js"></script>
+<script src="~/js/jsForo.js"></script>

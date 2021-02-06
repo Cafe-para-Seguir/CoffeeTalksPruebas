@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Coffee Talks</title>
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+
+    <link rel="shortcut icon" type="image/ico" href="/favicon.png" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap" rel="stylesheet">
+
+    <!-- Perfect Scrollbar -->
+    <link type="text/css" href="~/vendor/perfect-scrollbar.css" rel="stylesheet" runat="server">
+
+    <!-- Fix Footer CSS -->
+    <link type="text/css" href="~/vendor/fix-footer.css" rel="stylesheet" runat="server">
+
+    <!-- MASK -->
+    <script src="~/js/jsMask.js"></script>
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="~/css/material-icons.css" rel="stylesheet" runat="server">
+
+    <!-- Font Awesome Icons -->
+    <link type="text/css" href="~/css/fontawesome.css" rel="stylesheet" runat="server">
+
+    <!-- Preloader -->
+    <link type="text/css" href="~/css/preloader.css" rel="stylesheet" runat="server">
+
+    <!-- App CSS -->
+    <link type="text/css" href="~/css/app.css" rel="stylesheet" runat="server">
+
+    <!-- Toastr -->
+    <link type="text/css" href="~/vendor/toastr.min.css" rel="stylesheet" runat="server">
+
+    <link type="text/css" href="~/css/toastr.css" rel="stylesheet" runat="server">
+</head>
+
+<body class="layout-sticky-subnav layout-default ">
+
+    <div class="preloader">
+        <div class="sk-double-bounce">
+            <div class="sk-child sk-double-bounce1"></div>
+            <div class="sk-child sk-double-bounce2"></div>
+        </div>
+    </div>
+
+    <!-- Header Layout -->
+    <div class="mdk-header-layout js-mdk-header-layout">
+
+        <!-- Header -->
+
+        <div id="header" class="mdk-header mdk-header--bg-dark bg-dark js-mdk-header mb-0" data-effects="parallax-background waterfall" data-fixed data-condenses>
+            <div class="mdk-header__bg">
+                <div class="mdk-header__bg-front fondoIndex"></div>
+            </div>
+            <div class="mdk-header__content justify-content-center">
+
+                <div class="navbar navbar-expand navbar-dark-dodger-blue bg-transparent will-fade-background" id="default-navbar" data-primary>
+
+                    <!-- Navbar toggler -->
+                    <button class="navbar-toggler w-auto mr-16pt d-block rounded-0" type="button" data-toggle="sidebar">
+                        <span class="material-icons">short_text</span>
+                    </button>
+
+                    <!-- Navbar Brand -->
+                    <a href="/Home/Index" class="navbar-brand mr-16pt">
+                        <!-- <img class="navbar-brand-icon" src="~/images/logo/white-100@2x.png" width="30" alt="Luma"> -->
+
+                        <span class="avatar avatar-sm navbar-brand-icon mr-0 mr-lg-8pt">
+                            <span><img src="~/images/recursos/logo.png" alt="" class="img-fluid" /></span>
+                        </span>
+
+                        <span class="d-none d-lg-block">Coffee Talks</span>
+                    </a>
+
+                    <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
+                        <li class="nav-item active">
+                            <a href="/Home/Index" class="nav-link">Inicio</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-caret="false">Charlas</a>
+                            <div class="dropdown-menu">
+                                <a href="/Charla/VerCharla" class="dropdown-item">Buscar Charlas</a>
+                                <a href="/Charla/VerCharlistas" class="dropdown-item">Buscar Charlistas</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/CalculadoraMedidas">Calculadora de Medidas</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="https://uncafeparaseguir.com/" class="nav-link">Accesorios</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-caret="false">Comunidad</a>
+                            <div class="dropdown-menu">
+                                <a id="perfilTop" hidden class="dropdown-item"></a>
+                                <a href="/Receta/VerRecetas" class="dropdown-item">Recetas de la Comunidad</a>
+                                <a href="/Home/Faq" class="dropdown-item">FAQ</a>
+                                <a href="/Home/Contacto" class="dropdown-item">Contacto</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav ml-auto mr-0">
+                        <li class="nav-item">
+                            <a id="btnIS" href="#"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="btnRG"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hero container page__container text-center text-md-left py-112pt">
+                    <h1 class="text-white text-shadow">Coffee Talks</h1>
+                    <p class="lead measure-hero-lead mx-auto mx-md-0 text-white text-shadow mb-48pt">Plataforma de charlas para sobre preparación del cafe.</p>
+
+                    <a href="/Charla/VerCharla" class="btn btn-lg btn-yellow btn--raised mb-16pt btn-tertiary">Buscar Charlas</a>
+
+                    <p class="mb-0"><a href="/Home/Faq" class="text-white text-shadow font-size-16pt"><strong>Quiere ser parte de Coffee Talks?</strong></a></p>
+                </div>
+            </div>
+        </div>
+        <div class="containerLB">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+        <!-- // END Header -->
+        <div class="js-fix-footer2 bg-white border-top-2">
+            <div class="containerLB page-section d-flex flex-column pl-64pt">
+                <p class="text-70 brand mb-24pt">
+                    <img class="brand-icon" src="~/images/recursos/logo.png" width="30" alt=""> Coffee Talks
+                </p>
+                <p class="mb-8pt d-flex">
+                    <a href="/Home/Privacy" class="text-70 text-underline mr-8pt small">Terminos y Condiciones</a>
+                </p>
+                <p class="text-50 small mt-n1 mb-0">Coffee Talks © All rights reserved 2020</p>
+            </div>
+        </div>
+    </div>
+    <!-- // END Header Layout -->
+    <!-- drawer -->
+    <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
+        <div class="mdk-drawer__content">
+            <div class="sidebar sidebar-dark-dodger-blue sidebar-left" data-perfect-scrollbar>
+
+                <a href="/Home/Index" class="sidebar-brand ">
+
+                    <span class="avatar avatar-xl sidebar-brand-icon h-auto">
+                        <span><img src="~/images/recursos/logo.png" alt="" class="img-fluid" /></span>
+                    </span>
+
+                    <span>Coffee Talks</span>
+                </a>
+
+                <div class="sidebar-heading">Menú</div>
+                <ul class="sidebar-menu">
+
+                    <li class="sidebar-menu-item active">
+                        <a class="sidebar-menu-button" href="/Home/Index">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left fas fa-home fa-xs"></span>
+                            <span class="sidebar-menu-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="/Charla/VerCharla">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left fas fa-book-open fa-xs"></span>
+                            <span class="sidebar-menu-text">Buscar Charlas</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="/Charla/VerCharlistas">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left fas fa-chalkboard-teacher fa-xs"></span>
+                            <span class="sidebar-menu-text">Buscar Charlistas</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="/Home/CalculadoraMedidas">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left fas fa-calculator fa-xs"></span>
+                            <span class="sidebar-menu-text">Calculadora de Medidas</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="/Receta/VerRecetas">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left fas fa-concierge-bell fa-xs "></span>
+                            <span class="sidebar-menu-text">Recetas de la Comunidad</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="https://uncafeparaseguir.com/">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left fas fa-mug-hot fa-xs"></span>
+                            <span class="sidebar-menu-text">Accesorios</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="/Home/Faq">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left fas fa-question-circle fa-xs"></span>
+                            <span class="sidebar-menu-text">FAQ</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="/Home/Contacto">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left far fa-id-card fa-xs"></span>
+                            <span class="sidebar-menu-text">Contacto</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div id="divMenuPerfil" class="sidebar-heading" hidden></div>
+                <ul id="ulMenuPerfil" class="sidebar-menu" hidden>
+
+                    <li class="sidebar-menu-item">
+                        <a id="aMenuPerfilPerfil" class="sidebar-menu-button">
+                            <span id="spanAMenuPerfilPerfil"></span>
+                            <span id="spanBMenuPerfilPerfil"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div id="divMenuAdmin" class="sidebar-heading" hidden></div>
+                <ul id="ulMenuAdmin" class="sidebar-menu" hidden>
+
+                    <li class="sidebar-menu-item">
+                        <a id="aMenuAdminAdmin" class="sidebar-menu-button">
+                            <span id="spanAMenuAdminAdmin"></span>
+                            <span id="spanBMenuAdminAdmin"></span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a id="aMenuAdminChar" class="sidebar-menu-button">
+                            <span id="spanAMenuAdminChar"></span>
+                            <span id="spanBMenuAdminChar"></span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a id="aMenuAdminUser" class="sidebar-menu-button">
+                            <span id="spanAMenuAdminUser"></span>
+                            <span id="spanBMenuAdminUser"></span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-menu-item">
+                        <a id="aMenuAdminUserChar" class="sidebar-menu-button">
+                            <span id="spanAMenuUserChar"></span>
+                            <span id="spanBMenuUserChar"></span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-menu-item">
+                        <a id="aMenuAdminRec" class="sidebar-menu-button">
+                            <span id="spanAMenuAdminRec"></span>
+                            <span id="spanBMenuAdminRec"></span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a id="aMenuAdminCate" class="sidebar-menu-button">
+                            <span id="spanAMenuAdminCate"></span>
+                            <span id="spanBMenuAdminCate"></span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a id="aMenuAdminCharcur" class="sidebar-menu-button">
+                            <span id="spanAMenuAdminCharcur"></span>
+                            <span id="spanBMenuAdminCharcur"></span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a id="aMenuAdminVid" class="sidebar-menu-button">
+                            <span id="spanAMenuAdminVid"></span>
+                            <span id="spanBMenuAdminVid"></span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div id="divReportes" class="sidebar-heading" hidden></div>
+                <ul id="ulReportes" class="sidebar-menu" hidden>
+
+                    <li class="sidebar-menu-item active open">
+                        <a class="sidebar-menu-button" data-toggle="collapse" href="#reportes_menu">
+                            <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left fas fa-book fa-xs"></span>
+                            Reportes
+                            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                        </a>
+                        <ul class="sidebar-submenu collapse show sm-indent" id="reportes_menu">
+
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" id="aRepoUsu">
+                                    <span id="spanARepoUsu"></span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" id="aRepoCharla">
+                                    <span id="spanARepoCharla"></span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" id="aRepoTopCharla">
+                                    <span id="spanARepoTopCharla"></span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" id="aRepTopCharlistas">
+                                    <span id="spanARepoTopCharlistas"></span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" id="aRepTopCharlasVendidas">
+                                    <span id="spanARepTopCharlasVendidas"></span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" id="aRepVentas">
+                                    <span id="spanARepVentas"></span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" id="aRepGanChr">
+                                    <span id="spanARepGanChr"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <a id="divGeeks" class="sidebar-heading" hidden></a>
+                <br /><br />
+                <a id="divServCorreo" class="sidebar-heading" hidden></a>
+                <br />
+
+
+            </div>
+        </div>
+    </div>
+    <!-- // END drawer -->
+    <!-- jQuery -->
+    <script src="~/vendor/jquery.min.js" runat="server"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/vendor/popper.min.js" runat="server"></script>
+    <script src="~/vendor/bootstrap.min.js" runat="server"></script>
+
+    <!-- Perfect Scrollbar -->
+    <script src="~/vendor/perfect-scrollbar.min.js" runat="server"></script>
+
+    <!-- DOM Factory -->
+    <script src="~/vendor/dom-factory.js" runat="server"></script>
+
+    <!-- MDK -->
+    <script src="~/vendor/material-design-kit.js" runat="server"></script>
+
+    <!-- Fix Footer -->
+    <script src="~/vendor/fix-footer.js" runat="server"></script>
+
+
+    <!-- App JS -->
+    <script src="~/js/app.js" runat="server"></script>
+
+    <!-- Highlight.js -->
+    <script src="~/js/hljs.js" runat="server"></script>
+
+
+
+    @*<script src="~/lib/jquery/dist/jquery.min.js" runat="server"></script>*@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" runat="server"></script>
+    <script src="~/js/site.js" asp-append-version="true" runat="server"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+
+    <script>
+        (function () {
+            'use strict';
+            var headerNode = document.querySelector('.mdk-header')
+            var layoutNode = document.querySelector('.mdk-header-layout')
+            var componentNode = layoutNode ? layoutNode : headerNode
+
+            componentNode.addEventListener('domfactory-component-upgraded', function () {
+                headerNode.mdkHeader.eventTarget.addEventListener('scroll', function () {
+                    var progress = headerNode.mdkHeader.getScrollState().progress
+                    var navbarNode = headerNode.querySelector('#default-navbar')
+                    navbarNode.classList.toggle('bg-transparent', progress <= 0.2)
+                })
+            })
+        })()
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

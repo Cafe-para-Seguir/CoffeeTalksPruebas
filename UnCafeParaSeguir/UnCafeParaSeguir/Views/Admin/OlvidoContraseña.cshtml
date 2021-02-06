@@ -1,0 +1,182 @@
+﻿
+@{
+    ViewData["Title"] = "OlvidoContraseña";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<body onload="DinamicMenu();">
+
+    <!-- Header Layout Content -->
+
+    <button id="correoIncorrecto" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Notificación" data-toastr-message="No existe un usuario con este correo">
+        <!--Este boton confirma la existencia del correo -->
+    </button>
+    <button id="correoEnviado" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Un codigo ha sido enviado a tu correo">
+        <!--Este boton confirma el envio del primer correo -->
+    </button>
+    <button id="correoReenviado" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Un nuevo codigo ha sido enviado a tu correo">
+        <!--Este boton confirma el envio de un nuevo Correo -->
+    </button>
+    <button id="codigoIncorrecto" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Notificación" data-toastr-message="El codigo no corresponde con el correo ingresado">
+        <!--Este boton informa de codigo incorrecto -->
+    </button>
+    <button id="introContraNueva" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Introdusca su nueva contraseña">
+        <!--Este boton informa al usuario de introducir los datos -->
+    </button>
+    <button id="alertaContraCorta" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Notificación" data-toastr-message="La contraseña es muy corta">
+        <!--Este boton avisa que la contraseña es demasiado corta-->
+    </button>
+    <button id="alertaContra" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Las contraseñas no Coinciden">
+        <!--Este boton alerta Contraseñas Incorrectas-->
+    </button>
+    <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="modificarContra" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Las contraseña fue Modificada">
+        <!--Este boton alerta Contraseñas correcta-->
+    </button>
+
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section pb-0">
+            <div class="container page__container d-flex flex-column flex-sm-row align-items-sm-center">
+                <div class="flex">
+                    <h1 class="h2 mb-0">Olvidaste tu Contraseña? </h1>
+                </div>
+                <p class="d-sm-none"></p>
+                <a href="" class="btn btn-outline-secondary flex-column">
+                    Necesitas Ayuda?
+                    <span class="btn__secondary-text">Contactanos</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="page-section">
+            <div class="container page__container">
+                <div class="page-separator">
+                    <div class="page-separator__text">Cambiar Contraseña</div>
+                </div>
+                <div class="col-sm-6 p-0">
+                    <div class="alert alert-soft-warning">
+                        <div class="d-flex flex-wrap">
+                            <div class="flex" style="min-width: 180px">
+                                <small class="text-black-100">
+                                    Para cambiar tu contraseña debes ingresar el correo asociado a tu cuenta,
+                                    <br />
+                                    te enviaremos un código a tu correo, el cual deberás ingresar abajo para poder Ingresar tu nueva contraseña.
+                                    <br />
+                                    <br />
+                                    Si ocupas uno nuevo presiona "Enviar de Nuevo" y recibirás otro código al correo ingresado.
+                                    <br />
+                                    <br />
+                                    <strong>
+                                        Advertencia: Todos los códigos vencen después de una hora, después de la cual deberás solicitar uno nuevo.
+                                    </strong>
+
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+
+                        <div class="form-group" id="divCorreo">
+                            <label class="form-label" for="email_2">Correo:</label>
+                            <div class="input-group input-group-merge">
+                                <input id="correoVerificacion" type="email" required="" class="form-control form-control-prepended" placeholder="Ingresa tu Correo ...">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="far fa-envelope"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="divCodigo" style="display: none">
+                            <label class="form-label" for="password_2">Codigo:</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" class="form-control" id="codigoVerificacion" placeholder="Ingresa tu Codigo ...">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span data-toggle="tooltip" data-placement="top" class="fa fa-key"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div class="form-group" id="divContra1" style="display: none">
+                            <label class="form-label" for="password_2">Contraseña:</label>
+                            <div class="input-group input-group-merge">
+                                <input id="txtClaveUsuario" type="password" required="" onKeyUp="verifClave()" class="form-control form-control-prepended" placeholder="Ingrese su contraseña">
+                                <label class="passReg"></label>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span data-toggle="tooltip" data-placement="top" title="La contraseña debe contener mayusculas, minusculas, numeros y caracteres especiales" class="fa fa-key"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div class="form-group" id="divContra2" style="display: none">
+                            <label class="form-label" for="password_2">Confirmar contraseña:</label>
+                            <div class="input-group input-group-merge">
+                                <input id="txtConfirmClaveUsuario" type="password" required="" class="form-control form-control-prepended" placeholder="Ingrese su contraseña un vez más">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span data-toggle="tooltip" data-placement="top" title="La contraseña debe contener mayusculas, minusculas, numeros y caracteres especiales" class="fa fa-key"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+
+                    </div>
+                    <button class="btn btn-primary mr-5" id="olvidoContraBn1" style="display: none" onclick="cambiarContra();">Cambiar Contraseña</button>
+                    <button class="btn btn-primary  mr-5" id="olvidoContraBn2" style="display: none" onclick="verificaCodigoContra();">Verificar Codigo</button>
+                    <button class="btn btn-primary  mr-5" id="olvidoContraBn3" style="display: inline" onclick="enviarCodigoContra();">Enviar Codigo</button>
+                    <button class="btn btn-primary  mr-5" id="olvidoContraBn4" style="display: none" onclick="enviarCodigoContra();">Reenviar Codigo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Verificar Cuenta -->
+
+        <div class="modal fade mt-5" id="modalContraModificada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Contraseña Cambiada</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <p style="font-size:14px; text-align: justify;" id="contraCambiada">
+                                    Tu contraseña ha sido cambiada.
+                                </p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a type="button" class="btn btn-primary" href="/Home/InicioSesion">De Acuerdo</a>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Verificar Cuenta -->
+
+    </div>
+
+    <!-- // END Header Layout Content -->
+
+</body>
+
+<script src="~/js/jsCorreo.js"></script>
+<script src="~/js/jsUsuarios.js"></script>

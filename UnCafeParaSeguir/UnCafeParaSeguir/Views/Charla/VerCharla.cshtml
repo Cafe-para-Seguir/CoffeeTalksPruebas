@@ -1,0 +1,1012 @@
+﻿@{
+    ViewData["Title"] = "Charlas";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+<body onload="DinamicMenu(); CargarCategorias(); CargarCharlas();">
+    <div class="mdk-header-layout__content page-content ">
+        <div id="divInfoCategoria" class="page-section bg-alt border-bottom-2">
+            <div class="container page__container">
+                <div class="lead text-black-50 measure-hero-lead mb-24pt">
+                    <div class="row">
+                        <div class="col-md-6-2">
+                            <h4 id="hNombreCategoria"> </h4>
+                            <p id="pDescCategoria"> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
+            <div class="mdk-drawer-layout__content">
+                <div class="page-section">
+                    <div class="container page__container">
+
+                        <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-24pt" style="white-space: nowrap;">
+                            <a href="#" data-target="#library-drawer" data-toggle="sidebar" class="btn btn-sm btn-white ml-sm-16pt">
+                                <i class="material-icons icon--left">tune</i> Filtros
+                            </a>
+                        </div>
+                        <div class="page-separator">
+                            <div class="page-separator__text">Charlas</div>
+                        </div>
+
+                        @******************************* Inicio *********************************@
+
+                        @******************************* Primera Linea *********************************@
+
+                        <div class="row card-group-row">
+
+                            <div id="divVerCursos0" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                    <a id="imagenCharla0" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla0" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista0" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+
+                                                <div class="rating__item"><i id="VTA1" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB1" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC1" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD1" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE1" class="material-icons">star_border</i></div>
+
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle0">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel0"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos0"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini0" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla0" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista0" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla0" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq0"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq0"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divVerCursos1" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+
+                                    <a id="imagenCharla1" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla1" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista1" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+                                                <div class="rating__item"><i id="VTA2" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB2" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC2" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD2" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE2" class="material-icons">star_border</i></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle1">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel1"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos1"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini1" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla1" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista1" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla1" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq1"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq1"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divVerCursos2" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+
+                                    <a id="imagenCharla2" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla2" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista2" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+                                                <div class="rating__item"><i id="VTA3" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB3" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC3" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD3" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE3" class="material-icons">star_border</i></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle2">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel2"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos2"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini2" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla2" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista2" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla2" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq2"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq2"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divVerCursos3" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                    <a id="imagenCharla3" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla3" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista3" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+                                                <div class="rating__item"><i id="VTA4" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB4" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC4" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD4" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE4" class="material-icons">star_border</i></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle3">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel3"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos3"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini3" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla3" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista3" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla3" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq3"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq3"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        @******************************* Segunda Linea *********************************@
+
+                        <div class="row card-group-row">
+
+                            <div id="divVerCursos4" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                    <a id="imagenCharla4" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla4" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista4" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+
+                                                <div class="rating__item"><i id="VTA5" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB5" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC5" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD5" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE5" class="material-icons">star_border</i></div>
+
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle4">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel4"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos4"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini4" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla4" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista4" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla4" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq4"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq4"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divVerCursos5" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+
+                                    <a id="imagenCharla5" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla5" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista5" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+                                                <div class="rating__item"><i id="VTA6" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB6" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC6" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD6" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE6" class="material-icons">star_border</i></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle5">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel5"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos5"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini5" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla5" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista5" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla5" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq5"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq5"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divVerCursos6" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+
+                                    <a id="imagenCharla6" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img src="" alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla6" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista6" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+                                                <div class="rating__item"><i id="VTA7" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB7" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC7" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD7" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE7" class="material-icons">star_border</i></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle6">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel6"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos6"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini6" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla6" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista6" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla6" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq6"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq6"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divVerCursos7" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                    <a id="imagenCharla7" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla7" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista7" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+                                                <div class="rating__item"><i id="VTA8" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB8" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC8" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD8" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE8" class="material-icons">star_border</i></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle7">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel7"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos7"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini7" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla7" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista7" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla7" class="my-16pt text-black-70"></p>
+
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq7"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq7"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @******************************* Tercera Linea *********************************@
+
+                        <div class="row card-group-row">
+
+                            <div id="divVerCursos8" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                    <a id="imagenCharla8" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img src="" alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla8" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista8" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+
+                                                <div class="rating__item"><i id="VTA9" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB9" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC9" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD9" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE9" class="material-icons">star_border</i></div>
+
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle8">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel8"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos8"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini8" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla8" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista8" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla8" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq8"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq8"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divVerCursos9" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                    <a id="imagenCharla9" href="" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla9" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista9" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+                                                <div class="rating__item"><i id="VTA10" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB10" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC10" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD10" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE10" class="material-icons">star_border</i></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle9">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel9"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos9"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini9" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla9" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista9" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla9" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq9"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq9"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divVerCursos10" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                    <a id="imagenCharla10" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla10" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista10" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+                                                <div class="rating__item"><i id="VTA11" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB11" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC11" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD11" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE11" class="material-icons">star_border</i></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle10">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel10"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos10"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini10" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla10" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista10" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla10" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq10"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq10"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divVerCursos11" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col" style="display: none">
+
+                                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                    <a id="imagenCharla11" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                        <img alt="">
+                                        <span class="overlay__content">
+                                            <span class="overlay__action d-flex flex-column text-center">
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <div class="card-body flex">
+                                        <div class="d-flex">
+                                            <div class="flex">
+                                                <a id="aNombreCharla11" class="card-title" href="fixed-student-course.html"></a>
+                                                <small id="smNombreBarista11" class="text-50 font-weight-bold mb-4pt"></small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="rating flex">
+                                                <div class="rating__item"><i id="VTA12" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTB12" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTC12" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTD12" class="material-icons">star_border</i></div>
+                                                <div class="rating__item"><i id="VTE12" class="material-icons">star_border</i></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle11">Detalles</button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivel11"></small></p>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideos11"></small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popoverContainer d-none">
+                                    <div class="media">
+                                        <div class="media-left mr-12pt">
+                                            <img id="imagenCharlaMini11" width="40" height="40" alt="" class="rounded">
+                                        </div>
+                                        <div class="media-body">
+                                            <div id="divNombreCharla11" class="card-title mb-0"></div>
+                                            <p class="lh-1 mb-0">
+                                                <span class="text-black-50 small">impartido por:</span>
+                                                <span id="spanCharlista11" class="text-black-50 small font-weight-bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <p id="pDescCharla11" class="my-16pt text-black-70"></p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <div class="d-flex align-items-center mb-4pt">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smVideosPeq11"></small></p>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                                <p class="flex text-black-50 lh-1 mb-0"><small id="smNivelPeq11"></small></p>
+                                            </div>
+                                        </div>
+                                        <div class="col text-right">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @****************************************** Paginacion ******************************************@
+
+                        <div class="container page__container page-section w-auto">
+                            <div class="flex">
+                                <nav id="navPaginacion" aria-label="Page navigation">
+                                    <ul id="ulPaginacion" class="pagination pagination-sm ">
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            @****************************************** Menú de Filtros ******************************************@
+
+            <div class="mdk-drawer js-mdk-drawer " id="library-drawer" data-align="end">
+                <div class="mdk-drawer__content top-navbar">
+                    <div class="sidebar sidebar-light sidebar-right py-16pt" data-perfect-scrollbar data-perfect-scrollbar-wheel-propagation="true">
+
+                        <div class="sidebar-heading">Categorias</div>
+                        <ul class="sidebar-menu" id="ulCategorias">
+                            <li id="liFiltro0Active" class="sidebar-menu-item active">
+                                <a class="sidebar-menu-button">
+                                    <span id="filtro0" class="sidebar-menu-text" onclick="CargarCharlas()">Sin Filtro</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/js/jsCategorias.js"></script>
+<script src="~/js/jsCharlas.js"></script>

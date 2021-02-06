@@ -1,0 +1,333 @@
+﻿
+@{
+    ViewData["Title"] = "CalculadoraMedidas";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<link type="text/css" href="~/css/ion-rangeslider.css" rel="stylesheet" runat="server">
+
+<body onload="DinamicMenu(); calcularMedida();">
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section bg-primary border-bottom-white mb-5">
+            <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+                <div class="flex mb-32pt mb-md-0">
+                    <h2 class="text-white mb-0">Calculadora de Medidas</h2>
+                </div>
+            </div>
+        </div>
+        <div class="page-section container page__container">
+
+            <div class="list-group list-group-form">
+                <div class="list-group-item">
+                    <h3 class="m-4">Maquina a utilizar</h3>
+                    <div class="form-group row align-items-center mb-3">
+                        <button id="bnAeropressActive" type="button" class="btn btn-outline-primary btnResponsive active" onclick="calcBotones('Aeropress');">Aeropress</button>
+                        <button id="bnChemex" type="button" class="btn btn-outline-primary btnResponsive" onclick="calcBotones('Chemex');">Chemex</button>
+                        <button id="bnChorreador" type="button" class="btn btn-outline-primary btnResponsive" onclick="calcBotones('Chorreador');">Chorreador</button>
+                        <button id="bnCoffeeMaker" type="button" class="btn btn-outline-primary btnResponsive" onclick="calcBotones('CoffeeMaker');">Coffee Maker</button>
+                        <button id="bnPrensaFrancesa" type="button" class="btn btn-outline-primary btnResponsive" onclick="calcBotones('PrensaFrancesa');">Prensa Francesa</button>
+                        <button id="bnV60" type="button" class="btn btn-outline-primary btnResponsive" onclick="calcBotones('V60');">V60</button>
+                        <button id="bnVandola" type="button" class="btn btn-outline-primary btnResponsive" onclick="calcBotones('Vandola');">Vandola</button>
+                    </div>
+                </div>
+                <div id="Aeropress" class="collapse show" align="justify">
+                    <div class="row ml-0 mr-0">
+                        <div class="divGroupItem list-group-item">
+                            <h4 class="m-4">Aeropress</h4>
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+
+                                <div class="w-100 h-100">
+                                    <img class="w-100 h-100" src="~/images/recursos/Aeropress.jpg" alt="Luma">
+                                </div>
+
+                            </div>
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+
+                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante.
+                                DEBE ANOTAR A TODOS.
+                                >Se aclara lo siguiente:
+                                Parentesco:
+
+                            </div>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Papel Aeropress</label>
+
+                                <label id="rdAeropressActiveRd" class="btnResponsive btn btn-outline-primary float-right active">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Aeropress" checked="" aria-checked="true" style="display:none" onclick="calcRadios('Aeropress');" /> Seleccionar
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="Chemex" class="collapse" align="justify">
+                    <div class="row ml-0 mr-0">
+                        <div class="divGroupItem list-group-item">
+                            <h4 class="m-4">Chemex</h4>
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+
+                                <div class="w-100 h-100">
+                                    <img class="w-100 h-100" src="~/images/recursos/Chemex.jpg" alt="Luma">
+                                </div>
+
+                            </div>
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+
+                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante.
+                                DEBE ANOTAR A TODOS.
+                                >Se aclara lo siguiente:
+                                Parentesco:
+
+                            </div>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Papel Chemex</label>
+
+                                <label id="rdChemex" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Chemex" aria-checked="true" style="display:none" onclick="calcRadios('Chemex');" /> Seleccionar
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Chorreador" class="collapse" align="justify">
+                    <div class="row ml-0 mr-0">
+                        <div class="divGroupItem list-group-item">
+                            <h4 class="m-4">Chorreador</h4>
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+
+                                <div class="w-100 h-100">
+                                    <img class="w-100 h-100" src="~/images/recursos/Chorreador.jpg" alt="Luma">
+                                </div>
+
+                            </div>
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+
+                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante. <b>
+                                    DEBE ANOTAR A TODOS.
+                                    >Se aclara lo siguiente:
+                                    Parentesco:
+
+                            </div>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Tela Chorreador</label>
+
+                                <label id="rdChorreador" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Chorreador" aria-checked="true" style="display:none" onclick="calcRadios('Chorreador');" /> Seleccionar
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="CoffeeMaker" class="collapse" align="justify">
+                    <div class="row ml-0 mr-0">
+                        <div class="divGroupItem list-group-item">
+                            <h4 class="m-4">Coffee Maker</h4>
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+
+                                <div class="w-100 h-100">
+                                    <img class="w-100 h-100" src="~/images/recursos/CoffeeMaker.jpeg" alt="Luma">
+                                </div>
+
+                            </div>
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+
+                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante. <b>
+                                    DEBE ANOTAR A TODOS.
+                                    >Se aclara lo siguiente:
+                                    Parentesco:
+
+                            </div>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Papel Coffee Maker</label>
+
+                                <label id="rdCoffeeMaker" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="CoffeeMaker" aria-checked="true" style="display:none" onclick="calcRadios('CoffeeMaker');" /> Seleccionar
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="PrensaFrancesa" class="collapse" align="justify">
+                    <div class="row ml-0 mr-0">
+                        <div class="divGroupItem list-group-item">
+                            <h4 class="m-4">Prensa Francesa</h4>
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+
+                                <div class="w-100 h-100">
+                                    <img class="w-100 h-100" src="~/images/recursos/PrensaFrancesa.jpg" alt="Luma">
+                                </div>
+
+                            </div>
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+
+                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante. <b>
+                                    DEBE ANOTAR A TODOS.
+                                    >Se aclara lo siguiente:
+                                    Parentesco:
+
+                            </div>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Metalico Prensa</label>
+
+                                <label id="rdPrensaFrancesa" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="PrensaFrancesa" aria-checked="true" style="display:none" onclick="calcRadios('PrensaFrancesa');" /> Seleccionar
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="V60" class="collapse" align="justify">
+                    <div class="row ml-0 mr-0">
+                        <div class="divGroupItem list-group-item">
+                            <h4 class="m-4">V60</h4>
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+
+                                <div class="w-100 h-100">
+                                    <img class="w-100 h-100" src="~/images/recursos/V60.jpg" alt="Luma">
+                                </div>
+
+                            </div>
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+
+                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante. <b>
+                                    DEBE ANOTAR A TODOS.
+                                    >Se aclara lo siguiente:
+                                    Parentesco:
+
+                            </div>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Papel V60</label>
+
+                                <label id="rdV60" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="V60" aria-checked="true" style="display:none" onclick="calcRadios('V60');" /> Seleccionar
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Vandola" class="collapse" align="justify">
+                    <div class="row ml-0 mr-0">
+                        <div class="divGroupItem list-group-item">
+                            <h4 class="m-4">Vandola</h4>
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+
+                                <div class="w-100 h-100">
+                                    <img class="w-100 h-100" src="~/images/recursos/Vandola.jpg" alt="Luma">
+                                </div>
+
+                            </div>
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+
+                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante. <b>
+                                    DEBE ANOTAR A TODOS.
+                                    >Se aclara lo siguiente:
+                                    Parentesco:
+
+                            </div>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Tela Vandola</label>
+
+                                <label id="rdVandola" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Vandola" aria-checked="true" style="display:none" onclick="calcRadios('Vandola');" /> Seleccionar
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-group-item">
+
+                    <h3 class="m-4 d-inline">Tazas de Café</h3>
+                    <span class="mb-3 material-icons fas fa-mug-hot fa-2x " style="color: #2c2a2a;"></span>
+
+                    <div class="row mt-2">
+
+                        <div class=" w-100 mr-4 ml-4 mb-3">
+                            <div class="list-group-item" style="border-radius: 5px;">
+                                <div class="flex" style="max-width: 100%">
+
+                                    <input id="tasasCafe" onchange="calcularMedida()" type="text" data-toggle="ion-rangeslider" data-min="1" data-max="6" data-from="3" data-grid="false" data-step="1" data-max-postfix="" data-prefix="">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-group-item">
+                    <div class="d-inline-block divResponsive" style="width: 61%;">
+                        <h3 class="d-block">Tipo de Café</h3>
+                        <div class="mb-4 list-group-item d-block" style="border-radius: 5px;">
+
+                            <div class="form-group row align-items-center m-2" style="display:inline;">
+                                <label id="labelTipoGrano" for="expire_month" class="col-form-label font-size-16pt">Tueste del Café:</label>
+                                <select id="slcTipoGrano" name="txtgpExpirationMonth" class="form-control custom-select" onchange="calcularMedida()" style="width: 140px;">
+                                    <option value="1">Medio</option>
+                                    <option value="2">Oscuro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group row align-items-center m-2" style="display:inline;">
+                                <label id="labelTipoCafe" for="expire_month" class="col-form-label font-size-16pt">Resultado Esperado:</label>
+                                <select id="slcTipoCafe" name="txtgpExpirationMonth" class="form-control custom-select" onchange="calcularMedida()" style="width: 140px;">
+                                    <option value="1">Suave</option>
+                                    <option value="2">Medio</option>
+                                    <option value="3">Fuerte</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-inline-block divResponsive" style="width: 38%;">
+                        <h3 class="d-block">Medida</h3>
+                        <div class="mb-4 list-group-item d-block" style="border-radius: 5px;">
+
+                            <div class="form-group row align-items-center m-2" style="display:inline;">
+                                <label id="labelMedida" for="expire_month" class="col-form-label font-size-16pt">Herramienta de medicion:</label>
+                                <select id="slcMedida" name="txtgpExpirationMonth" class="form-control custom-select" onchange="tipoMedida()" style="width: 140px;">
+                                    <option value="1">Balanza</option>
+                                    <option value="2">Cuchara</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="list-group-item">
+                    <div class="form-group row align-items-center">
+                        <div class="divResponsive" style="width:33.3%">
+                            <label id="labelMedidaResult" class="col-form-label font-size-20pt ml-5 d-block">Gramos de café a utilizar:</label>
+                            <label id="MedidaResult" class="col-form-label font-size-24pt ml-5 d-block"> 0 </label>
+                        </div>
+                        <div class="divResponsive" style="width:33.3%">
+                            <label class="col-form-label font-size-20pt ml-5 d-block">Mililitros de agua:</label>
+                            <label id="aguaResult" class="col-form-label font-size-24pt ml-5 d-block"> 0 </label>
+                        </div>
+                        <div class="divResponsive" style="width:33.3%">
+                            <label class="col-form-label font-size-20pt ml-5 d-block"> Tiempo de extración (Min): </label>
+                            <label id="tiempoResult" class="col-form-label font-size-24pt ml-5 d-block">0:00</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="~/js/jsHome.js"></script>

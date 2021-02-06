@@ -1,0 +1,371 @@
+﻿
+@{
+    ViewData["Title"] = "Comprar Charla";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<!-- Header Layout Content -->
+<body onload="DinamicMenu(); charlasMV(); validaLogComp();">
+
+    <div class="mdk-header-layout__content page-content ">
+
+        <div class="mdk-box bg-primary mdk-box--bg-gradient-primary2 js-mdk-box mb-0" data-effects="blend-background">
+            <div class="mdk-box__content">
+                <div class="py-64pt text-center text-sm-left">
+                    <div class="container d-flex flex-column justify-content-center align-items-center">
+                        <label class="lead text-white-50 measure-lead-max mb-0" id="fechaFinal"></label>
+
+                        <h1 class="text-white text-shadow font-size-64pt">Felicitaciones</h1>
+                        <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fpatitomamadisimo.000webhostapp.com%2F&layout=button&size=large&width=103&height=28&appId"
+                                width="103" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true"
+                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                        </iframe>
+
+                    </div>
+                </div>
+            </div>
+
+            <br /> <br /> <br /> <br /> <br /> <br />
+
+            <div class="page-section border-bottom-2 vh-100 ">
+                <div class="container page__container">
+                    <div class="page-separator">
+                        <h4 class="text-white mb-24pt">Continua aprendiendo</h4>
+                    </div>
+
+                    <div class="row card-group-row">
+
+                        <div id="CharlasMV1" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
+
+                            <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                <a id="A1" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                    <img id="fotoCharlaMV1">
+                                    <span class="overlay__content">
+                                        <span class="overlay__action d-flex flex-column text-center">
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <div class="card-body flex">
+                                    <div class="d-flex">
+                                        <div class="flex">
+                                            <a id="nombreCharlaMV1" class="card-title" href="#"></a>
+                                            <small id="nombreCharlistaMV1" class="text-50 font-weight-bold mb-4pt"></small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="rating flex">
+
+                                            <div class="rating__item"><i id="VTA1" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTB1" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTC1" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTD1" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTE1" class="material-icons">star_border</i></div>
+
+                                        </div>
+
+                                    </div>
+                                    <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle0">Detalles</button>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row justify-content-between">
+                                        <div class="col-auto d-flex align-items-center">
+                                            <span class="material-icons icon-16pt fas fa-poll-h text-black-50 mr-4pt"></span>
+                                            <p id="nivel1" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                        </div>
+                                        <div class="col-auto d-flex align-items-center">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="popoverContainer d-none">
+                                <div class="media">
+                                    <div class="media-left mr-12pt">
+                                        <img id="fotoCharlaMVInter1" width="40" height="40" alt="" class="rounded">
+                                    </div>
+                                    <div class="media-body">
+                                        <div id="nombreCharlaMVInter1" class="card-title mb-0"></div>
+                                        <p class="lh-1 mb-0">
+                                            <span class="text-black-50 small">con</span>
+                                            <span id="charlistaMVinter1" class="text-black-50 small font-weight-bold"></span>
+                                    </div>
+                                </div>
+
+                                <p id="descripCharlaMV1" class="my-16pt text-black-70"></p>
+
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <div class="d-flex align-items-center mb-4pt">
+
+                                        </div>
+                                        <div class="d-flex align-items-center mb-4pt">
+
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                            <p id="nivelDifi1" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="CharlasMV2" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
+
+                            <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                <a id="A2" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                    <img id="fotoCharlaMV2" alt="course">
+                                    <span class="overlay__content">
+                                        <span class="overlay__action d-flex flex-column text-center">
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <div class="card-body flex">
+                                    <div class="d-flex">
+                                        <div class="flex">
+                                            <a id="nombreCharlaMV2" class="card-title" href="#"></a>
+                                            <small id="nombreCharlistaMV2" class="text-50 font-weight-bold mb-4pt"></small>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="rating flex">
+
+                                            <div class="rating__item"><i id="VTA2" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTB2" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTC2" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTD2" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTE2" class="material-icons">star_border</i></div>
+
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle1">Detalles</button>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row justify-content-between">
+                                        <div class="col-auto d-flex align-items-center">
+                                            <span class="material-icons icon-16pt fas fa-poll-h text-black-50 mr-4pt"></span>
+                                            <p id="nivel2" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                        </div>
+                                        <div class="col-auto d-flex align-items-center">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="popoverContainer d-none">
+                                <div class="media">
+                                    <div class="media-left mr-12pt">
+                                        <img id="fotoCharlaMVInter2" width="40" height="40" alt="" class="rounded">
+                                    </div>
+                                    <div class="media-body">
+                                        <div id="nombreCharlaMVInter2" class="card-title mb-0"></div>
+                                        <p class="lh-1 mb-0">
+                                            <span class="text-black-50 small">con</span>
+                                            <span id="charlistaMVinter2" class="text-black-50 small font-weight-bold"></span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <p id="descripCharlaMV2" class="my-16pt text-black-70"></p>
+
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <div class="d-flex align-items-center mb-4pt">
+
+                                        </div>
+                                        <div class="d-flex align-items-center mb-4pt">
+
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                            <p id="nivelDifi2" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="CharlasMV3" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
+
+                            <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                <a id="A3" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                    <img id="fotoCharlaMV3" alt="course">
+                                    <span class="overlay__content">
+                                        <span class="overlay__action d-flex flex-column text-center">
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <div class="card-body flex">
+                                    <div class="d-flex">
+                                        <div class="flex">
+                                            <a id="nombreCharlaMV3" class="card-title" href="#"></a>
+                                            <small id="nombreCharlistaMV3" class="text-50 font-weight-bold mb-4pt"></small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="rating flex">
+
+                                            <div class="rating__item"><i id="VTA3" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTB3" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTC3" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTD3" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTE3" class="material-icons">star_border</i></div>
+
+                                        </div>
+
+                                    </div>
+                                    <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle2">Detalles</button>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row justify-content-between">
+                                        <div class="col-auto d-flex align-items-center">
+                                            <span class="material-icons icon-16pt fas fa-poll-h text-black-50 mr-4pt"></span>
+                                            <p id="nivel3" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                        </div>
+                                        <div class="col-auto d-flex align-items-center">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="popoverContainer d-none">
+                                <div class="media">
+                                    <div class="media-left mr-12pt">
+                                        <img id="fotoCharlaMVInter3" width="40" height="40" alt="" class="rounded">
+                                    </div>
+                                    <div class="media-body">
+                                        <div id="nombreCharlaMVInter3" class="card-title mb-0"></div>
+                                        <p class="lh-1 mb-0">
+                                            <span class="text-black-50 small">con</span>
+                                            <span id="charlistaMVinter3" class="text-black-50 small font-weight-bold"></span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <p id="descripCharlaMV3" class="my-16pt text-black-70"></p>
+
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <div class="d-flex align-items-center mb-4pt">
+
+                                        </div>
+                                        <div class="d-flex align-items-center mb-4pt">
+
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                            <p id="nivelDifi3" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="CharlasMV4" class="col-md-6 col-lg-4 col-xl-3 card-group-row__col">
+
+                            <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card" data-toggle="popover" data-trigger="click">
+
+                                <a id="A4" href="#" class="card-img-top js-image" data-position="" data-height="140">
+                                    <img id="fotoCharlaMV4" alt="course">
+                                    <span class="overlay__content">
+                                        <span class="overlay__action d-flex flex-column text-center">
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <div class="card-body flex">
+                                    <div class="d-flex">
+                                        <div class="flex">
+                                            <a id="nombreCharlaMV4" class="card-title" href="#"></a>
+                                            <small id="nombreCharlistaMV4" class="text-50 font-weight-bold mb-4pt"></small>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="rating flex">
+
+                                            <div class="rating__item"><i id="VTA4" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTB4" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTC4" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTD4" class="material-icons">star_border</i></div>
+                                            <div class="rating__item"><i id="VTE4" class="material-icons">star_border</i></div>
+
+                                        </div>
+
+                                    </div>
+                                    <button type="button" class="btn btn-primary w-100 mt-2" id="CharlaDetalle3">Detalles</button>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row justify-content-between">
+                                        <div class="col-auto d-flex align-items-center">
+                                            <span class="material-icons icon-16pt fas fa-poll-h text-black-50 mr-4pt"></span>
+                                            <p id="nivel4" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                        </div>
+                                        <div class="col-auto d-flex align-items-center">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="popoverContainer d-none">
+                                <div class="media">
+                                    <div class="media-left mr-12pt">
+                                        <img id="fotoCharlaMVInter4" width="40" height="40" alt="" class="rounded">
+                                    </div>
+                                    <div class="media-body">
+                                        <div id="nombreCharlaMVInter4" class="card-title mb-0"></div>
+                                        <p class="lh-1 mb-0">
+                                            <span class="text-black-50 small">con</span>
+                                            <span id="charlistaMVinter4" class="text-black-50 small font-weight-bold"></span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <p id="descripCharlaMV4" class="my-16pt text-black-70"></p>
+
+
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <div class="d-flex align-items-center mb-4pt">
+
+                                        </div>
+                                        <div class="d-flex align-items-center mb-4pt">
+
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
+                                            <p id="nivelDifi4" class="flex text-black-50 lh-1 mb-0"><small></small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- Your share button code -->
+</body>
+
+<script src="~/js/jsHome.js"></script>
+<script src="~/js/jsCharlas.js"></script>

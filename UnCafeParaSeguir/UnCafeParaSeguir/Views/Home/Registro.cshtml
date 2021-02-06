@@ -1,0 +1,268 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registro</title>
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+
+    <link rel="shortcut icon" type="image/ico" href="/favicon.png" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap" rel="stylesheet">
+
+    <!-- Perfect Scrollbar -->
+    <link type="text/css" href="~/vendor/perfect-scrollbar.css" rel="stylesheet">
+
+    <!-- Fix Footer CSS -->
+    <link type="text/css" href="~/vendor/fix-footer.css" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="~/css/material-icons.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link type="text/css" href="~/css/fontawesome.css" rel="stylesheet">
+
+    <!-- Preloader -->
+    <link type="text/css" href="~/css/preloader.css" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css" href="~/css/app.css" rel="stylesheet">
+
+    <!-- Toastr -->
+    <link type="text/css" href="~/vendor/toastr.min.css" rel="stylesheet" runat="server">
+
+    <link type="text/css" href="~/css/toastr.css" rel="stylesheet" runat="server">
+
+</head>
+<body class="layout-default layout-login-image">
+
+    <button id="correoExiste" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ya hay un usuario registrado con este correo">
+        <!--Este boton avisa que ya existe una cuenta con el correo ingresado-->
+    </button>
+    <button id="alertaContraCorta" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Notificación" data-toastr-message="La contraseña es muy corta">
+        <!--Este boton avisa que la contraseña es demasiado corta-->
+    </button>
+    <button id="correoInvalido" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Por favor ingrese una direccion de Correo Valida">
+        <!--Este boton avisa que la direccion de correo no es valida-->
+    </button>
+    <button id="alertaContra" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Las contraseñas no Coinciden">
+        <!--Este boton alerta Contraseñas Incorrectas-->
+    </button>
+    <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="terminosCondiciones" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Debe Aceptar los terminos y condiciones para continuar">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="errorGeneral" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ha ocurrido un error durante el registro, vuelve a intentarlo o contacto con un administrador">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+
+    <div class="layout-login-image__overlay">
+    </div>
+
+    <div class="layout-login-image__form bg-white" data-perfect-scrollbar>
+        <div class="d-flex justify-content-center mt-2 mb-5 navbar-light">
+            <a href="/Home/Index" class="navbar-brand flex-column mb-2 align-items-center mr-0" style="min-width: 0">
+
+                <span class="avatar avatar-sm navbar-brand-icon mr-0">
+
+                    <span><img src="~/images/recursos/logo.png" alt="" class="img-fluid" /></span>
+
+                </span>
+                Coffee Talks
+            </a>
+        </div>
+
+        <h4 class="m-0">Registrarse!</h4>
+        <p class="mb-5">Crea una cuenta para disfrutar de nuestro contenido!</p>
+
+        <form action="" novalidate>
+            <div class="form-group">
+                <label class="text-label" for="name_2">Nombre:</label>
+                <div class="input-group input-group-merge">
+                    <input id="txtNombreUsuario" type="text" required="" class="form-control form-control-prepended" placeholder="John">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="far fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="text-label" for="name_2">Apellidos:</label>
+                <div class="input-group input-group-merge">
+                    <input id="txtApellidosUsuario" type="text" required="" class="form-control form-control-prepended" placeholder="Rodriguez ">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="far fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="text-label" for="email_2">Correo:</label>
+                <div class="input-group input-group-merge">
+                    <input id="txtCorreoUsuario" type="email" required="" class="form-control form-control-prepended" placeholder="ejemplo@ejemplo.com" onkeyup="ValidarCorreo(this)">
+                    <a id='resultado'></a>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="far fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="text-label" for="password_2">Contraseña:</label>
+                <div class="input-group input-group-merge">
+                    <input id="txtClaveUsuario" type="password" required="" onKeyUp="verifClave()" class="form-control form-control-prepended" placeholder="Ingrese su contraseña">
+                    <label class="passReg"></label>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span data-toggle="tooltip" data-placement="top" title="La contraseña debe contener mayusculas, minusculas, numeros y caracteres especiales" class="fa fa-key"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="text-label" for="password_2">Confirmar contraseña:</label>
+                <div class="input-group input-group-merge">
+                    <input id="txtConfirmClaveUsuario" type="password" required="" class="form-control form-control-prepended" placeholder="Ingrese su contraseña un vez más">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span data-toggle="tooltip" data-placement="top" title="La contraseña debe contener mayusculas, minusculas, numeros y caracteres especiales" class="fa fa-key"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="TerminosCheck" />
+                <label data-toggle="modal" data-target="#modalTerminos" for="terms" style="color:blue"><a><u>Terminos y Condiciones</u></a></label>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="button" class="btn btn-primary" id="btn_agregar" onclick="jsRegistro()">Registrar cuenta</button><br />
+                <br /> <br />
+                <a class="text-body text-underline" href="/Home/InicioSesion">Ya tiene una cuenta? Inicie sesión</a>
+                <br /> <br />
+                <a class="text-body text-underline" href="/Home/VerificarCorreo">Necesitas Verificación?, Haz click aqui</a>
+            </div>
+
+        </form>
+
+        <div class="modal fade" id="modalTerminos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Terminos y Condiciones</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <p style="font-size:14px; text-align: justify;" id="Terminos">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                                    it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                                    like Aldus PageMaker including versions of Lorem Ipsum. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+                                    Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the
+                                    more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                                    <br />
+
+
+                                </p>
+                                <a style="color:blue;" href="/Home/Privacy"><u>Ver mas</u></a>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="AceptarTerminos()">Aceptar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Verificar Cuenta -->
+
+        <div class="modal fade mt-5" id="modalVerificarCuenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Verifica Tu Cuenta</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <p style="font-size:14px; text-align: justify;" id="Verificacion">
+                                    Bienvenido a Coffe Talks!, como paso final
+                                    para formar parte de la comunidad y poder iniciar sesión
+                                    te pedimos que verifiques tu correo, !Te Esperamos!
+                                </p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a type="button" class="btn btn-primary" href="/Home/VerificarCorreo">De Acuerdo</a>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Verificar Cuenta -->
+
+
+
+
+
+
+
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/vendor/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/vendor/popper.min.js"></script>
+    <script src="~/vendor/bootstrap.min.js"></script>
+
+    <!-- Perfect Scrollbar -->
+    <script src="~/vendor/perfect-scrollbar.min.js"></script>
+
+    <!-- DOM Factory -->
+    <script src="~/vendor/dom-factory.js"></script>
+
+    <!-- MDK -->
+    <script src="~/vendor/material-design-kit.js"></script>
+
+    <!-- Fix Footer -->
+    <script src="~/vendor/fix-footer.js"></script>
+
+    <!-- Toastr -->
+    <script src="~/vendor/toastr.min.js" runat="server"></script>
+    <script src="~/js/toastr.js" runat="server"></script>
+
+    <!-- App JS -->
+    <script src="~/js/app.js"></script>
+    <script src="~/js/jsUsuarios.js"></script>
+</body>
+
+</html>

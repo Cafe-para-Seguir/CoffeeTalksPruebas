@@ -1,0 +1,224 @@
+﻿
+@{
+    ViewData["Title"] = "Comprar Charla";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<!-- Header Layout Content -->
+<body onload="DinamicMenu(); validaInicioSesion();">
+
+    <button id="alertaVacios" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="No pueden haber espacios Vacíos">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="errorPago" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Creedenciales Invalidos">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="CompraExitosa" hidden data-toggle="toastr" data-toastr-type="primary" data-toastr-title="Notificación" data-toastr-message="Compra Exitosa">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="errorGeneral" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Ha ocurrido un error durante la transacción">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="tipoCambioNoDisponible" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Transacciones en dolares no disponibles por el momento">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+    <button id="sinPrecio" hidden data-toggle="toastr" data-toastr-type="warning" data-toastr-title="Alerta" data-toastr-message="Esta Charla aun no tiene un precio definido">
+        <!--Este boton alerta Espacios Vacios-->
+    </button>
+
+
+    <div class="mdk-header-layout__content page-content ">
+        <div class="page-section bg-primary border-bottom-white mb-5">
+            <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+                <div class="flex mb-32pt mb-md-0">
+                    <h2 class="text-white mb-0">Pago</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section container page__container">
+            <div class="page-separator">
+                <div class="page-separator__text">Información de la Charla</div>
+            </div>
+            <div class="col-lg-8 p-0">
+                <div class="list-group list-group-form">
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-3">Charla</label>
+                            <div class="card-body flex-0">
+                                <div class="d-flex align-items-center">
+                                    <a href="#" class="avatar avatar-4by3 overlay overlay--primary mr-12pt">
+                                        <img id="imagenCharla" alt="" class="avatar-img rounded">
+                                        <span class="overlay__content"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-inline">
+                                <label id="txtgpNombreCharla" class="col-form-label form-label d-inline" name="txtgpNombreCharla"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-3">Precio</label>
+                            <div class="col-sm-9">
+                                <label id="txtgpPrecioInfoCharla" class="col-form-label form-label col-sm-3" name="txtgpPrecioInfoCharla"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="form-group row align-items-center mb-0">
+                            <label class="col-form-label form-label col-sm-3">Charlista</label>
+                            <div class="col-sm-9" style="display: inline">
+                                <label id="txtgpNombreCharlista" class="col-form-label form-label col-sm-3" name="txtgpNombreCharlista" style="display: inline"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-separator mt-5">
+                <div class="page-separator__text">Información de Pago</div>
+            </div>
+            <form id="Form_Pago" name="Form_Pago" method="post" enctype="multipart/form-data">
+                <div class="col-lg-8 p-0">
+                    <div class="list-group list-group-form">
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="col-form-label form-label col-sm-3">Nombre</label>
+                                <div class="col-sm-9">
+                                    <input id="iccs" name="iccs" hidden>
+                                    <input id="txtgpNombre" type="text" required class="form-control form-control-prepended" name="txtgpNombre" placeholder="Nombre">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="col-form-label form-label col-sm-3">Apellidos</label>
+                                <div class="col-sm-9">
+                                    <input id="txtgpApellido" type="text" required class="form-control form-control-prepended" name="txtgpApellido" placeholder="Apellidos">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <fieldset role="group" aria-labelledby="label-type" class="m-0 form-group">
+                                <div class="form-row align-items-center">
+                                    <label for="payment_cc" id="label-type" class="col-md-3 col-form-label form-label">Tipo Tarjeta</label>
+                                    <div role="group" aria-labelledby="label-type" class="col-md-9">
+                                        <div role="group" class="btn-group btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-outline-secondary active">
+                                                <input type="radio" id="pyVisa" name="payment_type" value="cc" checked="" aria-checked="true" /> Visa
+                                            </label>
+                                            <label class="btn btn-outline-secondary">
+                                                <input type="radio" id="pyMCrd" name="payment_type" value="pp" aria-checked="true" /> MasterCard
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="col-form-label form-label col-sm-3">Precio</label>
+                                <div class="col-sm-9">
+                                    <label id="txtgpPrecio" class="col-form-label form-label col-sm-3" name="txtgpPrecio"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="col-form-label form-label col-sm-3">Número de Tarjeta</label>
+                                <div class="col-sm-9">
+                                    <input id="txtgpCardNumero" type="text" required class="form-control form-control-prepended" name="txtgpCardNumero" placeholder="0000000000000000">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0">
+                                <label class="col-form-label form-label col-sm-3">Código de Seguridad (CVC)</label>
+                                <div class="col-sm-9">
+                                    <input id="txtgpCardCVC" type="text" required class="form-control form-control-prepended" name="txtgpCardCVC" placeholder="CVC">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div role="group" aria-labelledby="label-expire_month" class="m-0 form-group">
+                                <div class="form-row align-items-center">
+                                    <label id="label-expire_month" for="expire_month" class="col-md-3 col-form-label form-label">Fecha Vencimiento</label>
+                                    <div class="col-md-9">
+                                        <div class="form-row">
+                                            <div class="col-auto">
+                                                <select id="txtgpExpirationMonth" name="txtgpExpirationMonth" class="form-control custom-select" style="width: 140px;">
+                                                    <option value="1">Enero</option>
+                                                    <option value="2">Febrero</option>
+                                                    <option value="3">Marzo</option>
+                                                    <option value="4">Abril</option>
+                                                    <option value="5">Mayo</option>
+                                                    <option value="6">Junio</option>
+                                                    <option value="7">Julio</option>
+                                                    <option value="8">Agosto</option>
+                                                    <option value="9">Setiembre</option>
+                                                    <option value="10">Octubre</option>
+                                                    <option value="11">Noviembre</option>
+                                                    <option value="12">Diciembre</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-auto">
+                                                <select id="txtgpExpirationYear" name="txtgpExpirationYear" class="form-control custom-select" style="width: 100px;">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="form-group row align-items-center mb-0">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-9">
+                                    <a class="btn btn-primary text-white-100" onclick="ConfirmarCompra()">Efectuar Pago</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- // END Header Layout Content -->
+
+    <div class="modal fade mt-5" id="modalConfirmarCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="mdk-header-layout__content page-content " style="padding-top: 8%">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Confirmación</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <p style="font-size:16px; text-align: justify;" id="infoConfirmacion">
+                            </p>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a id="bnValidarCompra" class="btn btn-yellow btn-tertiary text-white-100" onclick="ValidarCompra()">Confirmar Pago</a>
+                        <button id="bnCancelar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</body>
+
+<script src="~/js/jsPagos.js"></script>
+<script src="~/js/jsMask.js"></script>
+
+
+
