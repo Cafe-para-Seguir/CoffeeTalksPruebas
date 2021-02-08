@@ -8,7 +8,7 @@ namespace UnCafeParaSeguir.Models
 {
     public class ConexionBD
     {
-        string connectionString = "Server=localhost;Port=3306;Database=uncafeparaseguir;Uid=root;password=1234;";
+        string connectionString = "Server=localhost;Port=3306;Database=uncafeparaseguir;Uid=root;password=Patito_Cursitos01;";
 
         public DataTable SP_SELECTS(DataTable dt, string query)
         {
