@@ -11,6 +11,8 @@ namespace UnCafeParaSeguir.Controllers
     public class ReportesController : Controller
     {
 
+        private static string rutaReportes = @"C:\Reportes\"; 
+
         private readonly ILogger<ReportesController> _logger;
         ConexionBD conDB = new ConexionBD();
 
@@ -143,7 +145,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_ReporteCantUsuarios('" + pFechaInicio + "' , '" + pFechaFin + "', " + pIdRol + ");");
                     string JsonResult = JsonConvert.SerializeObject(ds);
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/ReporteCantUsuarios.txt", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "ReporteCantUsuarios.txt", true);
                     int i;
 
                     swExtLogFile.Write(Environment.NewLine);
@@ -179,7 +181,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_ReporteCantUsuarios('" + pFechaInicio + "' , '" + pFechaFin + "', " + pIdRol + ");");
                     string JsonResult = JsonConvert.SerializeObject(ds);
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/ReporteCantUsuarios.csv", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "ReporteCantUsuarios.csv", true);
                     int i;
 
                     swExtLogFile.Write(Environment.NewLine);
@@ -231,7 +233,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_ReporteCantCharlas('" + pFechaInicio + "' , '" + pFechaFin + "');");
                     string JsonResult = JsonConvert.SerializeObject(ds);
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/ReporteCantCharlas.txt", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "ReporteCantCharlas.txt", true);
                     int i;
                     swExtLogFile.Write(Environment.NewLine);
                     swExtLogFile.Write("Cantegoria | Cantidad de Charlas");
@@ -254,7 +256,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_ReporteCantCharlas('" + pFechaInicio + "' , '" + pFechaFin + "');");
                     string JsonResult = JsonConvert.SerializeObject(ds);
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/ReporteCantCharlas.csv", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "ReporteCantCharlas.csv", true);
                     int i;
                     swExtLogFile.Write(Environment.NewLine);
                     swExtLogFile.Write("Cantegoria , Cantidad de Charlas");
@@ -293,7 +295,7 @@ namespace UnCafeParaSeguir.Controllers
                 ds = conDB.SP_SELECTS(ds, "Call sp_ReporteTopCharlas();");
                 if (archivo == 1)
                 {
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/ReporteTopCharlas.txt", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "ReporteTopCharlas.txt", true);
                     swExtLogFile.Write(Environment.NewLine);
                     swExtLogFile.Write("Charla | Valoracion (0-5)");
                     swExtLogFile.Write(Environment.NewLine);
@@ -313,7 +315,7 @@ namespace UnCafeParaSeguir.Controllers
                 }
                 else if (archivo == 2)
                 {
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/ReporteTopCharlas.csv", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "ReporteTopCharlas.csv", true);
                     swExtLogFile.Write(Environment.NewLine);
                     swExtLogFile.Write("Charla , Valoracion (0-5)");
                     swExtLogFile.Write(Environment.NewLine);
@@ -351,7 +353,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_ReporteTopCharlistas();");
 
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/ReporteTopCharlistas.txt", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "ReporteTopCharlistas.txt", true);
                     int i;
 
                     swExtLogFile.Write(Environment.NewLine);
@@ -375,7 +377,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_ReporteTopCharlistas();");
 
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/ReporteTopCharlistas.csv", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "ReporteTopCharlistas.csv", true);
                     int i;
 
                     swExtLogFile.Write(Environment.NewLine);
@@ -413,7 +415,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_TopCharlasVendidas();");
 
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/TopCharlasVendidas.txt", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "TopCharlasVendidas.txt", true);
                     int i;
                     swExtLogFile.Write(Environment.NewLine);
                     swExtLogFile.Write("Cantidad de Ventas | Charla");
@@ -436,7 +438,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_TopCharlasVendidas();");
 
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/TopCharlasVendidas.csv", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "TopCharlasVendidas.csv", true);
                     int i;
                     swExtLogFile.Write(Environment.NewLine);
                     swExtLogFile.Write("Cantidad de Ventas , Charla");
@@ -474,7 +476,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_ReporteVentas('" + pFechaInicio + "' , '" + pFechaFin + "');");
 
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/Ventas.txt", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "Ventas.txt", true);
                     int i;
                     swExtLogFile.Write(Environment.NewLine);
                     swExtLogFile.Write("Total (colones) | Fecha");
@@ -497,7 +499,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_ReporteVentas('" + pFechaInicio + "' , '" + pFechaFin + "');");
 
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/Ventas.csv", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "Ventas.csv", true);
                     int i;
 
                     swExtLogFile.Write(Environment.NewLine);
@@ -536,7 +538,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_ReporteGananciaCharlista(" + pMes + " , " + pAnno + ");");
 
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/GananciasCharlista.txt", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "GananciasCharlista.txt", true);
                     int i;
                     swExtLogFile.Write(Environment.NewLine);
                     swExtLogFile.Write("Ganancias (colones) | Charlista");
@@ -559,7 +561,7 @@ namespace UnCafeParaSeguir.Controllers
                 {
                     ds = conDB.SP_SELECTS(ds, "Call sp_ReporteGananciaCharlista('" + pMes + "' , '" + pAnno + "');");
 
-                    StreamWriter swExtLogFile = new StreamWriter("C:/Users/andre/Desktop/GananciasCharlista.csv", true);
+                    StreamWriter swExtLogFile = new StreamWriter(rutaReportes + "GananciasCharlista.csv", true);
                     int i;
 
                     swExtLogFile.Write(Environment.NewLine);

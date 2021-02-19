@@ -7,6 +7,7 @@ using gpayments;
 using gpayments.Model;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using UnCafeParaSeguir.Models;
@@ -17,6 +18,8 @@ namespace UnCafeParaSeguir.Controllers
     {
         ConexionBD conDB = new ConexionBD();
 
+        private IHostingEnvironment _enviroment;
+
         private readonly ILogger<PagosController> _logger;
         private readonly ILogger<CorreosController> _Clogger;
 
@@ -24,7 +27,11 @@ namespace UnCafeParaSeguir.Controllers
         private const string UnCafeParaSeguir = "UN CAFÉ PARA SEGUIR";
         private const string CompraDeCharla = "COMPRA DE CHARLA";
         // Ruta de la imagen
-        string imageURL = @"C:\Users\andre\Source\Repos\UnCafeParaSeguir\UnCafeParaSeguir\wwwroot\images\recursos\logo.png";
+
+        // string imageURL = @"C:\img\logo.png";
+        
+        private const string rutaComprobante = @"C:\Comprobantes\";
+
         public IActionResult Index()
         {
             return View();
@@ -35,9 +42,10 @@ namespace UnCafeParaSeguir.Controllers
             return View();
         }
 
-        public PagosController(ILogger<PagosController> logger)
+        public PagosController(ILogger<PagosController> logger, IHostingEnvironment hostingEnvironment)
         {
             _logger = logger;
+            _enviroment = hostingEnvironment;
         }
 
         public ContentResult validaCreedenciales(int iccs, string txtgpCardNumero, int txtgpExpirationMonth, int txtgpExpirationYear, string txtgpCardCVC)
@@ -159,15 +167,17 @@ namespace UnCafeParaSeguir.Controllers
         {
             try
             {
+                string imageURL = Path.Combine(_enviroment.WebRootPath, "images/recursos/logo.png");
+
                 // Se crea el documento
                 Document doc = new Document(PageSize.LETTER);
 
-                string file = @"C:\Users\andre\Desktop\Comprobante_" + idFactura + ".pdf";
+                string file = rutaComprobante + "Comprobante_" + idFactura + ".pdf";
 
                 // Ruta donde se va a guardar el documento
                 PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(file, FileMode.Create));
 
-                
+
 
                 // Se crea objeto de tipo imagen
                 iTextSharp.text.Image jpg = iTextSharp.text.Image.GetInstance(imageURL);
