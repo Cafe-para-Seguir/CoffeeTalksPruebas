@@ -2015,7 +2015,7 @@ function cargarVideo() {
 
                                         var tituloCharla = document.getElementById("tituloCharlaVideo");
 
-                                        var nombreCharla = datos.nombreCharla;
+                                        var nombreCharla = datos[0].nombreCharla;
 
                                         tituloCharla.setAttribute('onclick', 'CargarPagCharlaDetalle(' + idCharla + ')');
                                         tituloCharla.innerHTML = nombreCharla

@@ -242,7 +242,7 @@ function jsMantAdmin(pModo, pIdUsuario) {
 
                                 $.ajax({
                                     url: '/Admin/EliminarImagen',
-                                    data: { 'pIdUsuario': regis },      //envia por parametro el ID del usuario para recibir los datos de ese usuario
+                                    data: { 'pIdUsuario': pIdUsuario },      //envia por parametro el ID del usuario para recibir los datos de ese usuario
                                     type: 'POST',
 
                                 }).done(function (response) {
