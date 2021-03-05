@@ -175,8 +175,8 @@ function jsMantAdmin(pModo, pIdUsuario) {
 
     var txtIdRol = "";
 
-    var pUsuarioCreacion = "";        //$("#pUsuarioCreacion").val();
-    var pUsuarioModificacion = "";    //$("#pUsuarioModificacion").val();
+    var pUsuarioCreacion = "";
+    var pUsuarioModificacion = "";    
 
     $.ajax({
         url: '/Admin/varSesionCorreo',
