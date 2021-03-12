@@ -1,4 +1,3 @@
-
 use uncafeparaseguir;
 
 /***********************************************************************************************************/
@@ -1183,7 +1182,6 @@ BEGIN
 END //
 DELIMITER ;
 
-
 DELIMITER //
 CREATE PROCEDURE sp_VerificaCharlaCompletada(pIdUsuario INT, pIdVideo INT)
 BEGIN
@@ -1221,7 +1219,6 @@ IF EXISTS (SELECT idUsuario, idCharla, finalizado
 END //
 DELIMITER ;
 
-/* */
 DELIMITER //
 CREATE PROCEDURE sp_CargarCharlaCompletada(pIdUsuario INT, pIdCharla INT)
 BEGIN

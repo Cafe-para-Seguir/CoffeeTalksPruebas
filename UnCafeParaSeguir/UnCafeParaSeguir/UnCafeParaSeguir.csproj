@@ -24,4 +24,8 @@
     <ProjectReference Include="..\..\gpayments-dotnet2\gpayments-dotnet2.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\charlas\" />
+  </ItemGroup>
+
 </Project>
