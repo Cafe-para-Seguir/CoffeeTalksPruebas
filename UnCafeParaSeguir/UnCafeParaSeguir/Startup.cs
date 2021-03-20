@@ -21,6 +21,11 @@ namespace UnCafeParaSeguir
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+            });
+
             services.AddDistributedMemoryCache(); //This way ASP.NET Core will use a Memory Cache to store session variables
             services.AddSession(options =>
             {
@@ -40,7 +45,6 @@ namespace UnCafeParaSeguir
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-
             });
             app.UseAuthentication();
 
