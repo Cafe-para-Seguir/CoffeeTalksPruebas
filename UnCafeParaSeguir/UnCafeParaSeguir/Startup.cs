@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -20,6 +21,11 @@ namespace UnCafeParaSeguir
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+            });
+
             services.AddDistributedMemoryCache(); //This way ASP.NET Core will use a Memory Cache to store session variables
             services.AddSession(options =>
             {
@@ -31,6 +37,8 @@ namespace UnCafeParaSeguir
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
@@ -38,6 +46,7 @@ namespace UnCafeParaSeguir
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
+            app.UseAuthentication();
 
             if (env.IsDevelopment())
             {
