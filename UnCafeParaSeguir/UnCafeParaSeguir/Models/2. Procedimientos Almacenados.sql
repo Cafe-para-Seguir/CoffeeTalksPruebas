@@ -790,6 +790,7 @@ CREATE PROCEDURE sp_MantVideo(pIdVideo INT, pLinkVideo VARCHAR(200), pNombreVide
 BEGIN
 
 DECLARE errno INT;
+DECLARE idRespuesta INT;
 DECLARE EXIT handler FOR sqlexception
 begin
 get current diagnostics condition 1 errno = mysql_errno;
@@ -816,9 +817,18 @@ ELSEIF pModo = 'MODIFICAR' THEN
     commit work;
 ELSEIF pModo = 'ELIMINAR' THEN
     start transaction;
-	DELETE FROM tbvideo WHERE idVideo = pIdVideo;
+    loop_label:  LOOP
+    set idRespuesta = (SELECT idvideoUsuario FROM tbvideousuario WHERE idVideo = pIdVideo limit 1);
+
+        IF  (idRespuesta is null) THEN
+            LEAVE  loop_label;
+        ELSE
+            DELETE FROM tbvideousuario WHERE idvideoUsuario = idRespuesta;
+        END  IF;
+    END LOOP;
+    DELETE FROM tbvideo WHERE idVideo = pIdVideo;
     select 1;
-	commit work;
+    commit work;
 ELSE 
 	select -1;		
 END IF;
