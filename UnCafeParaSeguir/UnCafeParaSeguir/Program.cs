@@ -3,14 +3,21 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using System.Collections.Generic;
 
 namespace UnCafeParaSeguir
 {
     public class Program
     {
+
+        private static readonly Dictionary<string, string> defaults = new Dictionary<string, string> {
+           { WebHostDefaults.EnvironmentKey, "development" }
+};
+
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args)
