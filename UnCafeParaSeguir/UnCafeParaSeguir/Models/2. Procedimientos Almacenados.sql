@@ -527,6 +527,7 @@ BEGIN
 
 DECLARE errno INT;
 DECLARE idRespuesta INT;
+DECLARE idRespuesta2 INT;
 DECLARE EXIT handler FOR sqlexception
 begin
 get current diagnostics condition 1 errno = mysql_errno;
@@ -560,6 +561,16 @@ ELSEIF pModo = 'ELIMINAR' THEN
 			LEAVE  loop_label;
 		ELSE
 			DELETE FROM tbforo WHERE idForo = idRespuesta;
+		END  IF;
+	END LOOP;
+
+	loop_label:  LOOP
+		set idRespuesta2 = (SELECT idCharlaUsuario FROM tbcharlausuario WHERE idCharla = pIdCharla limit 1);
+    
+		IF  (idRespuesta2 is null) THEN
+			LEAVE  loop_label;
+		ELSE
+			DELETE FROM tbcharlausuario WHERE idCharlaUsuario = idRespuesta2;
 		END  IF;
 	END LOOP;
     
@@ -790,6 +801,7 @@ CREATE PROCEDURE sp_MantVideo(pIdVideo INT, pLinkVideo VARCHAR(200), pNombreVide
 BEGIN
 
 DECLARE errno INT;
+DECLARE idRespuesta INT;
 DECLARE EXIT handler FOR sqlexception
 begin
 get current diagnostics condition 1 errno = mysql_errno;
@@ -816,9 +828,18 @@ ELSEIF pModo = 'MODIFICAR' THEN
     commit work;
 ELSEIF pModo = 'ELIMINAR' THEN
     start transaction;
-	DELETE FROM tbvideo WHERE idVideo = pIdVideo;
+    loop_label:  LOOP
+    set idRespuesta = (SELECT idvideoUsuario FROM tbvideousuario WHERE idVideo = pIdVideo limit 1);
+
+        IF  (idRespuesta is null) THEN
+            LEAVE  loop_label;
+        ELSE
+            DELETE FROM tbvideousuario WHERE idvideoUsuario = idRespuesta;
+        END  IF;
+    END LOOP;
+    DELETE FROM tbvideo WHERE idVideo = pIdVideo;
     select 1;
-	commit work;
+    commit work;
 ELSE 
 	select -1;		
 END IF;

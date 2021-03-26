@@ -13,7 +13,6 @@ String.prototype.rtrim = function () {
 }
 
 function validaInicioSesion() {
-
     $.ajax({
         url: '/Charla/varSesionCharla',
         type: 'POST',
