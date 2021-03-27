@@ -867,7 +867,7 @@ function charlasMV() {//charlas mejor valoradas
                 
                 var nombreCharlaMV = "nombreCharlaMV" + (x + 1);
                 var nombreCharlistasMV = "nombreCharlistaMV" + (x + 1);
-
+                var a = "A" + (x + 1);
                 var fotoCharlaInter = "fotoCharlaMVInter" + (x + 1);
                 var nombreCharlInter = "nombreCharlaMVInter" + (x + 1);
                 var nombreCharlistaInter = "charlistaMVinter" + (x + 1);

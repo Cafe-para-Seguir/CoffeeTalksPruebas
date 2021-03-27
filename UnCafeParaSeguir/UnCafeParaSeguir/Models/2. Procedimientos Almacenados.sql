@@ -915,7 +915,7 @@ END;
 IF pModo = 'AGREGAR' THEN 
       start transaction;
             INSERT INTO tbvideocharla (idVideo, idCharla)
-			VALUES ((SELECT MAX(idVideo) FROM tbVideo), pIdCharla);
+			VALUES ((SELECT MAX(idVideo) FROM tbvideo), pIdCharla);
       select 1;
      commit work;
     

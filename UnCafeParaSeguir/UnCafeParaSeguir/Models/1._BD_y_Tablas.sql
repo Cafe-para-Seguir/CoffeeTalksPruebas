@@ -241,6 +241,6 @@ values
    ('Catación','es la descripción y/o medición de características físicas y organolépticas de algún producto',"/images/categorias/1.png",NOW(),'Sistema',NOW(),'Sistema'),
    ('Tueste','es el tratamiento térmico al que se somete la semilla del cafeto para obtener un producto quebradizo',"/images/categorias/2.png",NOW(),'Sistema',NOW(),'Sistema'),
    ('Mercado','compra y venta del cafe',"/images/categorias/1.png",NOW(),'Sistema',NOW(),'Sistema'),
-   ('Competencias','pvp de baristas',"/images/categorias/2.png",NOW(),'Sistema',NOW(),'Sistema'),
+   ('Competencias','Competencias de baristas',"/images/categorias/2.png",NOW(),'Sistema',NOW(),'Sistema'),
    ('Sub-productos del café','cafe y sus productos',"/images/categorias/1.png",NOW(),'Sistema',NOW(),'Sistema'),
    ('Historia','principios y actualidades del cafe',"/images/categorias/2.png",NOW(),'Sistema',NOW(),'Sistema');
