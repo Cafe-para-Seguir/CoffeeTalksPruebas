@@ -883,8 +883,8 @@ function charlasMV() {//charlas mejor valoradas
                 var descripcionCharlistaMV1 = document.getElementById(descripcionCharlistaMV);
                 var dificultad1 = document.getElementById(dificultad);
                 var nivel1 = document.getElementById(nivel);
-                var imagen1 = datos[x].imagenCategoria;
-                var imagen2 = datos[x].imagenCategoria;
+                var imagen1 = datos[x].imagenCharla;
+                var imagen2 = datos[x].imagenCharla;
 
                 /****************************************************************** */
 

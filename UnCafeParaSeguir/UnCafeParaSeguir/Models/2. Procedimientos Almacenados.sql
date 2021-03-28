@@ -86,7 +86,7 @@ DELIMITER //
 CREATE PROCEDURE sp_RelacionUsuarioReceta(pIdUsuario INT)
 BEGIN
 	start transaction;
-		INSERT INTO tbrecetausuario (idReceta, idUsuario) VALUES ( (SELECT MAX(idReceta) FROM tbReceta) , pIdUsuario );
+		INSERT INTO tbrecetausuario (idReceta, idUsuario) VALUES ( (SELECT MAX(idReceta) FROM tbreceta) , pIdUsuario );
 		select 1;
 	commit work;
 END //
@@ -1243,6 +1243,6 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE sp_CargarCharlaCompletada(pIdUsuario INT, pIdCharla INT)
 BEGIN
-    SELECT fechaFinalizacion FROM tbcharlaUsuario WHERE idUsuario = pIdUsuario AND idCharla = pIdCharla AND finalizado = "Si";
+    SELECT fechaFinalizacion FROM tbcharlausuario WHERE idUsuario = pIdUsuario AND idCharla = pIdCharla AND finalizado = "Si";
 END//
 DELIMITER ;
