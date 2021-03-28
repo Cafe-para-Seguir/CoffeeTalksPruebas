@@ -11,7 +11,7 @@ namespace UnCafeParaSeguir.Controllers
     public class ReportesController : Controller
     {
 
-        private static string rutaReportes = @"C:\Reportes\"; 
+        private static string rutaReportes = "/home/cursos/ReportesCoffeeTalks/"; 
 
         private readonly ILogger<ReportesController> _logger;
         ConexionBD conDB = new ConexionBD();

@@ -231,7 +231,7 @@ DELIMITER //
 CREATE PROCEDURE sp_ReporteGananciaCharlista(pMes INT, pAnno INT)
 BEGIN
 	SELECT SUM(ch.precioCharla) as Ganancia, usu.nombreUsuario AS Charlista 
-    FROM tbcharlaUsuario chusu, tbcharla ch, tbusuario usu, tbcharlacharlista chch WHERE chusu.idCharla = ch.idCharla
+    FROM tbcharlausuario chusu, tbcharla ch, tbusuario usu, tbcharlacharlista chch WHERE chusu.idCharla = ch.idCharla
 	AND usu.idUsuario = chch.idUsuario AND chch.idCharla = ch.idCharla 
 	AND MONTH(chusu.fechaMatricula) = pMes AND YEAR(chusu.fechaMatricula) = pAnno
 	GROUP BY usu.nombreUsuario;
