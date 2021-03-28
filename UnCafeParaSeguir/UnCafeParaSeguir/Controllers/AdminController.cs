@@ -610,7 +610,6 @@ namespace UnCafeParaSeguir.Controllers
         }
     }
 
-
     public class AesOperation
     {
         public static string EncryptString(string key, string plainText)

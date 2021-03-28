@@ -904,7 +904,7 @@ function charlasMV() {//charlas mejor valoradas
                 nombreCharlistasMV1.appendChild(nombreCharlistasMV2);
                 nivel1.appendChild(nivel2);
                 document.getElementById(a).setAttribute('style', 'display: block; position: relative; overflow: hidden; background-image: url("' + imagen1 + '"); background-size: cover; background-position: center center; height: 140px;');
-                //document.getElementById('CharlaDetalle' + x).setAttribute('onclick', 'CargarPagCharlaDetalle(' + (datos[x].idCharla) + ')');
+                document.getElementById('CharlaDetalle' + x).setAttribute('onclick', 'CargarPagCharlaDetalle(' + (datos[x].idCharla) + ')');
 
                 //parte interna
                 nombreCharlInter1.appendChild(nombreCharlInter2);
