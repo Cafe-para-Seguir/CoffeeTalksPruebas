@@ -416,14 +416,16 @@ namespace UnCafeParaSeguir.Controllers
 
             if (files != null)
             {
-                string carpetaGuardar = Path.Combine(_enviroment.WebRootPath, "images/usuarios");
-                string fileName = pIdUsuario.ToString() + ".jpg"; // Path.GetFileName(files.FileName);
-                using (FileStream fs = new FileStream(Path.Combine(carpetaGuardar, fileName), FileMode.Create))
-                {
-                    files.CopyTo(fs);
-                }
-                path = Path.Combine("images/usuarios", fileName);
-                path = "/" + path.Replace("\\", "/");
+                string carpetaGuardar = Path.Combine(_enviroment.WebRootPath, "/images/usuarios");
+                //string fileName = pIdUsuario.ToString() + ".jpg"; // Path.GetFileName(files.FileName);
+                //using (FileStream fs = new FileStream(Path.Combine(carpetaGuardar, fileName), FileMode.Create))
+                //{
+                //    files.CopyTo(fs);
+                //}
+                //path = Path.Combine("/images/usuarios", fileName);
+                //path = "/" + path.Replace("\\", "/");
+
+                path = carpetaGuardar;
             }
             else
             {
