@@ -89,7 +89,7 @@ function jsMantCategoria(pModo, pIdCategoria) {
 
     var txtNombreCategoria = $("#txtNombreCategoria").val();
     var txtDescripcionCategoria = $("#txtDescripcionCategoria").val();
-    var txtImagenCategoria = "Sin Imagen"; //$("#txtImagenCategoria").val();
+    var txtImagenCategoria = "/images/recursos/sinimagen.jpg";
 
     var pUsuarioCreacion = "";
     var pUsuarioModificacion = "";

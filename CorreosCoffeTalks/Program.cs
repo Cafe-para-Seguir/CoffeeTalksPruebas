@@ -35,7 +35,7 @@ namespace CorreosCoffeTalks
 
                         Console.WriteLine("");
 
-                        EnviarCorreoUsuarios((string)dataRow["correoUsuario"], "Asunto Prueba Automatica", "Texto Correo");
+                        EnviarCorreoUsuarios((string)dataRow["correoUsuario"], "Asunto Actividad en el foro", "Se ha detectado actividad en una de las charlas que impartes");
                     }
                 }
             }
