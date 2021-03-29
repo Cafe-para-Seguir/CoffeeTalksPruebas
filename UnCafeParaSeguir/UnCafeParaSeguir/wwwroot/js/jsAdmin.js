@@ -812,6 +812,9 @@ function jsEliminarCharlaUsuario() {
         if (response == 2) {
             $('#confirmarEliminar').click();
             $('#modalEliminar').modal('toggle');
+
+            CallCharlasUsuarios();
+
         } else {
             $('#errorEliminar').click();
             $('#modalEliminar').modal('toggle');
