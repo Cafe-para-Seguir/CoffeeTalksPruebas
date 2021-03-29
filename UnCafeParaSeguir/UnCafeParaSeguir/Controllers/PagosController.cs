@@ -30,7 +30,7 @@ namespace UnCafeParaSeguir.Controllers
 
         // string imageURL = @"C:\img\logo.png";
         
-        private const string rutaComprobante = @"C:\Comprobantes\";
+        private const string rutaComprobante = "/home/cursos/ComprabantesCoffeeTalks/";
 
         public IActionResult Index()
         {
