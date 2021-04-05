@@ -1,20 +1,4 @@
-﻿/*
-function EnviarCorreo() {
-
-    var cod = makeid(5);
-
-    $.ajax({
-        url: '/Correos/EnviarCorreoUsuarios',
-        type: 'POST',
-        data: { 'cod': cod },
-
-    }).done(function (response) {
-
-    });
-}
-*/
-
-String.prototype.trim = function () {
+﻿String.prototype.trim = function () {
     return this.replace(/^\s+|\s+$/g, "");
 }
 String.prototype.ltrim = function () {
@@ -24,6 +8,7 @@ String.prototype.rtrim = function () {
     return this.replace(/\s+$/, "");
 }
 
+//charla asignada
 function GenerarCorreo(opc, correo, charla) {
 
     var CorreoDestino = "";
@@ -32,8 +17,8 @@ function GenerarCorreo(opc, correo, charla) {
 
     if (opc == 1) { //correo de asignación de charla
         CorreoDestino = correo;
-        AsuntoCorreo = "Charla asignada";
-        CuerpoCorreo = "Se le ha asignado la charla: " + charla;
+        AsuntoCorreo = "Coffee Talks | Nueva charla asignada";
+        CuerpoCorreo = "Estimado Charlista,\n" + "Coffee Talks le informa que su charla " + charla + "ha sido satisfactoriamente asignada en la plataforma. Agradecemos revisar todos los detalles configurados y notificarnos cualquier observación o requerimiento de ajuste.\nEn caso de no responder este correo, se asumirá que está de acuerdo con toda la información que Coffee Talks puso a disposición del público en la plataforma.";
 
         var data = {
             CorreoDestino: CorreoDestino, AsuntoCorreo: AsuntoCorreo, CuerpoCorreo: CuerpoCorreo
@@ -77,6 +62,7 @@ function GenerarCorreo(opc, correo, charla) {
     }
 }
 
+//contacto (correo)
 function CorreoContacto() {
 
     var datos = new FormData($("#Form_Contacto")[0]);
@@ -181,11 +167,12 @@ function verificaCodigoCorreo() {
     });
 }
 
+//reenvio de código de seguridad (correo)
 function reenviarCodigoCorreo() {
 
-    var sujeto = "Cambio de Contraseña Coffee Talks";
-    var contenido = "Tu nuevo codigo de verificacion de usuario es:";
-    var cierre = "Si no has solicitado un cambio de contraseña porfavor ignora este correo"
+    var sujeto = "Coffee Talks | Cambio de contraseña Coffee Talks";
+    var contenido = "Estimado usuario,\nEl nuevo código de seguridad solicitado es:";
+    var cierre = "Este código es requerido para el proceso de registro o cambio de contraseña.\nSi requiere ayuda adicional, favor contactarse con el administrador del sitio."
 
     var txtCorreoVerificacion = $("#correoVerificacion").val();
 
@@ -227,6 +214,7 @@ function reenviarCodigoCorreo() {
 
 }
 
+//cambio contraseña (correo)
 function enviarCodigoContra() {
 
     var txtCorreoVerificacion = $("#correoVerificacion").val();
@@ -253,9 +241,9 @@ function enviarCodigoContra() {
 
                 if (response == 1) {
 
-                    var sujeto = "Cambio de Contraseña Coffee Talks";
-                    var contenido = "Tu nuevo codigo de cambio de contraseña es :";
-                    var cierre = "Este codigo es valido por un periodo de una hora desde la creeacion del codigo original, \n si no haz solicitado un cambio y posees probelmas al Iniciar Sesion puedes comunicarte con Administracion"
+                    var sujeto = "Coffee Talks | Cambio de Contraseña Coffee Talks";
+                    var contenido = "Estimado usuario,\nEl nuevo código de seguridad para el cambio de contraseña es:";
+                    var cierre = "Este codigo es valido por un periodo de una hora desde la creeacion del codigo original, \nSi requiere ayuda adicional, favor contactarse con el administrador del sitio."
 
                     var consulta = {
                         correo: txtCorreoVerificacion, tipoCodigo: 2, pModo: 'MODIFICAR', sujeto: sujeto, contenido: contenido, cierre: cierre
@@ -282,9 +270,9 @@ function enviarCodigoContra() {
 
                 } else {
 
-                    var sujeto = "Cambio de Contraseña Coffee Talks";
-                    var contenido = "Tu codigo de cambio de contraseña es:";
-                    var cierre = "Este codigo es valido por un periodo de una hora, \n si no haz solicitado un cambio y posees probelmas al Iniciar Sesion puedes comunicarte con Administracion"
+                    var sujeto = "Coffee Talks | Cambio de Contraseña Coffee Talks";
+                    var contenido = "Estimado usuario,\nEl código de seguridad para el cambio de contraseña es:";
+                    var cierre = "Este codigo es valido por un periodo de una hora desde la creeacion del codigo original, \nSi requiere ayuda adicional, favor contactarse con el administrador del sitio."
 
                     var consulta = {
                         correo: txtCorreoVerificacion, tipoCodigo: 2, pModo: 'AGREGAR', sujeto: sujeto, contenido: contenido, cierre: cierre
@@ -422,6 +410,7 @@ function cambiarContra() {
                                 url: '/Correos/MantCodigoUsuario',
                                 type: 'POST',
                                 data: consulta
+                        });
                             }).done(function (response) {
 
                                 $('#modalContraModificada').modal('toggle');
@@ -444,7 +433,6 @@ function cambiarContra() {
                                 document.getElementById('olvidoContraBn4').setAttribute('style', 'display: none');
 
                             });
-                        });
                     });
 
                 } else {

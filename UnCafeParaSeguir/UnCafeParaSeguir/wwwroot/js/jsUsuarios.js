@@ -1604,11 +1604,12 @@ function CerrarSesion() {
     });
 }
 
+//envio de correo registro
 function CodigoVerificacion(correo, tipoCodigo, pModo) {
 
-    var sujeto = "Verifica tu correo de Coffee Talks";
-    var contenido = "Tu codigo de verificacion para tu cuenta de Coffee Talks es:";
-    var cierre = "Si no has creado una cuenta para la plataforma Coffe Talks porfavor ignora este correo"
+    var sujeto = "Coffee Talks | Bienvenido(a) a la comunidad Coffee Talks";
+    var contenido = "Tu código de seguridad para validar tu cuenta de Coffee Talks es:";
+    var cierre = "\nSi requiere ayuda adicional, favor contactarse con el administrador del sitio"
 
     var consulta = {
         correo: correo, tipoCodigo: tipoCodigo, pModo: pModo, sujeto: sujeto, contenido: contenido, cierre: cierre

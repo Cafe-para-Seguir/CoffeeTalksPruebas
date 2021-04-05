@@ -7,7 +7,6 @@ using UnCafeParaSeguir.Controllers;
 using UnCafeParaSeguir.Models;
 using Microsoft.Extensions.Logging;
 
-
 namespace CorreosCoffeTalks
 {
     class Program
@@ -35,7 +34,7 @@ namespace CorreosCoffeTalks
 
                         Console.WriteLine("");
 
-                        EnviarCorreoUsuarios((string)dataRow["correoUsuario"], "Asunto Actividad en el foro", "Se ha detectado actividad en una de las charlas que impartes");
+                        EnviarCorreoUsuarios((string)dataRow["correoUsuario"], "Asunto Actividad en el foro", "Estimado charlista,\nSe informa por medio de este correo que tiene actividad reciente en el foro de la charla: " + dataRow["nombreCharla"] + ".Agradecemos de antemano su participación y diligencia para interactuar con los usuarios de la charla.");
                     }
                 }
             }

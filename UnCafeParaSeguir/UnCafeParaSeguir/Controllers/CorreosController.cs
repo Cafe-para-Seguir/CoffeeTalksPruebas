@@ -45,7 +45,7 @@ namespace UnCafeParaSeguir.Controllers
                 email.From.Add(MailboxAddress.Parse(correoSalida));
                 email.To.Add(MailboxAddress.Parse(correo));
                 email.Subject = sujeto;
-                email.Body = new TextPart(TextFormat.Plain) { Text = contenido + " " + codigo + " " + cierre };
+                email.Body = new TextPart(TextFormat.Plain) { Text = contenido + " \b" + codigo + "\b " + cierre };
 
                 // send email
                 using var smtp = new SmtpClient();
@@ -247,7 +247,7 @@ namespace UnCafeParaSeguir.Controllers
                     DataRow correo_Usuario = ds.Rows[x];
                     CorreoDestino = correo_Usuario["correoUsuario"].ToString();
 
-                    await CrearCorreoNotificacion(CorreoDestino, "Coffee Talks", "charla nueva registrada");
+                    await CrearCorreoNotificacion(CorreoDestino, "Coffee Talks | Nueva charla disponible", "¡Hola!\nGracias por ser parte de la comunidad de Coffee Talks. Como sabemos que sos de las personas que te gusta aprender más de café, te informamos que hay nuevas charlas disponibles en la plataforma.");
                 }
                 return 1;
 
@@ -267,8 +267,8 @@ namespace UnCafeParaSeguir.Controllers
                 var email = new MimeMessage();
                 email.From.Add(MailboxAddress.Parse(correoSalida));
                 email.To.Add(MailboxAddress.Parse(CorreoDestino));
-                email.Subject = "Comprobante de compra";
-                var Body = new TextPart(TextFormat.Plain) { Text = "Gracias por su compra" };
+                email.Subject = "Coffee Talks | Comprobante de pago";
+                var Body = new TextPart(TextFormat.Plain) { Text = "Hola,\n Te adjuntamos el comprobante de tu compra. Si tenés alguna consulta sobre tu factura o tu compra, por favor contáctanos al correo info@uncafeparaseguir.com\nMuchas gracias por tu preferencia." };
 
                 var builder = new BodyBuilder();
 

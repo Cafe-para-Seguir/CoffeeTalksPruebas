@@ -59,25 +59,20 @@ namespace UnCafeParaSeguir.Controllers
         public IActionResult Faq()
         {
             return View();
-        }
-        
+        } 
         public IActionResult Contacto()
         {
             return View();
         }
-
         public IActionResult VerificarCorreo()
         {
             return View();
         }
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
         [HttpPost("Home")]
         public async Task<ContentResult> CargarImagenAsync(IFormFile files)
         {
