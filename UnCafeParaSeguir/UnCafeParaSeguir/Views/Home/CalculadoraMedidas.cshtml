@@ -34,25 +34,44 @@
                     <div class="row ml-0 mr-0">
                         <div class="divGroupItem list-group-item">
                             <h4 class="m-4">Aeropress</h4>
-                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:auto;">
 
                                 <div class="w-100 h-100">
                                     <img class="w-100 h-100" src="~/images/recursos/Aeropress.jpg" alt="Luma">
                                 </div>
 
                             </div>
-                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:auto; border-radius: 5px 5px 0px 0px;">
 
-                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante.
-                                DEBE ANOTAR A TODOS.
-                                >Se aclara lo siguiente:
-                                Parentesco:
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#aeropress">Descripción</button>
+                                </div>
+                                <div id="aeropress" class="collapse mt-3" align="justify">
+                                    <div class="alert alert-soft-warning text-black-100">
+                                        Uno de los métodos de preparación de café más recientes a nivel mundial pero que ha sabido ganarse la predilección de muchas personas por su simplicidad y rapidez de preparación. Inventado en estados unidos en 2005 por el ingeniero Adan Adler, fabricante de juegos deportivos que deseaba obtener un café con notas dulces en poco tiempo.
+                                        Actualmente tiene hasta su propio campeonato mundial, el World Aeropress Championship (WAC) y una película Aeropress Movie.
+                                        <br>
+                                        <br>
+                                        ¿Cómo funciona?
+                                        <br>
+                                        <br>
+                                        Es un dispositivo pequeño compuesto por dos tubos, que se puede preparar de dos formas. En la forma tradicional, se coloca el dispositivo sobre un recipiente (taza) y el tubo receptor cuenta con un portafiltro donde se coloca un filtro de papel circular. Se coloca el café molido, luego se agrega agua que permanece en contacto con el café por aproximadamente 2 minutos (hasta aquí opera con el principio de prensa francesa). Luego la persona que lo prepara ejerce una presión de aire con el segundo tubo haciendo pasar el líquido de forma forzada por el filtro de papel separando los componentes no solubles del café, obteniendo así la bebida de café en la taza o recipiente que se caracteriza por un gran cuerpo.
+
+                                    </div>
+                                </div>
+
 
                             </div>
-                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Papel Aeropress</label>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:auto; border-radius: 0px 0px 5px 5px;">
 
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">
+                                    Ventajas<br>
+                                    • Fácil de usar<br>
+                                    • Prepara una taza café de muy buena calidad en menos de 2 minutos<br>
+                                    • Se limpia con facilidad<br>
+                                    • Fácil de transportar por ser ligero, pequeño y resistente (ideal para acampar o para viajes)<br>
+                                    • Ideal para personas que preparan 1 o 2 tazas de café
+                                </label>
                                 <label id="rdAeropressActiveRd" class="btnResponsive btn btn-outline-primary float-right active">
                                     <input type="radio" id="selectMaquina" name="selectMaquina" value="Aeropress" checked="" aria-checked="true" style="display:none" onclick="calcRadios('Aeropress');" /> Seleccionar
                                 </label>
@@ -66,24 +85,39 @@
                     <div class="row ml-0 mr-0">
                         <div class="divGroupItem list-group-item">
                             <h4 class="m-4">Chemex</h4>
-                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:auto;">
 
                                 <div class="w-100 h-100">
                                     <img class="w-100 h-100" src="~/images/recursos/Chemex.jpg" alt="Luma">
                                 </div>
 
                             </div>
-                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:auto; border-radius: 5px 5px 0px 0px;">
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#chemex">Descripción</button>
+                                </div>
+                                <div id="chemex" class="collapse mt-3" align="justify">
+                                    <div class="alert alert-soft-warning text-black-100">
+                                        Método Alemán inventando en 1941 por el químico Peter Schlumbohm. Su diseño y uso de borosilicato nos recuerdan a un instrumento de laboratorio. El Chemex se ha vuelto un dispositivo icónico tanto en la cultura popular como en el arte, llegando a formar parte de la colección permanente del Museo de Arte de New York. Es un método de filtrado, que requiere mayor técnica que otros dispositivos y puede requerir más práctica para obtener resultados adecuados.
+                                        El resultado de la taza de café preparada con Chemex se caracteriza por su increíble limpieza (muy baja presencia de aceites y componentes sólidos de café por el uso de un filtro especial de papel de pared gruesa).
+                                        <br>
+                                        <br>
+                                        ¿Cómo funciona?
+                                        <br>
+                                        <br>
+                                        Se coloca un papel de filtro especial de Chemex en la parte cónica del recipiente. Se precalienta el filtro y el método con agua caliente (esto sirve para “limpiar” el filtro de sabor a papel). Se desecha el agua y se coloca la dosis de café molido de tamaño medio a grueso a preparar. Se realiza una pre-infusión colocando el doble de peso en agua con respecto al café colocado. Se vierte agua en movimiento espiral del centro hacia afuera de la cama de café (necesariamente con cafetera cuello de ganso para controlar el flujo) a intervalos hasta completar el volumen esperado.
+                                    </div>
 
-                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante.
-                                DEBE ANOTAR A TODOS.
-                                >Se aclara lo siguiente:
-                                Parentesco:
-
+                                </div>
                             </div>
-                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Papel Chemex</label>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:auto; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">
+                                    Ventajas<br>
+                                    • Se puede adquirir de diferentes tamaños permitiendo llegar a preparar hasta 10 tazas de cafe.<br>
+                                    • Ideal para preparar volúmenes altos de café (hasta 1 L)<br>
+                                    • Taza limpia, con gran balance además de aromático. <br>
+                                    • Altamente estético ideal para deleitar a las visitas.
+                                </label>
 
                                 <label id="rdChemex" class="btnResponsive btn btn-outline-primary float-right">
                                     <input type="radio" id="selectMaquina" name="selectMaquina" value="Chemex" aria-checked="true" style="display:none" onclick="calcRadios('Chemex');" /> Seleccionar
@@ -97,27 +131,40 @@
                     <div class="row ml-0 mr-0">
                         <div class="divGroupItem list-group-item">
                             <h4 class="m-4">Chorreador</h4>
-                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:auto;">
 
                                 <div class="w-100 h-100">
                                     <img class="w-100 h-100" src="~/images/recursos/Chorreador.jpg" alt="Luma">
                                 </div>
 
                             </div>
-                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:auto; border-radius: 5px 5px 0px 0px;">
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#chorreador">Descripción</button>
+                                </div>
+                                <div id="chorreador" class="collapse mt-3" align="justify">
+                                    <div class="alert alert-soft-warning text-black-100">
+                                        Es un método muy tradicional para la preparación de café en Costa Rica y otros países de Latinoamérica. Entonces, ¿el chorreador no es originario o exclusivo de Costa Rica? La respuesta es que efectivamente no es un método inventado en Costa Rica, sin embargo está enraizado en la cultura de preparación de café en los hogares costarricenses y en una gran parte de la población se asocian con recuerdos de la forma en que nuestros padres y abuelos preparaban el café en las reuniones familiares.
+                                        <br>
+                                        <br>
+                                        ¿Cómo funciona?
+                                        <br>
+                                        <br>
+                                        Es muy sencillo de usar. El café molido se coloca en la bolsita de tela que está colocada en el dispositivo de soporte que generalmente es de madera. El agua caliente se va vertiendo sobre el café despacio el cual cae en un recipiente (tradicional de material de loza).
+                                        Para obtener siempre un café de gran sabor, es necesario manipular y almacenar de forma correcta el filtro de tela, dentro de un recipiente hermético con agua en la refrigeradora.
+                                    </div>
 
-                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante. <b>
-                                    DEBE ANOTAR A TODOS.
-                                    >Se aclara lo siguiente:
-                                    Parentesco:
-
+                                </div>
                             </div>
-                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Tela Chorreador</label>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:auto; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">
+                                    Ventajas<br>
+                                    • Ideal para preparar volúmenes altos de café (hasta 1 L).<br>
+                                    • Por su diseño, durante todo el proceso de preparación el aroma deleita a las personas presentes llenando todo el espacio (esto le resta presencia aromática en taza).
+                                </label>
 
-                                <label id="rdChorreador" class="btnResponsive btn btn-outline-primary float-right">
-                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Chorreador" aria-checked="true" style="display:none" onclick="calcRadios('Chorreador');" /> Seleccionar
+                                <label id="rdChemex" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Chemex" aria-checked="true" style="display:none" onclick="calcRadios('Chemex');" /> Seleccionar
                                 </label>
                             </div>
                         </div>
@@ -128,27 +175,40 @@
                     <div class="row ml-0 mr-0">
                         <div class="divGroupItem list-group-item">
                             <h4 class="m-4">Coffee Maker</h4>
-                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:auto;">
 
                                 <div class="w-100 h-100">
                                     <img class="w-100 h-100" src="~/images/recursos/CoffeeMaker.jpeg" alt="Luma">
                                 </div>
 
                             </div>
-                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:auto; border-radius: 5px 5px 0px 0px;">
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#coffee">Descripción</button>
+                                </div>
+                                <div id="coffee" class="collapse mt-3" align="justify">
+                                    <div class="alert alert-soft-warning text-black-100">
+                                        La primera cafetera eléctrica fue inventada en Alemania en 1954 por Gottlob Widmann. El uso de este dispositivo se ha popularizado tanto que es el método más encontrado en hogares. Existen diferentes fabricantes y una amplia gama de precios, con variantes en diseño hasta llegar a especializarse tanto que algunas han sido certificadas por SCA (Specialty Coffee Asociation) al cumplir con los estándares de preparación de café especial. https://sca.coffee/certified-home-brewer
+                                        <br>
+                                        <br>
+                                        ¿Cómo funciona?
+                                        <br>
+                                        <br>
+                                        Consiste en un depósito de agua que se calienta. Esta agua pasa del depósito a la ducha por medio del principio termosifón, pasando a través del café molido que está depositado sobre un filtro de papel o de malla de aluminio o acero. El agua pasa lentamente a través del café medianamente molido, y cae gota a gota por gravedad hasta una jarra. Usualmente la jarra es de cristal y va sobre una base o placa eléctrica que lo mantiene caliente.
+                                    </div>
 
-                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante. <b>
-                                    DEBE ANOTAR A TODOS.
-                                    >Se aclara lo siguiente:
-                                    Parentesco:
-
+                                </div>
                             </div>
-                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Papel Coffee Maker</label>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:auto; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">
+                                    Ventajas<br>
+                                    • Ideal para preparar volúmenes altos de café (hasta 1 L).<br>
+                                    • Funcionamiento automático, se coloca el café molido y el agua y se espera al resultado sin mayor esfuerzo.<br>
+                                    •Ideal para personas que no tienen suficiente tiempo para elaborar una preparación manual.
+                                </label>
 
-                                <label id="rdCoffeeMaker" class="btnResponsive btn btn-outline-primary float-right">
-                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="CoffeeMaker" aria-checked="true" style="display:none" onclick="calcRadios('CoffeeMaker');" /> Seleccionar
+                                <label id="rdChemex" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Chemex" aria-checked="true" style="display:none" onclick="calcRadios('Chemex');" /> Seleccionar
                                 </label>
                             </div>
                         </div>
@@ -159,27 +219,41 @@
                     <div class="row ml-0 mr-0">
                         <div class="divGroupItem list-group-item">
                             <h4 class="m-4">Prensa Francesa</h4>
-                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:auto;">
 
                                 <div class="w-100 h-100">
                                     <img class="w-100 h-100" src="~/images/recursos/PrensaFrancesa.jpg" alt="Luma">
                                 </div>
 
                             </div>
-                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:auto; border-radius: 5px 5px 0px 0px;">
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#francesa">Descripción</button>
+                                </div>
+                                <div id="francesa" class="collapse mt-3" align="justify">
+                                    <div class="alert alert-soft-warning text-black-100">
+                                        Algunas fuentes mencionan que la cafetera de émbolo era utiliza en Francia desde el siglo XIX de ahí su nombre de prensa francesa, sin embargo fue patentada en el año 1929 por el italiano Attilio Calimani. El resultado es una taza con gran cuerpo ya que el filtro de metal deja pasar los aceites del café y sólidos comúnmente llamados finos (esta sensación en boca a algunas personas les gusta a otras no tanto).
+                                        <br>
+                                        <br>
+                                        ¿Cómo funciona?
+                                        <br>
+                                        <br>
+                                        Se coloca café con molienda gruesa en la prensa. Se vierte agua caliente según la relación deseada de agua-café. Se esperan de 4 a 6 minutos y luego se prensa con el émbolo. Se debe servir todo el café inmediatamente se prensa para evitar sobre-extracciones (sabores muy amargos)
+                                    </div>
 
-                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante. <b>
-                                    DEBE ANOTAR A TODOS.
-                                    >Se aclara lo siguiente:
-                                    Parentesco:
-
+                                </div>
                             </div>
-                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Metalico Prensa</label>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:auto; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">
+                                    Ventajas<br>
+                                    • Vienen en diferentes tamaños para elegir la que más se ajusta a nuestras necesidades.<br>
+                                    • Ideal para principiantes ya que  no se requiere equipo especial ni formación especializada.<br>
+                                    • Ideal para personas que no tienen suficiente tiempo para elaborar una preparación manual.<br>
+                                    • Muy versátil ya que se puede preparar también Cold Brew y hasta espumar leche.
+                                </label>
 
-                                <label id="rdPrensaFrancesa" class="btnResponsive btn btn-outline-primary float-right">
-                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="PrensaFrancesa" aria-checked="true" style="display:none" onclick="calcRadios('PrensaFrancesa');" /> Seleccionar
+                                <label id="rdChemex" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Chemex" aria-checked="true" style="display:none" onclick="calcRadios('Chemex');" /> Seleccionar
                                 </label>
                             </div>
                         </div>
@@ -190,27 +264,40 @@
                     <div class="row ml-0 mr-0">
                         <div class="divGroupItem list-group-item">
                             <h4 class="m-4">V60</h4>
-                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:auto;">
 
                                 <div class="w-100 h-100">
                                     <img class="w-100 h-100" src="~/images/recursos/V60.jpg" alt="Luma">
                                 </div>
 
                             </div>
-                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:auto; border-radius: 5px 5px 0px 0px;">
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#v60">Descripción</button>
+                                </div>
+                                <div id="v60" class="collapse mt-3" align="justify">
+                                    <div class="alert alert-soft-warning text-black-100">
+                                        La compañía japonesa Hario lanza el V60 en el 2005 y rápidamente se ganó un espacio casi obligatorio en todas las cafeterías y tiendas de café artesanal de hoy en día. Esta compañía que inicia en 1921 como una fabricante de recipientes de vidrio resistentes al calor evolucionó hasta convertirse en una de las marcas más reconocidas en implementos de café. El dispositivo consiste en un cono cuyas paredes tienen una inclinación de 60 grados (de ahí el nombre) y puede estar hecho de plástico, cerámica, vidrio o acero, el cual termina con un agujero relativamente grande en el fondo del cono. El café extraído se canaliza al recipiente tanto por este agujero como por unos zurcos en espiral que forman parte de las paredes del cono que también cumplen función de mejorar el flujo de aire.
+                                        <br>
+                                        <br>
+                                        ¿Cómo funciona?
+                                        <br>
+                                        <br>
+                                        El principio de funcionamiento es similar a otros sistemas de goteo como el Chemex, sin embargo es muy importante controlar el flujo de agua que se aplica sobre la cama de café para obtener una excelente taza.
+                                    </div>
 
-                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante. <b>
-                                    DEBE ANOTAR A TODOS.
-                                    >Se aclara lo siguiente:
-                                    Parentesco:
-
+                                </div>
                             </div>
-                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Papel V60</label>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:auto; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">
+                                    Ventajas<br>
+                                    • Disponible en gran cantidad de tamaños y materiales.<br>
+                                    • Por su diseño que favorece el flujo de aire tiende a generar como resultado una taza intensa y compleja.<br>
+                                    • Muy práctico: se puede preparar directamente en una taza o en un recipiente.
+                                </label>
 
-                                <label id="rdV60" class="btnResponsive btn btn-outline-primary float-right">
-                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="V60" aria-checked="true" style="display:none" onclick="calcRadios('V60');" /> Seleccionar
+                                <label id="rdChemex" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Chemex" aria-checked="true" style="display:none" onclick="calcRadios('Chemex');" /> Seleccionar
                                 </label>
                             </div>
                         </div>
@@ -221,27 +308,40 @@
                     <div class="row ml-0 mr-0">
                         <div class="divGroupItem list-group-item">
                             <h4 class="m-4">Vandola</h4>
-                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:75%;">
+                            <div class="divResponsive float-left list-group-item" style="border-radius: 5px; width:25%; height:auto;">
 
                                 <div class="w-100 h-100">
                                     <img class="w-100 h-100" src="~/images/recursos/Vandola.jpg" alt="Luma">
                                 </div>
 
                             </div>
-                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:50%; border-radius: 5px 5px 0px 0px;">
+                            <div class="divDesc divResponsive float-right list-group-item ml-3 " style=" width:73%; height:auto; border-radius: 5px 5px 0px 0px;">
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#vandola">Descripción</button>
+                                </div>
+                                <div id="vandola" class="collapse mt-3" align="justify">
+                                    <div class="alert alert-soft-warning text-black-100">
+                                        Método 100% costarricense diseñado por el barista Minor Alfaro en 2015. Inspirado en métodos tradicionales de preparación de café y en la tradición alfarera de arte precolombino, la Vandola es moldeada de forma manual y esmaltada por ceramistas para darle tanto un objetivo utilitario a la vez que es todo una pieza de arte.
+                                        <br>
+                                        <br>
+                                        ¿Cómo funciona?
+                                        <br>
+                                        <br>
+                                        El principio de funcionamiento es similar a otros sistemas de goteo como el Chemex. Es importante precalentar bien el método para lograr el beneficio de retención de calor por más tiempo.
+                                    </div>
 
-                                Llene el siguiente formulario con los datos de cada uno de los miembros del grupo familiar (número total de miembros que viven con el/la estudiante solicitante en su hogar). Debe iniciar con los datos de el/la estudiante solicitante. <b>
-                                    DEBE ANOTAR A TODOS.
-                                    >Se aclara lo siguiente:
-                                    Parentesco:
-
+                                </div>
                             </div>
-                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:25%; border-radius: 0px 0px 5px 5px;">
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Filtro a utilizar:</label>
-                                <label class="col-form-label mr-3 ml-3 font-size-16pt">Tela Vandola</label>
+                            <div class="divResponsive float-right list-group-item ml-3" style=" width:73%; height:auto; border-radius: 0px 0px 5px 5px;">
+                                <label class="col-form-label mr-3 ml-3 font-size-16pt">
+                                    Ventajas<br>
+                                    • Mantiene el café caliente por mucho tiempo al estar hecho de paredes gruesas de arcilla selladas con esmaltes naturales especiales.<br>
+                                    • Su diseño con boquilla y válvula de aireación permiten oxigenar la bebida durante todo el proceso dotándola de un aroma sobresaliente y de mayor dulzor.<br>
+                                    • enta con una agarredera para el servicio de la bebida y por su diseño no es necesario retirar el filtro una vez terminado el proceso de filtrado. Esto favorece la retención de los volátiles del café.
+                                </label>
 
-                                <label id="rdVandola" class="btnResponsive btn btn-outline-primary float-right">
-                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Vandola" aria-checked="true" style="display:none" onclick="calcRadios('Vandola');" /> Seleccionar
+                                <label id="rdChemex" class="btnResponsive btn btn-outline-primary float-right">
+                                    <input type="radio" id="selectMaquina" name="selectMaquina" value="Chemex" aria-checked="true" style="display:none" onclick="calcRadios('Chemex');" /> Seleccionar
                                 </label>
                             </div>
                         </div>
